@@ -304,7 +304,15 @@ function Papers() {
         <section className="papers-upload">
           <label className={`papers-dropzone ${uploading ? "busy" : ""}`}>
             {uploading ? (
-              <span>{uploadProgress || "Uploading..."}</span>
+              <LoadingSpinner
+                size="inline"
+                messages={[
+                  `${uploadProgress || "Uploading your paper…"}`,
+                  "Extracting text from the paper…",
+                  "Splitting into questions…",
+                  "Nearly done…",
+                ]}
+              />
             ) : (
               <>
                 <span className="papers-dropzone-title">Choose a question paper</span>
