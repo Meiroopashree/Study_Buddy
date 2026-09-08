@@ -69,6 +69,7 @@ function ChatBox() {
     if (timeLeft === null || timeLeft <= 0) return;
     timerRef.current = setTimeout(() => setTimeLeft(t => t - 1), 1000);
     return () => clearTimeout(timerRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeLeft]);
 
   useEffect(() => {

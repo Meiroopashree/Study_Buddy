@@ -34,3 +34,5 @@ mdast-exp2.mjs
 render-test.js
 render-test.mjs
 render-full.mjs
+
+.vercel

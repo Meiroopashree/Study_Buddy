@@ -10,7 +10,7 @@ import {
   getTopicQuiz, getTopicFlashcards, getTopicReview, getChapterQuiz, getChapterReview,
   addBookmark, removeBookmark, getBookmarks, saveQuizResult,
   createExam, deleteExamByName, setTopicProgress,
-  addToReviewSchedule, completeReview, removeFromReviewSchedule,
+  addToReviewSchedule, removeFromReviewSchedule,
   getQuizTemplates, createQuizTemplate, deleteQuizTemplate
 } from "../services/api";
 import formatAIText from "../utils/formatAIText";
@@ -348,7 +348,6 @@ function Learn() {
 
     const subjectsA = new Map((a.subjects || []).map((s) => [s.name.toLowerCase(), s]));
     const subjectsB = new Map((b.subjects || []).map((s) => [s.name.toLowerCase(), s]));
-    const sharedSubjectNames = [...subjectsA.keys()].filter((k) => subjectsB.has(k));
 
     const shared = [];
     const onlyA = [];
