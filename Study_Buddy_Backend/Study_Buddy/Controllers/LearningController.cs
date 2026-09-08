@@ -733,7 +733,7 @@ Rule: Include every chapter and topic that appears in the official {name} syllab
         public async Task<IActionResult> GetDueReviews()
         {
             var userId = GetUserId();
-            var now = DateTime.Now;
+            var now = DateTime.UtcNow;
             var schedules = await _db.ReviewSchedules
                 .Include(r => r.Topic)
                 .ThenInclude(t => t.Chapter)
@@ -786,7 +786,7 @@ Rule: Include every chapter and topic that appears in the official {name} syllab
                 r.ReviewCount,
                 r.LastReviewDate,
                 r.CreatedAt,
-                IsDue = r.DueDate <= DateTime.Now
+                IsDue = r.DueDate <= DateTime.UtcNow
             });
 
             return Ok(result);
@@ -809,11 +809,11 @@ Rule: Include every chapter and topic that appears in the official {name} syllab
             {
                 TopicId = topicId,
                 UserId = userId,
-                DueDate = DateTime.Now.AddDays(1),
+                DueDate = DateTime.UtcNow.AddDays(1),
                 IntervalDays = 1,
                 EaseFactor = 2.5,
                 ReviewCount = 0,
-                CreatedAt = DateTime.Now
+                CreatedAt = DateTime.UtcNow
             };
             _db.ReviewSchedules.Add(schedule);
             await _db.SaveChangesAsync();
@@ -856,8 +856,8 @@ Rule: Include every chapter and topic that appears in the official {name} syllab
             }
 
             schedule.ReviewCount++;
-            schedule.LastReviewDate = DateTime.Now;
-            schedule.DueDate = DateTime.Now.AddDays(schedule.IntervalDays);
+            schedule.LastReviewDate = DateTime.UtcNow;
+            schedule.DueDate = DateTime.UtcNow.AddDays(schedule.IntervalDays);
             await _db.SaveChangesAsync();
 
             return Ok(new

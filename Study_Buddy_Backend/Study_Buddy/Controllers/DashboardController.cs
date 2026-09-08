@@ -54,7 +54,7 @@ namespace StudyBuddy.Controllers
                 .Select(n => new { n.Id, n.Title, n.Content, n.UpdatedAt }).ToListAsync();
 
             var allActivities = await activityQuery.OrderBy(a => a.Timestamp).ToListAsync();
-            var today = DateTime.Now.Date;
+            var today = DateTime.UtcNow.Date;
             var todayActivities = allActivities.Where(a => a.Timestamp.Date == today).ToList();
             var todayQuizSec = quizzes.Where(q => q.CompletedAt.Date == today).Sum(q => q.TimeSpentSeconds);
             var totalQuizSec = quizzes.Sum(q => q.TimeSpentSeconds);
