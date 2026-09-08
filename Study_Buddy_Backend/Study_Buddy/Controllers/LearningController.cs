@@ -32,10 +32,12 @@ namespace StudyBuddy.Controllers
 
         private async Task<TopicContent?> GetEffectiveTopicContent(int topicId, int? userId)
         {
-            var content = await _db.TopicContents
-                .FirstOrDefaultAsync(c => c.TopicId == topicId && c.UserId == userId);
-            if (content != null || userId.HasValue)
-                return content;
+            if (userId.HasValue)
+            {
+                var mine = await _db.TopicContents
+                    .FirstOrDefaultAsync(c => c.TopicId == topicId && c.UserId == userId);
+                if (mine != null) return mine;
+            }
 
             return await _db.TopicContents
                 .FirstOrDefaultAsync(c => c.TopicId == topicId && c.UserId == null);
@@ -43,13 +45,12 @@ namespace StudyBuddy.Controllers
 
         private async Task<string> GetEffectiveChapterSummary(int chapterId, int? userId)
         {
-            var content = await _db.ChapterContents
-                .FirstOrDefaultAsync(c => c.ChapterId == chapterId && c.UserId == userId);
-            if (content != null)
-                return content.Summary;
-
             if (userId.HasValue)
-                return "";
+            {
+                var mine = await _db.ChapterContents
+                    .FirstOrDefaultAsync(c => c.ChapterId == chapterId && c.UserId == userId);
+                if (mine != null) return mine.Summary;
+            }
 
             var global = await _db.ChapterContents
                 .FirstOrDefaultAsync(c => c.ChapterId == chapterId && c.UserId == null);
@@ -188,6 +189,8 @@ namespace StudyBuddy.Controllers
             if (topic == null) return NotFound();
 
             var userId = GetUserId();
+            if (userId == null)
+                return Unauthorized(new { message = "Please log in to generate topic content." });
 
             var exam = topic.Chapter?.Subject?.Exam;
             string examContext = ExamGuidance.ExamContextInstruction(exam);
@@ -291,6 +294,8 @@ Return ONLY the {sectionName} in Markdown. Do NOT wrap it in JSON, code fences, 
             if (chapter == null) return NotFound();
 
             var userId = GetUserId();
+            if (userId == null)
+                return Unauthorized(new { message = "Please log in to generate chapter summary." });
 
             var topicNames = string.Join(", ", chapter.Topics.Select(t => t.Title));
             string prompt = $@"
@@ -960,7 +965,7 @@ Rule: Include every chapter and topic that appears in the official {name} syllab
             difficulty = string.IsNullOrWhiteSpace(difficulty) ? "all" : difficulty.ToLowerInvariant();
             var userId = GetUserId();
 
-            var existingQuery = _db.QuizQuestions.Where(q => q.TopicId == id && q.UserId == userId);
+            var existingQuery = _db.QuizQuestions.Where(q => q.TopicId == id && (q.UserId == userId || q.UserId == null));
             if (difficulty != "all")
                 existingQuery = existingQuery.Where(q => q.Difficulty == difficulty);
             var existing = await existingQuery.OrderBy(q => q.Id).ToListAsync();
@@ -1021,7 +1026,7 @@ Rules:
 ";
 
             var existingTexts = (await _db.QuizQuestions
-                .Where(q => q.UserId == userId)
+                .Where(q => q.UserId == userId || q.UserId == null)
                 .Select(q => q.QuestionText).ToListAsync())
                 .Select(NormalizeQuestionText)
                 .ToHashSet();
@@ -1089,7 +1094,7 @@ Rules:
                 await LogActivity("quiz");
             }
 
-            var final = await _db.QuizQuestions.Where(x => x.TopicId == id && x.UserId == userId).OrderBy(x => x.Id).ToListAsync();
+            var final = await _db.QuizQuestions.Where(x => x.TopicId == id && (x.UserId == userId || x.UserId == null)).OrderBy(x => x.Id).ToListAsync();
             var deduped = DedupeQuestions(final).Take(count).ToList();
             if (deduped.Count == 0)
                 return StatusCode(502, "AI could not generate the quiz. Please try again.");
@@ -1109,7 +1114,7 @@ Rules:
             if (topic == null) return NotFound();
 
             var questions = await _db.QuizQuestions
-                .Where(q => q.TopicId == id && q.UserId == GetUserId())
+                .Where(q => q.TopicId == id && (q.UserId == GetUserId() || q.UserId == null))
                 .OrderBy(q => q.Id)
                 .Take(Math.Clamp(count, 1, 200))
                 .ToListAsync();
@@ -1142,7 +1147,7 @@ Rules:
             if (topic == null) return NotFound();
 
             var questions = await _db.QuizQuestions
-                .Where(q => q.TopicId == id && q.UserId == GetUserId())
+                .Where(q => q.TopicId == id && (q.UserId == GetUserId() || q.UserId == null))
                 .OrderBy(q => q.Id)
                 .ToListAsync();
 
@@ -1165,7 +1170,7 @@ Rules:
 
             var topicIds = chapter.Topics.Select(t => t.Id).ToList();
             var questions = await _db.QuizQuestions
-                .Where(q => topicIds.Contains(q.TopicId) && q.UserId == GetUserId())
+                .Where(q => topicIds.Contains(q.TopicId) && (q.UserId == GetUserId() || q.UserId == null))
                 .OrderBy(q => q.Id)
                 .ToListAsync();
 
@@ -1197,7 +1202,7 @@ Rules:
             difficulty = string.IsNullOrWhiteSpace(difficulty) ? "all" : difficulty.ToLowerInvariant();
             var userId = GetUserId();
 
-            var existingQuery = _db.QuizQuestions.Where(q => topicIds.Contains(q.TopicId) && q.UserId == userId);
+            var existingQuery = _db.QuizQuestions.Where(q => topicIds.Contains(q.TopicId) && (q.UserId == userId || q.UserId == null));
             if (difficulty != "all")
                 existingQuery = existingQuery.Where(q => q.Difficulty == difficulty);
             var existing = await existingQuery.OrderBy(q => q.Id).ToListAsync();
@@ -1263,7 +1268,7 @@ Rules:
 ";
 
             var existingTexts = (await _db.QuizQuestions
-                .Where(q => q.UserId == userId)
+                .Where(q => q.UserId == userId || q.UserId == null)
                 .Select(q => q.QuestionText).ToListAsync())
                 .Select(NormalizeQuestionText)
                 .ToHashSet();
@@ -1334,7 +1339,7 @@ Rules:
                 await LogActivity("quiz");
             }
 
-            var final = await _db.QuizQuestions.Where(x => topicIds.Contains(x.TopicId) && x.UserId == userId).OrderBy(x => x.Id).ToListAsync();
+            var final = await _db.QuizQuestions.Where(x => topicIds.Contains(x.TopicId) && (x.UserId == userId || x.UserId == null)).OrderBy(x => x.Id).ToListAsync();
             var deduped = DedupeQuestions(final).Take(count).ToList();
             if (deduped.Count == 0)
                 return StatusCode(502, "AI could not generate the chapter quiz. Please try again.");

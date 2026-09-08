@@ -66,7 +66,8 @@ namespace StudyBuddy.Controllers
             if (user == null || user.PasswordHash != HashPassword(request.Password))
                 return Unauthorized("Invalid email or password.");
 
-            user.Token = Guid.NewGuid().ToString("N");
+            if (string.IsNullOrEmpty(user.Token))
+                user.Token = Guid.NewGuid().ToString("N");
             await _db.SaveChangesAsync();
 
             return Ok(new
@@ -216,7 +217,8 @@ namespace StudyBuddy.Controllers
                 }
             }
 
-            user.Token = Guid.NewGuid().ToString("N");
+            if (string.IsNullOrEmpty(user.Token))
+                user.Token = Guid.NewGuid().ToString("N");
             await _db.SaveChangesAsync();
 
             var frontendUrl = _config["FrontendUrl"] ?? "http://localhost:3000";
