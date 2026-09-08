@@ -163,17 +163,19 @@ namespace StudyBuddy.Controllers
             var content = await GetEffectiveTopicContent(id, userId);
 
             var summary = await GetEffectiveChapterSummary(topic.ChapterId, userId);
+            if (string.IsNullOrEmpty(summary))
+                summary = topic.Chapter.Summary;
 
             return Ok(new
             {
                 topic.Id,
                 topic.Title,
                 topic.Description,
-                LessonContent = content?.LessonContent,
-                NotesContent = content?.NotesContent,
-                RevisionContent = content?.RevisionContent,
-                FormulaSheet = content?.FormulaSheet,
-                ConceptMap = content?.ConceptMap,
+                LessonContent = !string.IsNullOrWhiteSpace(content?.LessonContent) ? content.LessonContent : topic.LessonContent,
+                NotesContent = !string.IsNullOrWhiteSpace(content?.NotesContent) ? content.NotesContent : topic.NotesContent,
+                RevisionContent = !string.IsNullOrWhiteSpace(content?.RevisionContent) ? content.RevisionContent : topic.RevisionContent,
+                FormulaSheet = !string.IsNullOrWhiteSpace(content?.FormulaSheet) ? content.FormulaSheet : topic.FormulaSheet,
+                ConceptMap = !string.IsNullOrWhiteSpace(content?.ConceptMap) ? content.ConceptMap : topic.ConceptMap,
                 UpdatedAt = content?.UpdatedAt ?? topic.UpdatedAt,
                 Chapter = new { topic.Chapter.Id, topic.Chapter.Title, Summary = summary }
             });
