@@ -4,6 +4,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import "katex/dist/katex.min.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 import {
   getPapers, uploadPaper, getPaperQuiz, deletePaper, saveQuizResult,
   setPaperVisibility, browsePapers, getPaperFilters
@@ -374,7 +375,10 @@ function Papers() {
             </button>
           </div>
           {browseLoading ? (
-            <p className="muted">Loading shared papers...</p>
+            <LoadingSpinner
+              size="inline"
+              message="Loading shared papers…"
+            />
           ) : sharedPapers.length === 0 ? (
             <p className="muted">No public papers match these filters yet.</p>
           ) : (
@@ -451,7 +455,15 @@ function Papers() {
               <button className="close-btn" onClick={closeQuiz} aria-label="Close">×</button>
             </div>
 
-            {!quiz ? (
+            {quizLoading && !quiz ? (
+              <LoadingSpinner
+                messages={[
+                  "Building your paper quiz…",
+                  "Reading the question paper…",
+                  "Preparing the questions…",
+                ]}
+              />
+            ) : !quiz ? (
               <div className="quiz-config">
                 <label>
                   Quiz type

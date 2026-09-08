@@ -5,6 +5,7 @@ import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import Message from "./Message";
 import QuizQuestionBlock, { isQuizAnswerCorrect, formatQuizAnswer } from "./QuizQuestionBlock";
+import LoadingSpinner from "./LoadingSpinner";
 import { askAI, askAIStream, generateQuiz, saveQuizResult, getQuizHistory, getQuizDetail, uploadImage, getDocuments, uploadDocument, deleteDocument, createNote, ocrDocument, getLearningTree } from "../services/api";
 import formatAIText from "../utils/formatAIText";
 import { useExam } from "../contexts/ExamContext";
@@ -571,7 +572,17 @@ function ChatBox() {
         {quiz && renderQuiz()}
         {showHistory && renderHistory()}
 
-        {loading && <div className="loading">AI is thinking...</div>}
+        {loading && (
+          <LoadingSpinner
+            size="inline"
+            messages={[
+              "AI is thinking…",
+              "Reading your question…",
+              "Searching the syllabus…",
+              "Formulating the answer…",
+            ]}
+          />
+        )}
         <div ref={messagesEndRef} />
       </div>
 

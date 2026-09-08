@@ -5,6 +5,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import "katex/dist/katex.min.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 import {
   getLearningTreeWithProgress, getTopic, generateTopicContent,
   getTopicQuiz, getTopicFlashcards, getTopicReview, getChapterQuiz, getChapterReview,
@@ -731,7 +732,7 @@ ${body}
 
         <div className="learn-tree">
           {!tree ? (
-            <p className="muted">Loading…</p>
+            <LoadingSpinner message="Loading your syllabus…" />
           ) : tree.length === 0 ? (
             <div className="learn-tree-empty">
               <p className="muted">No syllabus yet.</p>
@@ -973,8 +974,16 @@ ${body}
                   )}
                 </div>
                 <div className="learn-content">
-                  {generating && activeTab === "lessonContent" ? (
-                    <p className="muted">Generating study material (this may take a minute)...</p>
+                  {generating && activeTab === "lessonContent" && !topic[activeTab] ? (
+                    <LoadingSpinner
+                      messages={[
+                        "Generating your study material…",
+                        "Writing the detailed lesson…",
+                        "Creating notes & revision…",
+                        "Building the formula sheet…",
+                        "Drawing the concept map…",
+                      ]}
+                    />
                   ) : (
                     <Markdown content={topic[activeTab]} />
                   )}
@@ -993,7 +1002,16 @@ ${body}
               <button className="close-btn" onClick={() => setQuizModal(false)} aria-label="Close">×</button>
             </div>
 
-            {!quiz ? (
+            {quizLoading && !quiz ? (
+              <LoadingSpinner
+                messages={[
+                  "Generating your quiz…",
+                  "Reading the topic content…",
+                  "Crafting medium & hard questions…",
+                  "Polishing the question set…",
+                ]}
+              />
+            ) : !quiz ? (
               <>
                 <div className="quiz-config">
                   {quizScope?.type === "chapter" ? (
@@ -1138,7 +1156,10 @@ ${body}
             </div>
             <div className="flash-body">
               {flashLoading ? (
-                <p className="muted">Loading flashcards...</p>
+                <LoadingSpinner
+                  size="inline"
+                  message="Loading your flashcards…"
+                />
               ) : cards.length === 0 ? (
                 <p className="muted">No flashcards yet. Take a quiz first to create them.</p>
               ) : (
@@ -1311,7 +1332,10 @@ ${body}
             </div>
             <div className="review-body">
               {reviewLoading ? (
-                <p className="muted">Loading questions...</p>
+                <LoadingSpinner
+                  size="inline"
+                  message="Loading your revision questions…"
+                />
               ) : !reviewData || !reviewData.questions || reviewData.questions.length === 0 ? (
                 <p className="muted">
                   No saved questions yet. Take a quiz for this topic or chapter to build up your revision bank.

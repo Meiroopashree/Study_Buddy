@@ -4,6 +4,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import "katex/dist/katex.min.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 import {
   getAdaptiveInsights, getAdaptivePlan, getAdaptiveMistakes,
   getAdaptiveQuiz, getAdaptiveDrill, saveQuizResult
@@ -460,7 +461,13 @@ function Adaptive() {
       )}
 
       {loading && !insights ? (
-        <p className="muted adaptive-loading">Loading your adaptive insights...</p>
+        <LoadingSpinner
+          messages={[
+            "Analyzing your quiz history…",
+            "Detecting strengths & weak spots…",
+            "Preparing your adaptive insights…",
+          ]}
+        />
       ) : insights && insights.hasData ? (
         <>
           <section className="adaptive-summary">
