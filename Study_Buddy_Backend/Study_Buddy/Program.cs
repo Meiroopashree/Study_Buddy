@@ -98,7 +98,8 @@ static string ParsePostgresUrl(string url, string? sslMode)
     var userInfo = uri.UserInfo?.Split(':', 2);
     var username = userInfo?[0] ?? "";
     var password = userInfo?.Length > 1 ? userInfo[1] : "";
+    var port = uri.Port <= 0 ? 5432 : uri.Port;
     var ssl = string.IsNullOrWhiteSpace(sslMode) ? "Require" : sslMode;
-    return $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};"
+    return $"Host={uri.Host};Port={port};Database={uri.AbsolutePath.TrimStart('/')};"
         + $"Username={username};Password={password};SSL Mode={ssl};Trust Server Certificate=true;";
 }
