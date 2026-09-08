@@ -237,3 +237,34 @@
 .qq-explanation .markdown-body {
   font-size: 0.9rem;
 }
+
+/* ==================== Responsive ==================== */
+
+.qq-option .markdown-body {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 560px) {
+  .qq-matching {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .qq-matching-row {
+    flex-wrap: wrap;
+  }
+  .qq-matching-select {
+    max-width: 100%;
+  }
+  .qq-match-ok,
+  .qq-match-no {
+    white-space: normal;
+  }
+  .qq-option {
+    padding: 9px 10px;
+    align-items: flex-start;
+  }
+  .qq-badge {
+    margin-left: 6px;
+    white-space: normal;
+  }
+}

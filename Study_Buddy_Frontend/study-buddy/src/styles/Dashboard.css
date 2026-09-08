@@ -102,6 +102,9 @@
   color: var(--text);
   opacity: 0.6;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* ---------- Quick actions ---------- */
@@ -178,6 +181,21 @@
   .stat-cards,
   .quick-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .exam-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .note-modal {
+    max-width: 100%;
+  }
+  .note-modal-overlay {
+    padding: 10px;
   }
 }
 

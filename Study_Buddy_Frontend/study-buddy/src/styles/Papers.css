@@ -179,3 +179,22 @@
 .papers-quiz-card {
   max-width: 720px;
 }
+
+/* ==================== Responsive ==================== */
+
+@media (max-width: 560px) {
+  .papers-page {
+    padding: 16px 12px 48px;
+  }
+  .papers-dropzone {
+    padding: 24px 16px;
+  }
+  .paper-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .paper-card-actions {
+    flex-wrap: wrap;
+  }
+}

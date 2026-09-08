@@ -469,7 +469,7 @@ export const getTopicQuiz = async (id, count = 10, difficulty = "all") => {
   return res.json();
 };
 
-export const getTopicFlashcards = async (id, count = 10) => {
+export const getTopicFlashcards = async (id, count = 100) => {
   const res = await fetch(`${LEARNING_URL}/topics/${id}/flashcards?count=${count}`, {
     headers: getAuthHeaders(),
   });

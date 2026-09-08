@@ -718,6 +718,16 @@
   50% { opacity: 0.5; }
 }
 
+@media (max-width: 900px) {
+  .quiz-row {
+    flex-wrap: wrap;
+  }
+  .difficulty-dropdown {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
 @media (max-width: 640px) {
   .input-row {
     flex-wrap: wrap;
@@ -741,6 +751,25 @@
   }
   .input-section {
     padding: 8px 14px 12px;
+  }
+  .flashcard-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .flashcard-nav button {
+    padding: 8px 14px;
+  }
+  .flashcard-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .flashcard-actions button {
+    padding: 8px 18px;
+  }
+  .history-item {
+    flex-wrap: wrap;
+    gap: 6px;
   }
 }
 

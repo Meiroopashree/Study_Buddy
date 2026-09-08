@@ -130,6 +130,10 @@ namespace StudyBuddy.Controllers
 
             var questionCount = Math.Clamp(request.QuestionCount, 3, 20);
 
+            var difficulty = (request.Difficulty ?? "medium").Trim().ToLowerInvariant();
+            if (difficulty is not "medium" and not "hard")
+                difficulty = "medium";
+
             string prompt = $@"
 You are a {request.Exam ?? "JEE"} quiz generator AI. Generate exactly {questionCount} questions. All questions must be unique, non-duplicate, and relevant to the topic.
 
@@ -178,7 +182,9 @@ Example:
 ]
 
 Topic: '{request.Topic}'
-Difficulty: '{request.Difficulty ?? "medium"}'
+Difficulty: '{difficulty}'
+
+DIFFICULTY RULES: All generated questions must be at the {difficulty} difficulty level or harder. Never produce easy/direct-recall questions. Every question must require the student to apply at least one concept, do meaningful calculation, work through multiple steps, combine ideas, or reason through a tricky edge case. Questions at medium difficulty require applying a formula or concept; questions at hard difficulty require multi-step derivation or problem solving. The questions must be challenging enough that the student has to think and work out the answer.
 
 Return ONLY the valid JSON array. No extra text, no markdown formatting, no code blocks.
 ";

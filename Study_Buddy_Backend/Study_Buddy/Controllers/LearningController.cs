@@ -930,7 +930,7 @@ FORMULA SHEET:
 Steps:
 1. Read the LESSON CONTENT and list every distinct concept, formula, definition, and technique it contains.
 2. Generate at least {count} questions so that EVERY concept is covered by one or more questions.
-3. Mix all difficulty levels across the set: easy (direct recall), medium (apply a formula), hard (multi-step derivation, combination of ideas, or a tricky edge case).
+3. Generate all questions at medium or hard difficulty only. Never produce easy/direct-recall questions. Every question must require the student to apply at least one concept, do meaningful calculation, work through multiple steps, combine ideas, or reason through a tricky edge case. Medium questions require applying a formula or concept; hard questions require multi-step derivation or a tricky edge case. The questions must be challenging enough that the student has to think and work out the answer.
 4. Use fresh numbers/scenarios so no two questions test the exact same thing.
 5. Use a mix of question types matching the {exam ?? "selected exam"} pattern:
 {ExamGuidance.TypeMixInstruction(exam)}
@@ -951,7 +951,7 @@ Rules:
   ""right_options"": [""only for matching, the List-II items""],
   ""passage"": ""only for passage questions, the comprehension paragraph text"",
   ""explanation"": ""brief 1-2 sentence explanation"",
-  ""difficulty"": ""easy"" or ""medium"" or ""hard""
+  ""difficulty"": ""medium"" or ""hard""
 }}
 - For assertion questions, ""options"" must be exactly: [""Both A and R are true and R is the correct explanation of A"", ""Both A and R are true but R is NOT the correct explanation of A"", ""A is true but R is false"", ""A is false but R is true""] and ""question"" should be ""Assertion and Reason given below.""
 - Escape LaTeX backslashes as double backslashes.
@@ -1037,7 +1037,7 @@ Rules:
         }
 
         [HttpGet("topics/{id}/flashcards")]
-        public async Task<IActionResult> GetFlashcards(int id, [FromQuery] int count = 10)
+        public async Task<IActionResult> GetFlashcards(int id, [FromQuery] int count = 100)
         {
             var topic = await _db.Topics.FirstOrDefaultAsync(t => t.Id == id);
             if (topic == null) return NotFound();
@@ -1045,7 +1045,7 @@ Rules:
             var questions = await _db.QuizQuestions
                 .Where(q => q.TopicId == id)
                 .OrderBy(q => q.Id)
-                .Take(Math.Clamp(count, 1, 50))
+                .Take(Math.Clamp(count, 1, 200))
                 .ToListAsync();
 
             var cards = questions.Select(q =>
@@ -1166,7 +1166,7 @@ CONTENT FOR EVERY TOPIC IN THIS CHAPTER (lessons and formula sheets are below):
 Steps:
 1. Read the content for EVERY topic in the chapter.
 2. Generate at least {count} questions so that EVERY topic AND every distinct concept, formula, definition and technique in the chapter is covered.
-3. Mix all difficulty levels across the set: easy (direct recall), medium (apply a formula), hard (multi-step derivation or tricky edge case).
+3. Generate all questions at medium or hard difficulty only. Never produce easy/direct-recall questions. Every question must require the student to apply at least one concept, do meaningful calculation, work through multiple steps, combine ideas, or reason through a tricky edge case. Medium questions require applying a formula or concept; hard questions require multi-step derivation or a tricky edge case. The questions must be challenging enough that the student has to think and work out the answer.
 4. Use fresh numbers/scenarios so no two questions test the exact same thing.
 5. Use a mix of question types matching the {exam ?? "selected exam"} pattern:
 {ExamGuidance.TypeMixInstruction(exam)}
@@ -1187,7 +1187,7 @@ Rules:
   ""right_options"": [""only for matching, the List-II items""],
   ""passage"": ""only for passage questions, the comprehension paragraph text"",
   ""explanation"": ""brief 1-2 sentence explanation"",
-  ""difficulty"": ""easy"" or ""medium"" or ""hard"",
+  ""difficulty"": ""medium"" or ""hard"",
   ""topic"": ""the exact title of the chapter topic this question belongs to""
 }}
 - For assertion questions, ""options"" must be exactly: [""Both A and R are true and R is the correct explanation of A"", ""Both A and R are true but R is NOT the correct explanation of A"", ""A is true but R is false"", ""A is false but R is true""] and ""question"" should be ""Assertion and Reason given below.""
@@ -1350,7 +1350,7 @@ Rules:
         private static string NormalizeDifficulty(string? d)
         {
             var v = (d ?? "").Trim().ToLowerInvariant();
-            return v is "easy" or "medium" or "hard" ? v : "medium";
+            return v is "medium" or "hard" ? v : "medium";
         }
 
         private static List<QuizQuestion> DedupeQuestions(IEnumerable<QuizQuestion> questions)

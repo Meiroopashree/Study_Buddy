@@ -1075,3 +1075,59 @@
   font-size: 0.8rem;
 }
 
+/* ==================== Responsive ==================== */
+
+.markdown-body table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 800px) {
+  .learn-container {
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100vh - 57px);
+  }
+  .learn-sidebar {
+    width: 100%;
+    min-width: 0;
+    max-height: 42vh;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 14px 12px;
+  }
+  .learn-main {
+    padding: 18px 14px;
+  }
+  .learn-topic-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .learn-actions {
+    flex-wrap: wrap;
+  }
+  .learn-content {
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 10px;
+    align-items: flex-start;
+  }
+  .modal-card {
+    max-width: 100%;
+    max-height: 92vh;
+  }
+  .learn-chapter-actions,
+  .learn-topic-actions {
+    flex-wrap: wrap;
+  }
+  .flash-card {
+    height: 240px;
+  }
+}
+

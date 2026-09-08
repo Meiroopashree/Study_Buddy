@@ -363,3 +363,51 @@ body {
   background: #dc2626;
   color: #fff;
 }
+
+/* ==================== Responsive ==================== */
+
+@media (max-width: 768px) {
+  .app-nav {
+    gap: 4px;
+    padding: 8px 12px;
+    padding-right: 52px;
+  }
+  .nav-link {
+    padding: 7px 10px;
+    font-size: 0.82rem;
+  }
+  .nav-spacer {
+    display: none;
+  }
+  .exam-switcher {
+    margin-right: 0;
+  }
+  .exam-switcher-label {
+    display: none;
+  }
+  .nav-user {
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-user {
+    display: none;
+  }
+  .logout-btn {
+    padding: 5px 10px;
+    font-size: 0.78rem;
+  }
+  .auth-card {
+    padding: 28px 20px;
+  }
+  .dark-toggle {
+    top: 8px;
+    right: 10px;
+    padding: 5px 8px;
+    font-size: 1rem;
+  }
+}

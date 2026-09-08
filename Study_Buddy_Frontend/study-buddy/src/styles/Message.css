@@ -60,7 +60,8 @@
 .message pre {
   margin: 8px 0;
   border-radius: 10px;
-  overflow: hidden;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .message pre code {
@@ -80,6 +81,10 @@
   margin: 8px 0;
   width: 100%;
   font-size: 0.9rem;
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .message th, .message td {
