@@ -21,6 +21,8 @@ namespace StudyBuddy.Data
         public DbSet<Chapter> Chapters { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<QuizQuestion> QuizQuestions { get; set; }
+        public DbSet<TopicContent> TopicContents { get; set; }
+        public DbSet<ChapterContent> ChapterContents { get; set; }
         public DbSet<Bookmark> Bookmarks { get; set; }
         public DbSet<QuestionPaper> QuestionPapers { get; set; }
         public DbSet<PaperQuestion> PaperQuestions { get; set; }
@@ -162,6 +164,52 @@ namespace StudyBuddy.Data
                         .WithMany()
                         .HasForeignKey(q => q.TopicId)
                         .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<QuizQuestion>()
+                        .HasOne(q => q.User)
+                        .WithMany()
+                        .HasForeignKey(q => q.UserId)
+                        .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<TopicContent>()
+                        .ToTable("TopicContents")
+                        .HasKey(t => t.Id);
+
+            modelBuilder.Entity<TopicContent>()
+                        .Property(t => t.UpdatedAt)
+                        .HasDefaultValueSql(now);
+
+            modelBuilder.Entity<TopicContent>()
+                        .HasOne(t => t.Topic)
+                        .WithMany()
+                        .HasForeignKey(t => t.TopicId)
+                        .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<TopicContent>()
+                        .HasOne(t => t.User)
+                        .WithMany()
+                        .HasForeignKey(t => t.UserId)
+                        .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<ChapterContent>()
+                        .ToTable("ChapterContents")
+                        .HasKey(c => c.Id);
+
+            modelBuilder.Entity<ChapterContent>()
+                        .Property(c => c.UpdatedAt)
+                        .HasDefaultValueSql(now);
+
+            modelBuilder.Entity<ChapterContent>()
+                        .HasOne(c => c.Chapter)
+                        .WithMany()
+                        .HasForeignKey(c => c.ChapterId)
+                        .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ChapterContent>()
+                        .HasOne(c => c.User)
+                        .WithMany()
+                        .HasForeignKey(c => c.UserId)
+                        .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<Bookmark>()
                         .ToTable("Bookmarks")

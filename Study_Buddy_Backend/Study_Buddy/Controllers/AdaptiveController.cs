@@ -247,7 +247,7 @@ namespace StudyBuddy.Controllers
             if (matchedTopic != null)
             {
                 var stored = await _db.QuizQuestions
-                    .Where(q => q.TopicId == matchedTopic.Id)
+                    .Where(q => q.TopicId == matchedTopic.Id && q.UserId == GetUserId())
                     .OrderBy(q => q.Id)
                     .ToListAsync();
                 foreach (var q in stored)
@@ -317,7 +317,7 @@ namespace StudyBuddy.Controllers
             var pool = new List<object>();
             var seen = new HashSet<string>();
             var allTopics = await _db.Topics.ToListAsync();
-            var allStored = await _db.QuizQuestions.ToListAsync();
+            var allStored = await _db.QuizQuestions.Where(q => q.UserId == GetUserId()).ToListAsync();
 
             foreach (var insight in weakTopics)
             {
@@ -421,7 +421,7 @@ namespace StudyBuddy.Controllers
 
                 var matched = topicTitles.TryGetValue(title.ToLowerInvariant(), out var t) ? t : null;
                 int? topicId = matched?.Id;
-                bool hasQuestions = matched != null && await _db.QuizQuestions.AnyAsync(q => q.TopicId == matched.Id);
+                bool hasQuestions = matched != null && await _db.QuizQuestions.AnyAsync(q => q.TopicId == matched.Id && q.UserId == GetUserId());
                 int mistakeCount = 0;
                 foreach (var r in g)
                 {

@@ -30,6 +30,32 @@ namespace StudyBuddy.Controllers
             return user?.Id;
         }
 
+        private async Task<TopicContent?> GetEffectiveTopicContent(int topicId, int? userId)
+        {
+            var content = await _db.TopicContents
+                .FirstOrDefaultAsync(c => c.TopicId == topicId && c.UserId == userId);
+            if (content != null || userId.HasValue)
+                return content;
+
+            return await _db.TopicContents
+                .FirstOrDefaultAsync(c => c.TopicId == topicId && c.UserId == null);
+        }
+
+        private async Task<string> GetEffectiveChapterSummary(int chapterId, int? userId)
+        {
+            var content = await _db.ChapterContents
+                .FirstOrDefaultAsync(c => c.ChapterId == chapterId && c.UserId == userId);
+            if (content != null)
+                return content.Summary;
+
+            if (userId.HasValue)
+                return "";
+
+            var global = await _db.ChapterContents
+                .FirstOrDefaultAsync(c => c.ChapterId == chapterId && c.UserId == null);
+            return global?.Summary ?? "";
+        }
+
         // ==================== Syllabus structure ====================
 
         [HttpGet("tree")]
@@ -132,18 +158,23 @@ namespace StudyBuddy.Controllers
             var topic = await _db.Topics.Include(t => t.Chapter).FirstOrDefaultAsync(t => t.Id == id);
             if (topic == null) return NotFound();
 
+            var userId = GetUserId();
+            var content = await GetEffectiveTopicContent(id, userId);
+
+            var summary = await GetEffectiveChapterSummary(topic.ChapterId, userId);
+
             return Ok(new
             {
                 topic.Id,
                 topic.Title,
                 topic.Description,
-                topic.LessonContent,
-                topic.NotesContent,
-                topic.RevisionContent,
-                topic.FormulaSheet,
-                topic.ConceptMap,
-                topic.UpdatedAt,
-                Chapter = new { topic.Chapter.Id, topic.Chapter.Title, topic.Chapter.Summary }
+                LessonContent = content?.LessonContent,
+                NotesContent = content?.NotesContent,
+                RevisionContent = content?.RevisionContent,
+                FormulaSheet = content?.FormulaSheet,
+                ConceptMap = content?.ConceptMap,
+                UpdatedAt = content?.UpdatedAt ?? topic.UpdatedAt,
+                Chapter = new { topic.Chapter.Id, topic.Chapter.Title, Summary = summary }
             });
         }
 
@@ -155,6 +186,8 @@ namespace StudyBuddy.Controllers
                 .ThenInclude(c => c.Subject)
                 .FirstOrDefaultAsync(t => t.Id == id);
             if (topic == null) return NotFound();
+
+            var userId = GetUserId();
 
             var exam = topic.Chapter?.Subject?.Exam;
             string examContext = ExamGuidance.ExamContextInstruction(exam);
@@ -191,23 +224,35 @@ namespace StudyBuddy.Controllers
                 generated[s.Key] = text;
             }
 
-            topic.LessonContent = NormalizeGeneratedNewlines(generated["lesson"]);
-            topic.NotesContent = NormalizeGeneratedNewlines(generated["notes"]);
-            topic.RevisionContent = NormalizeGeneratedNewlines(generated["revision"]);
-            topic.FormulaSheet = NormalizeGeneratedNewlines(generated["formula_sheet"]);
-            topic.ConceptMap = NormalizeGeneratedNewlines(generated["concept_map"]);
-            topic.UpdatedAt = DateTime.UtcNow;
+            var content = await _db.TopicContents
+                .FirstOrDefaultAsync(c => c.TopicId == id && c.UserId == userId);
+            if (content == null)
+            {
+                content = new TopicContent
+                {
+                    TopicId = id,
+                    UserId = userId
+                };
+                _db.TopicContents.Add(content);
+            }
+
+            content.LessonContent = NormalizeGeneratedNewlines(generated["lesson"]);
+            content.NotesContent = NormalizeGeneratedNewlines(generated["notes"]);
+            content.RevisionContent = NormalizeGeneratedNewlines(generated["revision"]);
+            content.FormulaSheet = NormalizeGeneratedNewlines(generated["formula_sheet"]);
+            content.ConceptMap = NormalizeGeneratedNewlines(generated["concept_map"]);
+            content.UpdatedAt = DateTime.UtcNow;
             await _db.SaveChangesAsync();
 
             return Ok(new
             {
                 topic.Id,
-                topic.LessonContent,
-                topic.NotesContent,
-                topic.RevisionContent,
-                topic.FormulaSheet,
-                topic.ConceptMap,
-                topic.UpdatedAt
+                LessonContent = content.LessonContent,
+                NotesContent = content.NotesContent,
+                RevisionContent = content.RevisionContent,
+                FormulaSheet = content.FormulaSheet,
+                ConceptMap = content.ConceptMap,
+                UpdatedAt = content.UpdatedAt
             });
         }
 
@@ -245,6 +290,8 @@ Return ONLY the {sectionName} in Markdown. Do NOT wrap it in JSON, code fences, 
                 .FirstOrDefaultAsync(c => c.Id == id);
             if (chapter == null) return NotFound();
 
+            var userId = GetUserId();
+
             var topicNames = string.Join(", ", chapter.Topics.Select(t => t.Title));
             string prompt = $@"
 Write a concise chapter summary for ""{chapter.Title}"". Topics covered: {topicNames}.
@@ -257,10 +304,23 @@ Return ONLY the summary text (markdown, start with a ## heading, ~150-200 words)
             if (string.IsNullOrWhiteSpace(summary) || summary.StartsWith("Error:"))
                 return StatusCode(502, "AI could not generate the summary.");
 
-            chapter.Summary = summary;
+            var content = await _db.ChapterContents
+                .FirstOrDefaultAsync(c => c.ChapterId == id && c.UserId == userId);
+            if (content == null)
+            {
+                content = new ChapterContent
+                {
+                    ChapterId = id,
+                    UserId = userId
+                };
+                _db.ChapterContents.Add(content);
+            }
+
+            content.Summary = summary;
+            content.UpdatedAt = DateTime.UtcNow;
             await _db.SaveChangesAsync();
 
-            return Ok(new { chapter.Id, chapter.Title, chapter.Summary });
+            return Ok(new { chapter.Id, chapter.Title, Summary = content.Summary });
         }
 
         [HttpPost("generate-syllabus")]
@@ -898,8 +958,9 @@ Rule: Include every chapter and topic that appears in the official {name} syllab
 
             count = Math.Clamp(count, 3, 30);
             difficulty = string.IsNullOrWhiteSpace(difficulty) ? "all" : difficulty.ToLowerInvariant();
+            var userId = GetUserId();
 
-            var existingQuery = _db.QuizQuestions.Where(q => q.TopicId == id);
+            var existingQuery = _db.QuizQuestions.Where(q => q.TopicId == id && q.UserId == userId);
             if (difficulty != "all")
                 existingQuery = existingQuery.Where(q => q.Difficulty == difficulty);
             var existing = await existingQuery.OrderBy(q => q.Id).ToListAsync();
@@ -913,9 +974,11 @@ Rule: Include every chapter and topic that appears in the official {name} syllab
                     questions = DedupeQuestions(existing).Take(count).Select(MapQuestion)
                 });
             }
-            var lesson = (topic.LessonContent ?? "");
+
+            var effectiveContent = await GetEffectiveTopicContent(id, userId);
+            var lesson = !string.IsNullOrWhiteSpace(effectiveContent?.LessonContent) ? effectiveContent.LessonContent : topic.LessonContent;
             if (lesson.Length > 6000) lesson = lesson.Substring(0, 6000);
-            var formula = (topic.FormulaSheet ?? "");
+            var formula = !string.IsNullOrWhiteSpace(effectiveContent?.FormulaSheet) ? effectiveContent.FormulaSheet : topic.FormulaSheet;
             if (formula.Length > 4000) formula = formula.Substring(0, 4000);
 
             string prompt = $@"
@@ -957,7 +1020,9 @@ Rules:
 - Escape LaTeX backslashes as double backslashes.
 ";
 
-            var existingTexts = (await _db.QuizQuestions.Select(q => q.QuestionText).ToListAsync())
+            var existingTexts = (await _db.QuizQuestions
+                .Where(q => q.UserId == userId)
+                .Select(q => q.QuestionText).ToListAsync())
                 .Select(NormalizeQuestionText)
                 .ToHashSet();
 
@@ -999,6 +1064,7 @@ Rules:
                     var saved = new QuizQuestion
                     {
                         TopicId = id,
+                        UserId = userId,
                         Type = QuestionMapper.NormalizeType(q.type),
                         QuestionText = q.question.Trim(),
                         OptionsJson = JsonSerializer.Serialize(q.options ?? new List<string>()),
@@ -1023,7 +1089,7 @@ Rules:
                 await LogActivity("quiz");
             }
 
-            var final = await _db.QuizQuestions.Where(x => x.TopicId == id).OrderBy(x => x.Id).ToListAsync();
+            var final = await _db.QuizQuestions.Where(x => x.TopicId == id && x.UserId == userId).OrderBy(x => x.Id).ToListAsync();
             var deduped = DedupeQuestions(final).Take(count).ToList();
             if (deduped.Count == 0)
                 return StatusCode(502, "AI could not generate the quiz. Please try again.");
@@ -1043,7 +1109,7 @@ Rules:
             if (topic == null) return NotFound();
 
             var questions = await _db.QuizQuestions
-                .Where(q => q.TopicId == id)
+                .Where(q => q.TopicId == id && q.UserId == GetUserId())
                 .OrderBy(q => q.Id)
                 .Take(Math.Clamp(count, 1, 200))
                 .ToListAsync();
@@ -1076,7 +1142,7 @@ Rules:
             if (topic == null) return NotFound();
 
             var questions = await _db.QuizQuestions
-                .Where(q => q.TopicId == id)
+                .Where(q => q.TopicId == id && q.UserId == GetUserId())
                 .OrderBy(q => q.Id)
                 .ToListAsync();
 
@@ -1099,7 +1165,7 @@ Rules:
 
             var topicIds = chapter.Topics.Select(t => t.Id).ToList();
             var questions = await _db.QuizQuestions
-                .Where(q => topicIds.Contains(q.TopicId))
+                .Where(q => topicIds.Contains(q.TopicId) && q.UserId == GetUserId())
                 .OrderBy(q => q.Id)
                 .ToListAsync();
 
@@ -1129,8 +1195,9 @@ Rules:
             var topicIds = chapter.Topics.Select(t => t.Id).ToList();
             count = Math.Clamp(count, 5, 60);
             difficulty = string.IsNullOrWhiteSpace(difficulty) ? "all" : difficulty.ToLowerInvariant();
+            var userId = GetUserId();
 
-            var existingQuery = _db.QuizQuestions.Where(q => topicIds.Contains(q.TopicId));
+            var existingQuery = _db.QuizQuestions.Where(q => topicIds.Contains(q.TopicId) && q.UserId == userId);
             if (difficulty != "all")
                 existingQuery = existingQuery.Where(q => q.Difficulty == difficulty);
             var existing = await existingQuery.OrderBy(q => q.Id).ToListAsync();
@@ -1149,9 +1216,10 @@ Rules:
             var contentParts = new List<string>();
             foreach (var t in chapter.Topics)
             {
-                var lesson = (t.LessonContent ?? "");
+                var tc = await GetEffectiveTopicContent(t.Id, userId);
+                var lesson = !string.IsNullOrWhiteSpace(tc?.LessonContent) ? tc.LessonContent : t.LessonContent;
                 if (lesson.Length > 2000) lesson = lesson.Substring(0, 2000);
-                var formula = (t.FormulaSheet ?? "");
+                var formula = !string.IsNullOrWhiteSpace(tc?.FormulaSheet) ? tc.FormulaSheet : t.FormulaSheet;
                 if (formula.Length > 1200) formula = formula.Substring(0, 1200);
                 contentParts.Add($"### Topic: {t.Title} ({(string.IsNullOrWhiteSpace(t.Description) ? "no description" : t.Description)})\nLESSON:\n{lesson}\nFORMULA:\n{formula}");
             }
@@ -1194,7 +1262,9 @@ Rules:
 - Escape LaTeX backslashes as double backslashes.
 ";
 
-            var existingTexts = (await _db.QuizQuestions.Select(q => q.QuestionText).ToListAsync())
+            var existingTexts = (await _db.QuizQuestions
+                .Where(q => q.UserId == userId)
+                .Select(q => q.QuestionText).ToListAsync())
                 .Select(NormalizeQuestionText)
                 .ToHashSet();
 
@@ -1239,6 +1309,7 @@ Rules:
                     var saved = new QuizQuestion
                     {
                         TopicId = topic.Id,
+                        UserId = userId,
                         Type = QuestionMapper.NormalizeType(q.type),
                         QuestionText = q.question.Trim(),
                         OptionsJson = JsonSerializer.Serialize(q.options ?? new List<string>()),
@@ -1263,7 +1334,7 @@ Rules:
                 await LogActivity("quiz");
             }
 
-            var final = await _db.QuizQuestions.Where(x => topicIds.Contains(x.TopicId)).OrderBy(x => x.Id).ToListAsync();
+            var final = await _db.QuizQuestions.Where(x => topicIds.Contains(x.TopicId) && x.UserId == userId).OrderBy(x => x.Id).ToListAsync();
             var deduped = DedupeQuestions(final).Take(count).ToList();
             if (deduped.Count == 0)
                 return StatusCode(502, "AI could not generate the chapter quiz. Please try again.");
