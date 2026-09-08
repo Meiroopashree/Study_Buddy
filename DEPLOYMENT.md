@@ -7,8 +7,18 @@ This guide deploys StudyBuddy in two pieces:
 | Backend | Render   | ASP.NET Core 8 + PostgreSQL (free) |
 | Frontend| Vercel   | Create React App (static)          |
 
-All required code/config changes are already applied. You only need to push
-repos and set a few secrets.
+Everything is already wired up (one monorepo). You only need to push it and set
+a couple of secrets.
+
+The repo layout:
+
+```
+repo root
+├── render.yaml                    # Render Blueprint (rootDir: Study_Buddy_Backend/Study_Buddy)
+├── Study_Buddy_Backend/Study_Buddy   # ASP.NET Core backend (Render / PostgreSQL)
+├── Study_Buddy_Frontend/study-buddy  # React frontend (Vercel, Root Directory)
+└── DEPLOYMENT.md
+```
 
 ---
 
@@ -63,29 +73,28 @@ repos and set a few secrets.
 
 ---
 
-## Step 1 — Backend repository on GitHub
+## Step 1 — Push the repository
 
-1. Create a private GitHub repo, e.g. `studybuddy-api`.
-2. Push the backend folder as that repo's root:
+1. The code is already committed locally on branch `main` (git repo at
+   `C:\StudyBuddy`).
+2. Add the remote and push:
 
    ```bash
-   cd C:\StudyBuddy\Study_Buddy_Backend\Study_Buddy
-   git init -b main
-   git add .
-   git commit -m "StudyBuddy backend: production-ready Render config"
-   git remote add origin https://github.com/<you>/studybuddy-api.git
+   cd C:\StudyBuddy
+   git remote add origin https://github.com/Meiroopashree/Study_Buddy.git
    git push -u origin main
    ```
 
-   Important: `SeedData/*.json` must reach the server (they are copied to the
-   build output and seed the database).
+   Important: `SeedData/*.json` is committed (copied to the build output at
+   deploy time, it seeds the database). No secrets are in the repo —
+   `Mistral__ApiKey` was removed from `appsettings.json`.
 
 ## Step 2 — Backend on Render (Blueprint)
 
-The repo already contains `render.yaml`.
+The repo root contains `render.yaml` (service `rootDir: Study_Buddy_Backend/Study_Buddy`).
 
 1. Go to [render.com](https://render.com) → **New** → **Blueprint**.
-2. Select the `studybuddy-api` repo.
+2. Select the `Study_Buddy` repo.
 3. Render reads `render.yaml` and creates:
    - A free Web Service (`studybuddy-api`) running `dotnet publish -c Release`.
    - A free PostgreSQL database (`studybuddy-db`) with `DATABASE_URL` wired in.
@@ -103,12 +112,13 @@ The repo already contains `render.yaml`.
 
 ## Step 3 — Frontend on Vercel
 
-1. Create a (private) GitHub repo `studybuddy-frontend` from
-   `C:\StudyBuddy\Study_Buddy_Frontend\study-buddy`.
-2. Go to [vercel.com](https://vercel.com) → **Add New…** → **Project**.
-3. Import the `studybuddy-frontend` repo. Vercel auto-detects **Create React
-   App** (build `npm run build`, output `build`). The `vercel.json` SPA rewrite
-   is already in place for React Router.
+The frontend lives at `Study_Buddy_Frontend/study-buddy` inside the **same** repo.
+
+1. Go to [vercel.com](https://vercel.com) → **Add New…** → **Project**.
+2. Import the `Study_Buddy` repo.
+3. Set **Root Directory** = `Study_Buddy_Frontend/study-buddy`. Vercel auto-
+   detects **Create React App** (build `npm run build`, output `build`). The
+   `vercel.json` SPA rewrite is already in place for React Router.
 4. Under **Settings → Environment Variables** add:
    - `REACT_APP_API_BASE` = `https://studybuddy-api.onrender.com/api`
 5. Deploy. Visit `https://<project>.vercel.app`.
@@ -125,7 +135,8 @@ The repo already contains `render.yaml`.
 ## Manual fallbacks (no Blueprint)
 
 ### Render without Blueprint
-1. **New → Web Service** from the repo:
+1. **New → Web Service** from the `Study_Buddy` repo:
+   - Root Directory: `Study_Buddy_Backend/Study_Buddy`
    - Language: **Docker** or **.NET**; Build: `dotnet publish -c Release -o out`
    - Start: `./out/Study_Buddy`
 2. **New → PostgreSQL** instance, copy its internal connection string to the
