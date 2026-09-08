@@ -69,7 +69,7 @@ resources (web service + PostgreSQL) were provisioned **via the Render API**
 | ----------------- | -------- | ------------------------------------------------------------ |
 | `DATABASE_URL`    | auto     | Provided by Render (Postgres created via API). May omit the port — the code defaults to 5432. |
 | `Mistral__ApiKey` | yes      | Mistral API key for the AI chat/quiz features. Set manually, never committed. |
-| `CORS_ORIGIN`     | optional | The deployed Vercel origin, no trailing slash (e.g. `https://study-buddy-meiroopashrees-projects.vercel.app`). Until set, all origins are allowed. Recommended for hardening. |
+| `CORS_ORIGIN`     | optional | Comma-separated list of allowed origins, no trailing slashes (currently both Vercel aliases: `https://study-buddy-meiroopashrees-projects.vercel.app`, `https://study-buddy-delta-ten.vercel.app`). Until set, all origins are allowed (`*`). Recommended for hardening. |
 | `ASPNETCORE_ENVIRONMENT` | no | `Production` disables Swagger/HTTPS-redirect. |
 | `PORT`            | auto     | Injected by Render; the app binds it.                        |
 | `SWAGGER`         | optional | `true` to expose `/swagger` on Render.                       |
@@ -114,8 +114,8 @@ Frontend: `Study_Buddy_Frontend\study-buddy` → `npm start`.
 ## Troubleshooting
 
 - **401/403 from the frontend** — CORS. Set `CORS_ORIGIN` on Render to the exact
-  deployed origin (no trailing slash) and redeploy. Until then the API allows
-  all origins (`*`).
+  deployed origin (comma-separated if you have more than one alias, no trailing
+  slash) and redeploy. Until then the API allows all origins (`*`).
 - **Vercel build fails with `react-scripts: command not found`** — the project's
   Root Directory is not set (build ran at the repo root where there is no
   `package.json`). Set Root Directory = `Study_Buddy_Frontend/study-buddy`.
