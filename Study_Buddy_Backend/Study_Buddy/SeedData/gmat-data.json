@@ -1,0 +1,37 @@
+{
+    "exam": "GMAT",
+    "subjects": [
+        {
+            "subject": "Data Insights",
+            "chapters": [
+                {
+                    "title": "Data Sufficiency",
+                    "topics": [
+                        { "title": "Question Stem and Statements", "description": "Reading DS stems and numbered statements" },
+                        { "title": "Sufficiency Decision Rules", "description": "Applying the A-B-C-D-E sufficiency framework" },
+                        { "title": "Sufficiency with Quant and Verbal", "description": "DS across arithmetic, algebra and reasoning" },
+                        { "title": "Overlapping and Traps", "description": "Avoiding common DS mistakes and redundancy" }
+                    ]
+                },
+                {
+                    "title": "Graphics Interpretation and Table Analysis",
+                    "topics": [
+                        { "title": "Tables and Sorts", "description": "Reading and sorting tabular business data" },
+                        { "title": "Bar, Line and Scatter Plots", "description": "Interpreting visual data relationships" },
+                        { "title": "Combined Charts", "description": "Cross-referencing multiple data displays" },
+                        { "title": "Trend and Ratio Analysis", "description": "Percent changes, ratios and trends in data" }
+                    ]
+                },
+                {
+                    "title": "Two-Part Analysis and Multi-Source Reasoning",
+                    "topics": [
+                        { "title": "Logical Two-Part Questions", "description": "Choosing two connected answers from columns" },
+                        { "title": "Quantitative Two-Part Questions", "description": "Two-part interplay problems (e.g. sum and product)" },
+                        { "title": "Multi-Source Reasoning", "description": "Reconciling conflicting sources of information" },
+                        { "title": "Business Data Interpretation", "description": "Applying data insights to business decisions" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

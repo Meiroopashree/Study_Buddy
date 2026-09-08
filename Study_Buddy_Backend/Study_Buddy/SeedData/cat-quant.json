@@ -1,0 +1,77 @@
+{
+    "exam": "CAT",
+    "subjects": [
+        {
+            "subject": "Quantitative Aptitude",
+            "chapters": [
+                {
+                    "title": "Numbers and Number System",
+                    "topics": [
+                        { "title": "Properties of Numbers", "description": "Integers, rationals, divisibility, remainders and factors" },
+                        { "title": "HCF and LCM", "description": "Highest common factor, lowest common multiple and applications" },
+                        { "title": "Percentages and Ratio Basics", "description": "Percentage change, ratios and compounding concepts" },
+                        { "title": "Surds and Indices", "description": "Rules of exponents and surd simplification" },
+                        { "title": "Number Patterns and Sequences", "description": "Series identification and general term of common sequences" }
+                    ]
+                },
+                {
+                    "title": "Arithmetic",
+                    "topics": [
+                        { "title": "Percentages", "description": "Percentage increase/decrease, successive change and applications" },
+                        { "title": "Profit, Loss and Discount", "description": "Entry costs, mark-ups, discounts and break-even analysis" },
+                        { "title": "Simple and Compound Interest", "description": "Interest computations, effective rates and EMI logic" },
+                        { "title": "Ratio, Proportion and Variation", "description": "Partnerships, direct and inverse variation" },
+                        { "title": "Averages and Weighted Averages", "description": "Mean, alligation and combined average problems" },
+                        { "title": "Mixtures and Alligations", "description": "Mixing solutions and deriving component ratios" },
+                        { "title": "Time and Work", "description": "Work rates, pipes and cisterns, efficiency problems" },
+                        { "title": "Time, Speed and Distance", "description": "Relative speed, trains, boats, circular tracks and races" },
+                        { "title": "Clocks and Calendars", "description": "Clock angles, odd days and calendar reasoning" }
+                    ]
+                },
+                {
+                    "title": "Algebra",
+                    "topics": [
+                        { "title": "Linear Equations", "description": "One and two variable equations and word problems" },
+                        { "title": "Quadratic Equations", "description": "Roots, sum and product, inequalities" },
+                        { "title": "Inequalities and Modulus", "description": "Linear inequalities and absolute value expressions" },
+                        { "title": "Functions and Graphs", "description": "Function notation, domain, range and transformations" },
+                        { "title": "Logarithms", "description": "Log rules, exponential equations and applications" },
+                        { "title": "Progressions", "description": "Arithmetic, geometric and harmonic progressions and sums" },
+                        { "title": "Polynomials and Remainder Theorem", "description": "Division of polynomials and factor theorems" }
+                    ]
+                },
+                {
+                    "title": "Geometry and Mensuration",
+                    "topics": [
+                        { "title": "Lines, Angles and Triangles", "description": "Angle properties, triangle congruence and similarity" },
+                        { "title": "Circles and Cyclic Figures", "description": "Circle theorems, chords, tangents and arcs" },
+                        { "title": "Coordinate Geometry", "description": "Distance, section formula, lines and their equations" },
+                        { "title": "Quadrilaterals and Polygons", "description": "Properties of squares, rectangles and regular polygons" },
+                        { "title": "Mensuration of 2D Figures", "description": "Areas and perimeters of plane figures" },
+                        { "title": "Mensuration of 3D Figures", "description": "Volume and surface area of cubes, cylinders, cones and spheres" },
+                        { "title": "Trigonometry Basics", "description": "Trigonometric ratios, identities and heights and distances" }
+                    ]
+                },
+                {
+                    "title": "Modern Mathematics",
+                    "topics": [
+                        { "title": "Permutations", "description": "Arrangements, circular arrangements and restrictions" },
+                        { "title": "Combinations", "description": "Selections, committees and grouping methods" },
+                        { "title": "Probability", "description": "Classical probability, conditional probability and counting" },
+                        { "title": "Set Theory", "description": "Venn diagrams, unions and intersections and word problems" },
+                        { "title": "Sequence and Series Applications", "description": "Summations and mixed series for CAT pattern" },
+                        { "title": "Matrices and Determinants", "description": "Basic operations and properties for CAT-level questions" }
+                    ]
+                },
+                {
+                    "title": "Data Sufficiency for Quant",
+                    "topics": [
+                        { "title": "Statement Analysis", "description": "Determining sufficiency of two statements independently" },
+                        { "title": "Combined Sufficiency", "description": "Using both statements together to answer the question" },
+                        { "title": "Sufficiency Logic and Traps", "description": "Avoiding over-answer traps and data redundancy" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

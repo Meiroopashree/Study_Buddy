@@ -1,0 +1,16 @@
+# IDE / OS
+.vs/
+.idea/
+.DS_Store
+*.user
+
+# .NET
+bin/
+obj/
+out/
+publish/
+
+# Node
+node_modules/
+build/
+*.log

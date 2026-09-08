@@ -1,0 +1,47 @@
+{
+    "exam": "GRE",
+    "subjects": [
+        {
+            "subject": "Verbal Reasoning",
+            "chapters": [
+                {
+                    "title": "Reading Comprehension",
+                    "topics": [
+                        { "title": "Main Idea and Purpose", "description": "Identifying the central idea and author purpose" },
+                        { "title": "Inference Questions", "description": "Drawing conclusions supported by the text" },
+                        { "title": "Detail and Reference", "description": "Answering with explicit textual evidence" },
+                        { "title": "Passage Structure and Logic", "description": "Argument structure and paragraph functions" },
+                        { "title": "Multiple Answer Questions", "description": "Selecting all correct choices for passage questions" },
+                        { "title": "Vocabulary in Context", "description": "Determining word meanings from the passage" }
+                    ]
+                },
+                {
+                    "title": "Text Completion",
+                    "topics": [
+                        { "title": "Single Blank Text Completion", "description": "Choosing one word to complete a sentence" },
+                        { "title": "Two Blank Text Completion", "description": "Coordinated meaning across two blanks" },
+                        { "title": "Three Blank Text Completion", "description": "Multi-sentence completion passages" },
+                        { "title": "Clue Strategies for Blanks", "description": "Signal words, contrast and logic clues" }
+                    ]
+                },
+                {
+                    "title": "Sentence Equivalence",
+                    "topics": [
+                        { "title": "Two-Answer Equivalence", "description": "Selecting two choices with equivalent meaning" },
+                        { "title": "Synonym Strategy", "description": "Finding close identical meaning pairs" },
+                        { "title": "Sentence Logic in Equivalence", "description": "Matching sentence meaning across choices" }
+                    ]
+                },
+                {
+                    "title": "High-Frequency Vocabulary",
+                    "topics": [
+                        { "title": "Word Roots and Prefixes", "description": "Common roots, prefixes and suffixes" },
+                        { "title": "Level One Word Groups", "description": "Core GRE vocabulary with meanings" },
+                        { "title": "Level Two Word Groups", "description": "Advanced GRE vocabulary and nuances" },
+                        { "title": "Contextual Usage Practice", "description": "Meaning through usage and sentences" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

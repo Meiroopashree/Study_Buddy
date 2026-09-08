@@ -1,0 +1,33 @@
+{
+    "exam": "GMAT",
+    "subjects": [
+        {
+            "subject": "Verbal Reasoning",
+            "chapters": [
+                {
+                    "title": "Reading Comprehension",
+                    "topics": [
+                        { "title": "Main Idea and Primary Purpose", "description": "Identifying passage purpose and main point" },
+                        { "title": "Supporting Details", "description": "Locating explicit evidence in the passage" },
+                        { "title": "Inference and Implied Meaning", "description": "Drawing what the author implies but does not state" },
+                        { "title": "Structure and Function", "description": "Role of sentences and paragraphs in arguments" },
+                        { "title": "Strengthen and Weaken the Argument", "description": "How evidence in the passage supports conclusions" }
+                    ]
+                },
+                {
+                    "title": "Critical Reasoning",
+                    "topics": [
+                        { "title": "Argument Components", "description": "Premises, conclusions and unstated assumptions" },
+                        { "title": "Assumptions", "description": "Identifying necessary unstated assumptions" },
+                        { "title": "Strengthening Arguments", "description": "Adding evidence that supports the conclusion" },
+                        { "title": "Weakening Arguments", "description": "Finding evidence that undermines the conclusion" },
+                        { "title": "Flaw Detection", "description": "Common reasoning errors in arguments" },
+                        { "title": "Evaluate and Inference", "description": "Assessing argument validity and drawing conclusions" },
+                        { "title": "Boldface and Method of Reasoning", "description": "Describing the role and structure of argument parts" },
+                        { "title": "Paradox and Explanation", "description": "Resolving apparent contradictions" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

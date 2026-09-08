@@ -1,0 +1,524 @@
+﻿{
+    "exam":  "JEE Advanced",
+    "subjects":  [
+                     {
+                         "subject":  "Physics",
+                         "chapters":  [
+                                          {
+                                              "title":  "Units and Measurements",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Physical Quantities and Units",
+                                                                 "description":  "Fundamental and derived quantities, SI units and prefixes"
+                                                             },
+                                                             {
+                                                                 "title":  "Dimensions and Dimensional Analysis",
+                                                                 "description":  "Dimensional formulae, checking consistency and deriving relations"
+                                                             },
+                                                             {
+                                                                 "title":  "Error Analysis",
+                                                                 "description":  "Absolute, relative and percentage errors in measurements"
+                                                             },
+                                                             {
+                                                                 "title":  "Significant Figures",
+                                                                 "description":  "Rules for counting significant figures and rounding off"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Kinematics: Motion in a Straight Line",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Distance, Displacement, Speed and Velocity",
+                                                                 "description":  "Scalar and vector quantities and describing motion"
+                                                             },
+                                                             {
+                                                                 "title":  "Acceleration and Equations of Motion",
+                                                                 "description":  "Uniformly accelerated motion and kinematic equations"
+                                                             },
+                                                             {
+                                                                 "title":  "Motion under Gravity",
+                                                                 "description":  "Free fall and vertically projected bodies"
+                                                             },
+                                                             {
+                                                                 "title":  "Graphs of Motion",
+                                                                 "description":  "Position-time, velocity-time and acceleration-time graphs"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Kinematics: Motion in a Plane",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Vectors and Vector Addition",
+                                                                 "description":  "Resolution of vectors and resultant of multiple vectors"
+                                                             },
+                                                             {
+                                                                 "title":  "Projectile Motion",
+                                                                 "description":  "Time of flight, range, maximum height and trajectory"
+                                                             },
+                                                             {
+                                                                 "title":  "Relative Velocity",
+                                                                 "description":  "Relative motion of two objects in a plane"
+                                                             },
+                                                             {
+                                                                 "title":  "Uniform Circular Motion",
+                                                                 "description":  "Angular variables, centripetal acceleration and dynamics"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Laws of Motion",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Newton\u0027s Laws of Motion",
+                                                                 "description":  "First, second and third laws and their applications"
+                                                             },
+                                                             {
+                                                                 "title":  "Momentum and Impulse",
+                                                                 "description":  "Linear momentum, impulse and conservation of momentum"
+                                                             },
+                                                             {
+                                                                 "title":  "Friction",
+                                                                 "description":  "Static and kinetic friction, angle of repose and applications"
+                                                             },
+                                                             {
+                                                                 "title":  "Free Body Diagrams and Dynamics",
+                                                                 "description":  "Solving problems using free body diagrams and net force"
+                                                             },
+                                                             {
+                                                                 "title":  "Dynamics of Circular Motion",
+                                                                 "description":  "Bending of roads, banking of tracks and vertical circles"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Work, Energy and Power",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Work and Work-Energy Theorem",
+                                                                 "description":  "Work done by forces and the work-energy theorem"
+                                                             },
+                                                             {
+                                                                 "title":  "Kinetic and Potential Energy",
+                                                                 "description":  "Forms of energy and their calculations"
+                                                             },
+                                                             {
+                                                                 "title":  "Conservation of Mechanical Energy",
+                                                                 "description":  "Conservation of energy in isolated systems"
+                                                             },
+                                                             {
+                                                                 "title":  "Power",
+                                                                 "description":  "Average and instantaneous power and related problems"
+                                                             },
+                                                             {
+                                                                 "title":  "Collisions",
+                                                                 "description":  "Elastic and inelastic collisions in one and two dimensions"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Rotational Motion",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Centre of Mass",
+                                                                 "description":  "Centre of mass of systems and its motion"
+                                                             },
+                                                             {
+                                                                 "title":  "Moment of Inertia",
+                                                                 "description":  "Moment of inertia, radius of gyration and theorems"
+                                                             },
+                                                             {
+                                                                 "title":  "Torque and Angular Momentum",
+                                                                 "description":  "Torque, angular momentum and their conservation"
+                                                             },
+                                                             {
+                                                                 "title":  "Rotational Kinetic Energy and Rolling Motion",
+                                                                 "description":  "Rotation of rigid bodies and rolling without slipping"
+                                                             },
+                                                             {
+                                                                 "title":  "Equilibrium of Rigid Bodies",
+                                                                 "description":  "Conditions for translational and rotational equilibrium"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Gravitation",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Newton\u0027s Law of Gravitation",
+                                                                 "description":  "Gravitational force and gravitational constant"
+                                                             },
+                                                             {
+                                                                 "title":  "Gravitational Field and Potential",
+                                                                 "description":  "Field intensity, potential and potential energy"
+                                                             },
+                                                             {
+                                                                 "title":  "Escape Velocity and Orbital Velocity",
+                                                                 "description":  "Escape speed and velocities of satellites in orbit"
+                                                             },
+                                                             {
+                                                                 "title":  "Satellites and Kepler\u0027s Laws",
+                                                                 "description":  "Artificial satellites, geostationary orbits and Kepler\u0027s laws"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Properties of Solids and Liquids",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Elasticity: Stress and Strain",
+                                                                 "description":  "Elastic moduli, Hooke\u0027s law and energy in deformation"
+                                                             },
+                                                             {
+                                                                 "title":  "Pressure and Buoyancy",
+                                                                 "description":  "Hydrostatic pressure, Archimedes\u0027 principle and floatation"
+                                                             },
+                                                             {
+                                                                 "title":  "Bernoulli\u0027s Theorem and Fluid Flow",
+                                                                 "description":  "Equation of continuity and Bernoulli\u0027s equation"
+                                                             },
+                                                             {
+                                                                 "title":  "Viscosity and Stokes\u0027 Law",
+                                                                 "description":  "Viscous drag, terminal velocity and Poiseuille flow"
+                                                             },
+                                                             {
+                                                                 "title":  "Surface Tension",
+                                                                 "description":  "Surface energy, capillary rise and angle of contact"
+                                                             },
+                                                             {
+                                                                 "title":  "Thermal Expansion",
+                                                                 "description":  "Linear, superficial and cubical expansion of materials"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Thermodynamics",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Thermal Equilibrium and Temperature",
+                                                                 "description":  "Zeroth law and temperature scales"
+                                                             },
+                                                             {
+                                                                 "title":  "Heat, Work and Internal Energy",
+                                                                 "description":  "First law of thermodynamics and sign conventions"
+                                                             },
+                                                             {
+                                                                 "title":  "Specific Heat and Latent Heat",
+                                                                 "description":  "Heat capacity, latent heats and phase change"
+                                                             },
+                                                             {
+                                                                 "title":  "Heat Transfer: Conduction, Convection and Radiation",
+                                                                 "description":  "Modes of heat transfer, thermal conductivity and their applications"
+                                                             },
+                                                             {
+                                                                 "title":  "Second Law and Entropy",
+                                                                 "description":  "Second law of thermodynamics and entropy concepts"
+                                                             },
+                                                             {
+                                                                 "title":  "Heat Engines and Refrigerators",
+                                                                 "description":  "Carnot cycle, efficiency and coefficient of performance"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Kinetic Theory of Gases",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Ideal Gas and Gas Laws",
+                                                                 "description":  "Boyle\u0027s, Charles\u0027 and Avogadro\u0027s laws and the ideal gas equation"
+                                                             },
+                                                             {
+                                                                 "title":  "Kinetic Theory and Molecular Speeds",
+                                                                 "description":  "Assumptions, pressure derivation and rms speed"
+                                                             },
+                                                             {
+                                                                 "title":  "Degrees of Freedom and Mean Free Path",
+                                                                 "description":  "Equipartition of energy and mean free path"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Oscillations",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Simple Harmonic Motion",
+                                                                 "description":  "Displacement, velocity and acceleration in SHM"
+                                                             },
+                                                             {
+                                                                 "title":  "Energy in SHM",
+                                                                 "description":  "Kinetic and potential energies during oscillation"
+                                                             },
+                                                             {
+                                                                 "title":  "Simple Pendulum and Spring Systems",
+                                                                 "description":  "Time period of pendulums and spring-mass systems"
+                                                             },
+                                                             {
+                                                                 "title":  "Damped, Forced Oscillations and Resonance",
+                                                                 "description":  "Effects of damping and resonance phenomena"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Waves",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Wave Motion and Wave Equation",
+                                                                 "description":  "Progressive waves, wavelength, frequency and speed"
+                                                             },
+                                                             {
+                                                                 "title":  "Sound Waves",
+                                                                 "description":  "Speed of sound, intensity and loudness"
+                                                             },
+                                                             {
+                                                                 "title":  "Superposition and Interference of Waves",
+                                                                 "description":  "Principle of superposition and interference of sound"
+                                                             },
+                                                             {
+                                                                 "title":  "Beats",
+                                                                 "description":  "Formation of beats and beat frequency"
+                                                             },
+                                                             {
+                                                                 "title":  "Doppler Effect",
+                                                                 "description":  "Frequency shifts due to relative motion"
+                                                             },
+                                                             {
+                                                                 "title":  "Standing Waves in Strings and Air Columns",
+                                                                 "description":  "Vibrations of stretched strings and organ pipes"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Electrostatics",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Electric Charge and Coulomb\u0027s Law",
+                                                                 "description":  "Charge, Coulomb\u0027s law and superposition principle"
+                                                             },
+                                                             {
+                                                                 "title":  "Electric Field",
+                                                                 "description":  "Field intensity, field lines and fields of distributions"
+                                                             },
+                                                             {
+                                                                 "title":  "Electric Potential and Potential Energy",
+                                                                 "description":  "Potential, potential difference and energy in fields"
+                                                             },
+                                                             {
+                                                                 "title":  "Gauss\u0027s Law",
+                                                                 "description":  "Gauss\u0027s law and its applications to symmetric distributions"
+                                                             },
+                                                             {
+                                                                 "title":  "Capacitance and Capacitors",
+                                                                 "description":  "Capacitance of conductors, parallel plates and combinations"
+                                                             },
+                                                             {
+                                                                 "title":  "Dielectrics and Energy Stored",
+                                                                 "description":  "Dielectric constant, polarisation and stored energy"
+                                                             },
+                                                             {
+                                                                 "title":  "Electric Dipole",
+                                                                 "description":  "Dipole moment, field and potential of a dipole"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Current Electricity",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Electric Current and Ohm\u0027s Law",
+                                                                 "description":  "Current, resistance and Ohm\u0027s law with temperature effects"
+                                                             },
+                                                             {
+                                                                 "title":  "Resistivity and Drift Velocity",
+                                                                 "description":  "Microscopic origin of resistance and mobility"
+                                                             },
+                                                             {
+                                                                 "title":  "Series and Parallel Circuits",
+                                                                 "description":  "Equivalent resistance and circuit analysis"
+                                                             },
+                                                             {
+                                                                 "title":  "Kirchhoff\u0027s Laws",
+                                                                 "description":  "Junction and loop rules for complex circuits"
+                                                             },
+                                                             {
+                                                                 "title":  "Wheatstone Bridge and Potentiometer",
+                                                                 "description":  "Balanced bridges and measurement instruments"
+                                                             },
+                                                             {
+                                                                 "title":  "Electrical Energy and Power",
+                                                                 "description":  "Power dissipation, heating effect and combinations"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Magnetic Effects of Current and Magnetism",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Magnetic Field and Biot-Savart Law",
+                                                                 "description":  "Fields due to straight wires, loops and solenoids"
+                                                             },
+                                                             {
+                                                                 "title":  "Ampere\u0027s Law",
+                                                                 "description":  "Ampere\u0027s circuital law and its applications"
+                                                             },
+                                                             {
+                                                                 "title":  "Force on Current Carrying Conductors",
+                                                                 "description":  "Force and torque on conductors and loops"
+                                                             },
+                                                             {
+                                                                 "title":  "Moving Charges in Magnetic Fields",
+                                                                 "description":  "Motion of charges, cyclotron and magnetic force"
+                                                             },
+                                                             {
+                                                                 "title":  "Magnetic Materials and Magnetism",
+                                                                 "description":  "Dia, para and ferromagnetic materials and magnetism of earth"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Electromagnetic Induction and Alternating Current",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Faraday\u0027s Law and Lenz\u0027s Law",
+                                                                 "description":  "Induced EMF and direction rules"
+                                                             },
+                                                             {
+                                                                 "title":  "Motional EMF",
+                                                                 "description":  "EMF induced in moving conductors"
+                                                             },
+                                                             {
+                                                                 "title":  "Self and Mutual Inductance",
+                                                                 "description":  "Inductance of circuits and energy in inductors"
+                                                             },
+                                                             {
+                                                                 "title":  "AC Circuits",
+                                                                 "description":  "AC through resistors, inductors and capacitors"
+                                                             },
+                                                             {
+                                                                 "title":  "LCR Circuits and Resonance",
+                                                                 "description":  "Impedance, resonance and power in AC circuits"
+                                                             },
+                                                             {
+                                                                 "title":  "Transformers",
+                                                                 "description":  "Principle, construction and efficiency of transformers"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Electromagnetic Waves",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Properties of Electromagnetic Waves",
+                                                                 "description":  "Nature, speed and energy transport of EM waves"
+                                                             },
+                                                             {
+                                                                 "title":  "The Electromagnetic Spectrum",
+                                                                 "description":  "Ranges and applications of different EM bands"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Ray Optics",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Reflection and Mirrors",
+                                                                 "description":  "Laws of reflection and spherical mirror formula"
+                                                             },
+                                                             {
+                                                                 "title":  "Refraction and Snell\u0027s Law",
+                                                                 "description":  "Refraction, refractive index and total internal reflection"
+                                                             },
+                                                             {
+                                                                 "title":  "Lenses and Lens Formula",
+                                                                 "description":  "Lens maker\u0027s formula, magnification and power"
+                                                             },
+                                                             {
+                                                                 "title":  "Prisms and Dispersion",
+                                                                 "description":  "Deviation by prisms and dispersion of light"
+                                                             },
+                                                             {
+                                                                 "title":  "Optical Instruments",
+                                                                 "description":  "Microscopes, telescopes and their magnifying power"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Wave Optics",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Huygens\u0027 Principle",
+                                                                 "description":  "Wavefronts and explanation of reflection and refraction"
+                                                             },
+                                                             {
+                                                                 "title":  "Interference and Young\u0027s Double Slit",
+                                                                 "description":  "Fringe width, conditions for maxima and minima"
+                                                             },
+                                                             {
+                                                                 "title":  "Diffraction",
+                                                                 "description":  "Single slit diffraction and its features"
+                                                             },
+                                                             {
+                                                                 "title":  "Polarisation",
+                                                                 "description":  "Polarisation of light and Brewster\u0027s law"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Dual Nature of Matter and Radiation",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Photoelectric Effect",
+                                                                 "description":  "Einstein\u0027s equation, threshold frequency and stopping potential"
+                                                             },
+                                                             {
+                                                                 "title":  "Photon Theory and Energy Quantisation",
+                                                                 "description":  "Photon energy, momentum and intensity"
+                                                             },
+                                                             {
+                                                                 "title":  "Matter Waves and de Broglie Wavelength",
+                                                                 "description":  "Wave-particle duality and de Broglie relation"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Atoms and Nuclei",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Atomic Models",
+                                                                 "description":  "Rutherford scattering and Bohr model of the atom"
+                                                             },
+                                                             {
+                                                                 "title":  "Atomic Spectra",
+                                                                 "description":  "Emission spectra and spectral series of hydrogen"
+                                                             },
+                                                             {
+                                                                 "title":  "Radioactivity",
+                                                                 "description":  "Alpha, beta and gamma decay with laws of decay"
+                                                             },
+                                                             {
+                                                                 "title":  "Nuclear Binding Energy and Reactions",
+                                                                 "description":  "Mass defect, binding energy, fission and fusion"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Semiconductors and Electronics",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Energy Bands in Solids",
+                                                                 "description":  "Conductors, insulators and semiconductors"
+                                                             },
+                                                             {
+                                                                 "title":  "p-n Junction Diode",
+                                                                 "description":  "Diode characteristics, rectification and special diodes"
+                                                             },
+                                                             {
+                                                                 "title":  "Transistors and Logic Gates",
+                                                                 "description":  "Bipolar transistors, amplifiers and digital logic gates"
+                                                             }
+                                                         ]
+                                          }
+                                      ]
+                     }
+                 ]
+}

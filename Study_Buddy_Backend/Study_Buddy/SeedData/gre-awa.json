@@ -1,0 +1,37 @@
+{
+    "exam": "GRE",
+    "subjects": [
+        {
+            "subject": "Analytical Writing",
+            "chapters": [
+                {
+                    "title": "Analyze an Issue",
+                    "topics": [
+                        { "title": "Understanding the Prompt", "description": "Deconstructing the issue statement and its claims" },
+                        { "title": "Building a Position", "description": "Crafting a clear thesis with reasons and examples" },
+                        { "title": "Structuring the Essay", "description": "Introduction, body paragraphs and conclusion" },
+                        { "title": "Using Evidence Effectively", "description": "Examples, reasoning and counterarguments" },
+                        { "title": "Common Issue Topics", "description": "Practice on education, technology and society" }
+                    ]
+                },
+                {
+                    "title": "Analyze an Argument",
+                    "topics": [
+                        { "title": "Argument Anatomy", "description": "Premises, assumptions and the conclusion" },
+                        { "title": "Identifying Logical Flaws", "description": "Causal, sampling, analogy and statistical flaws" },
+                        { "title": "Organizing the Critique", "description": "Structuring a point-by-point analysis" },
+                        { "title": "Ways to Strengthen the Argument", "description": "Evidence and questions that would shore up the case" }
+                    ]
+                },
+                {
+                    "title": "Writing Mechanics",
+                    "topics": [
+                        { "title": "Clear Sentence Structure", "description": "Variety, clarity and conciseness" },
+                        { "title": "Grammar and Punctuation", "description": "Standard written English accuracy" },
+                        { "title": "Transitions and Cohesion", "description": "Linking paragraphs and ideas smoothly" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

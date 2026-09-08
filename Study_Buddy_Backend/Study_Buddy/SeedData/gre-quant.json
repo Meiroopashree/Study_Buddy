@@ -1,0 +1,58 @@
+{
+    "exam": "GRE",
+    "subjects": [
+        {
+            "subject": "Quantitative Reasoning",
+            "chapters": [
+                {
+                    "title": "Arithmetic",
+                    "topics": [
+                        { "title": "Integers and Number Properties", "description": "Primes, factors, multiples and divisibility" },
+                        { "title": "Fractions, Decimals and Percents", "description": "Conversions, operations and percent change" },
+                        { "title": "Ratios and Rates", "description": "Ratios, proportions and rate problems" },
+                        { "title": "Exponents and Roots", "description": "Laws of exponents and radicals" },
+                        { "title": "Absolute Value and Ordering", "description": "Absolute value and number line ordering" }
+                    ]
+                },
+                {
+                    "title": "Algebra",
+                    "topics": [
+                        { "title": "Linear Equations and Inequalities", "description": "Solving and graphing linear relations" },
+                        { "title": "Quadratic Equations", "description": "Factoring, roots and applications" },
+                        { "title": "Functions and Their Properties", "description": "Domain, range and function notation" },
+                        { "title": "Coordinate Geometry", "description": "Lines, slopes, distances and quadrants" },
+                        { "title": "Systems of Equations", "description": "Solving simultaneous equations" }
+                    ]
+                },
+                {
+                    "title": "Geometry",
+                    "topics": [
+                        { "title": "Lines and Angles", "description": "Parallel lines, angles and transversals" },
+                        { "title": "Triangles and Polygons", "description": "Angle and side relationships, area" },
+                        { "title": "Circles", "description": "Radius, circumference, area and arcs" },
+                        { "title": "3D Figures", "description": "Volume and surface area of solids" },
+                        { "title": "Perimeter and Area of Plane Figures", "description": "Rectangles, parallelograms and quadrilaterals" }
+                    ]
+                },
+                {
+                    "title": "Data Analysis",
+                    "topics": [
+                        { "title": "Descriptive Statistics", "description": "Mean, median, mode, range and quartiles" },
+                        { "title": "Variance and Standard Deviation", "description": "Measures of spread and distribution shape" },
+                        { "title": "Counting Principles", "description": "Multiplication principle and combinations" },
+                        { "title": "Probability", "description": "Basic, conditional and independent events" },
+                        { "title": "Data Interpretation", "description": "Reading tables, charts and graphs" }
+                    ]
+                },
+                {
+                    "title": "Quantitative Comparison",
+                    "topics": [
+                        { "title": "Quantitative Comparison Basics", "description": "Comparing two quantities and choosing a relationship" },
+                        { "title": "Comparison Strategies", "description": "Picking numbers, simplifying and reasoning" },
+                        { "title": "QC with Variables", "description": "Handling unknown quantities and ranges" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

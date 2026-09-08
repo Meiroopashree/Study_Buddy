@@ -1,0 +1,38 @@
+{
+    "exam": "NMAT",
+    "subjects": [
+        {
+            "subject": "Logical Reasoning",
+            "chapters": [
+                {
+                    "title": "Analytical Reasoning",
+                    "topics": [
+                        { "title": "Seating Arrangements", "description": "Linear and circular seating puzzle solving" },
+                        { "title": "Data Arrangements", "description": "Multi-attribute grid arrangements and constraints" },
+                        { "title": "Blood Relations", "description": "Tracing family relationships and coded relations" },
+                        { "title": "Direction Sense", "description": "Distance and direction problems" },
+                        { "title": "Venn Diagrams", "description": "Set relationships and group overlaps" }
+                    ]
+                },
+                {
+                    "title": "Deductive Reasoning",
+                    "topics": [
+                        { "title": "Syllogisms", "description": "Conclusions from statements using categorical logic" },
+                        { "title": "Coding-Decoding", "description": "Decoding letter, number and symbol patterns" },
+                        { "title": "Series and Sequences", "description": "Number and letter series continuation" },
+                        { "title": "Assumptions and Conclusions", "description": "Evaluating assumptions required by arguments" },
+                        { "title": "Strengthening and Weakening", "description": "Testing how evidence affects arguments" }
+                    ]
+                },
+                {
+                    "title": "Critical Reasoning",
+                    "topics": [
+                        { "title": "Arguments Structure", "description": "Premises, conclusions and assumptions" },
+                        { "title": "Inference and Flaws", "description": "Valid inferences and common reasoning flaws" },
+                        { "title": "Cause and Effect", "description": "Distinguishing causation from correlation" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

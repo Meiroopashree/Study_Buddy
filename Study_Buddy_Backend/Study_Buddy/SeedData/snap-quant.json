@@ -1,0 +1,51 @@
+{
+    "exam": "SNAP",
+    "subjects": [
+        {
+            "subject": "Quantitative, Data Interpretation & Data Sufficiency",
+            "chapters": [
+                {
+                    "title": "Arithmetic and Number Systems",
+                    "topics": [
+                        { "title": "Numbers and Divisibility", "description": "Primes, factors, HCF-LCM and divisibility rules" },
+                        { "title": "Percentages", "description": "Percentage change and applications" },
+                        { "title": "Profit, Loss and Discount", "description": "Markups, discounts and margins" },
+                        { "title": "Simple and Compound Interest", "description": "Interest and instalment computations" },
+                        { "title": "Ratio and Proportion", "description": "Ratios, partnerships and variations" },
+                        { "title": "Averages and Mixtures", "description": "Weighted averages and alligation" },
+                        { "title": "Time and Work", "description": "Work rate problems and efficiency" },
+                        { "title": "Time, Speed and Distance", "description": "Relative speed and motion problems" }
+                    ]
+                },
+                {
+                    "title": "Algebra and Modern Math",
+                    "topics": [
+                        { "title": "Linear and Quadratic Equations", "description": "Equation solving and word problems" },
+                        { "title": "Inequalities", "description": "Linear and absolute value inequalities" },
+                        { "title": "Progressions", "description": "Arithmetic and geometric progressions" },
+                        { "title": "Permutations and Combinations", "description": "Arrangements and selections" },
+                        { "title": "Probability", "description": "Basic and conditional probability" }
+                    ]
+                },
+                {
+                    "title": "Geometry and Mensuration",
+                    "topics": [
+                        { "title": "Triangles and Quadrilaterals", "description": "Angle and side properties of figures" },
+                        { "title": "Circles", "description": "Circle geometry and arc properties" },
+                        { "title": "Coordinate Geometry", "description": "Distance and straight lines" },
+                        { "title": "Mensuration", "description": "Areas and volumes review" }
+                    ]
+                },
+                {
+                    "title": "Data Interpretation and Data Sufficiency",
+                    "topics": [
+                        { "title": "Tables and Bar Charts", "description": "Reading tabular and bar data" },
+                        { "title": "Pie Charts and Graphs", "description": "Shares, angles and line graphs" },
+                        { "title": "Caselets", "description": "Paragraph-based numerical data" },
+                        { "title": "Data Sufficiency", "description": "Deciding whether data is sufficient" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

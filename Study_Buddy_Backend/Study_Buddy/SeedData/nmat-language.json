@@ -1,0 +1,39 @@
+{
+    "exam": "NMAT",
+    "subjects": [
+        {
+            "subject": "Language Skills",
+            "chapters": [
+                {
+                    "title": "Reading Comprehension",
+                    "topics": [
+                        { "title": "Main Idea and Purpose", "description": "Identifying main idea, purpose and tone of passages" },
+                        { "title": "Inferences", "description": "Drawing conclusions implied but not stated" },
+                        { "title": "Detail and Reference", "description": "Answering explicit factual questions from the text" },
+                        { "title": "Passage Organization", "description": "Understanding structure, transitions and paragraph roles" }
+                    ]
+                },
+                {
+                    "title": "Grammar and Usage",
+                    "topics": [
+                        { "title": "Subject-Verb Agreement", "description": "Correct agreement in number and person" },
+                        { "title": "Tenses and Sequence", "description": "Correct verb forms and time relationships" },
+                        { "title": "Prepositions and Articles", "description": "Correct use of prepositions, articles and connectors" },
+                        { "title": "Pronoun Reference", "description": "Clear pronoun antecedents and case" },
+                        { "title": "Sentence Correction", "description": "Identifying and fixing common grammar errors" }
+                    ]
+                },
+                {
+                    "title": "Vocabulary and Verbal Ability",
+                    "topics": [
+                        { "title": "Synonyms and Antonyms", "description": "Word meanings and relationships for vocab questions" },
+                        { "title": "Fill in the Blanks", "description": "Choosing contextually appropriate words and phrases" },
+                        { "title": "Para Jumbles", "description": "Ordering sentences into coherent paragraphs" },
+                        { "title": "Cloze Test", "description": "Filling gaps in a continuous passage" },
+                        { "title": "Analogies", "description": "Matching word relationships" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

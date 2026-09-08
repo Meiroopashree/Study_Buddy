@@ -1,0 +1,52 @@
+{
+    "exam": "CAT",
+    "subjects": [
+        {
+            "subject": "Verbal Ability & Reading Comprehension",
+            "chapters": [
+                {
+                    "title": "Reading Comprehension",
+                    "topics": [
+                        { "title": "Main Idea and Tone", "description": "Identifying central themes, tone and author attitude" },
+                        { "title": "Inference and Implied Meaning", "description": "Reading between the lines and drawing conclusions" },
+                        { "title": "Direct and Reference Questions", "description": "Locating explicit information in passages" },
+                        { "title": "Structure and Organization", "description": "Understanding paragraph roles and passage flow" },
+                        { "title": "Critical Understanding", "description": "Evaluating arguments, evidence and logical progression" },
+                        { "title": "Speed Reading Strategies", "description": "Skimming and scanning techniques for RC sets" }
+                    ]
+                },
+                {
+                    "title": "Sentence and Paragraph Level",
+                    "topics": [
+                        { "title": "Para Jumbles", "description": "Arranging shuffled sentences into a coherent paragraph" },
+                        { "title": "Para Summary", "description": "Condensing passages into the best summary statement" },
+                        { "title": "Odd Sentence Out", "description": "Identifying the sentence that does not fit the paragraph" },
+                        { "title": "Sentence Completion", "description": "Choosing the best phrase to complete a sentence" },
+                        { "title": "Sentence Correction", "description": "Fixing grammatical and logical errors in sentences" }
+                    ]
+                },
+                {
+                    "title": "Critical Reasoning",
+                    "topics": [
+                        { "title": "Arguments and Premises", "description": "Identifying premises, conclusions and hidden assumptions" },
+                        { "title": "Strengthening and Weakening", "description": "Evaluating evidence that supports or refutes arguments" },
+                        { "title": "Flaws and Fallacies", "description": "Recognizing common reasoning errors" },
+                        { "title": "Inference and Evaluation", "description": "Drawing valid inferences and evaluating reasoning" },
+                        { "title": "Analogies and Parallel Reasoning", "description": "Matching the logical structure of arguments" }
+                    ]
+                },
+                {
+                    "title": "Grammar and Vocabulary",
+                    "topics": [
+                        { "title": "Parts of Speech", "description": "Nouns, verbs, adjectives and their correct usage" },
+                        { "title": "Tenses and Verb Agreement", "description": "Correct tense usage and subject-verb agreement" },
+                        { "title": "Prepositions and Connectives", "description": "Correct preposition and conjunction usage" },
+                        { "title": "Idioms and Phrases", "description": "Common idioms, phrasal verbs and fixed expressions" },
+                        { "title": "Vocabulary in Context", "description": "Word meaning from context and common synonyms" },
+                        { "title": "Synonyms and Antonyms", "description": "Building word power for VA questions" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

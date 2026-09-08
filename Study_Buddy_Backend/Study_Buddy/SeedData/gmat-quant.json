@@ -1,0 +1,57 @@
+{
+    "exam": "GMAT",
+    "subjects": [
+        {
+            "subject": "Quantitative Reasoning",
+            "chapters": [
+                {
+                    "title": "Number Properties",
+                    "topics": [
+                        { "title": "Integers and Divisibility", "description": "Factors, multiples, primes and divisibility rules" },
+                        { "title": "Odds, Evens and Digits", "description": "Parity rules and digit manipulation" },
+                        { "title": "Remainders and Units Digits", "description": "Remainder patterns and units digit cycles" },
+                        { "title": "Consecutive Integers", "description": "Sums and properties of consecutive numbers" }
+                    ]
+                },
+                {
+                    "title": "Arithmetic Operations",
+                    "topics": [
+                        { "title": "Fractions and Decimals", "description": "Operations, comparisons and conversions" },
+                        { "title": "Ratios and Proportions", "description": "Part-to-part and part-to-whole ratios" },
+                        { "title": "Percentages", "description": "Percent change, markups and successive percentages" },
+                        { "title": "Exponents and Roots", "description": "Laws of exponents and perfect squares" },
+                        { "title": "Absolute Value", "description": "Distance interpretation and equations" }
+                    ]
+                },
+                {
+                    "title": "Algebra",
+                    "topics": [
+                        { "title": "Linear Equations", "description": "Single and simultaneous equations" },
+                        { "title": "Quadratic Equations and Factoring", "description": "Roots, factorization and the discriminant" },
+                        { "title": "Inequalities", "description": "Solving, ranges and sign analysis" },
+                        { "title": "Functions and Formulas", "description": "Function notation and defined operations" },
+                        { "title": "Word Problems", "description": "Translating story problems into algebra" }
+                    ]
+                },
+                {
+                    "title": "Rates and Statistics",
+                    "topics": [
+                        { "title": "Rate Problems", "description": "Distance, work and combined rate problems" },
+                        { "title": "Interest and Growth", "description": "Simple and compound interest applications" },
+                        { "title": "Statistics and Averages", "description": "Mean, median, range and standard deviation" },
+                        { "title": "Counting and Probability Basics", "description": "Fundamental counting and simple probability" }
+                    ]
+                },
+                {
+                    "title": "Geometry",
+                    "topics": [
+                        { "title": "Triangles", "description": "Angle sums, special triangles and area" },
+                        { "title": "Circles and Spheres", "description": "Area, circumference and inscribed figures" },
+                        { "title": "Rectangles, Cubes and Cylinders", "description": "Perimeters, areas and volumes" },
+                        { "title": "Coordinate Geometry", "description": "Slope, distance and midpoints" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

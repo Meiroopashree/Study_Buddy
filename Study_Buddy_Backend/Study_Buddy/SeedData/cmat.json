@@ -1,0 +1,159 @@
+{
+    "exam": "CMAT",
+    "subjects": [
+        {
+            "subject": "Quantitative Techniques",
+            "chapters": [
+                {
+                    "title": "Arithmetic and Number Systems",
+                    "topics": [
+                        { "title": "Numbers and Divisibility", "description": "Primes, factors, HCF-LCM and divisibility rules" },
+                        { "title": "Percentages and Profit-Loss-Discount", "description": "Percentage change, markups and discounts" },
+                        { "title": "Simple and Compound Interest", "description": "Interest, instalments and compounding" },
+                        { "title": "Ratio, Proportion and Variation", "description": "Ratios, partnerships and direct-inverse variation" },
+                        { "title": "Time and Work", "description": "Work rate, efficiency and pipes-cisterns" },
+                        { "title": "Time, Speed and Distance", "description": "Relative speed, trains and boats" },
+                        { "title": "Averages and Mixtures", "description": "Weighted averages and alligation" }
+                    ]
+                },
+                {
+                    "title": "Algebra and Modern Math",
+                    "topics": [
+                        { "title": "Linear and Quadratic Equations", "description": "Equation solving and word problems" },
+                        { "title": "Inequalities and Absolute Values", "description": "Linear and modulus inequalities" },
+                        { "title": "Progressions", "description": "Arithmetic and geometric progressions" },
+                        { "title": "Permutations and Combinations", "description": "Arrangements and selections" },
+                        { "title": "Probability", "description": "Classical, conditional and dice-cards" }
+                    ]
+                },
+                {
+                    "title": "Geometry and Mensuration",
+                    "topics": [
+                        { "title": "Triangles and Quadrilaterals", "description": "Angle and side properties of figures" },
+                        { "title": "Circles and Polygons", "description": "Circle geometry, arcs and polygons" },
+                        { "title": "Coordinate Geometry", "description": "Distance, section and straight lines" },
+                        { "title": "Mensuration 2D and 3D", "description": "Areas, volumes and surface areas" }
+                    ]
+                }
+            ]
+        },
+        {
+            "subject": "Logical Reasoning",
+            "chapters": [
+                {
+                    "title": "Verbal Reasoning",
+                    "topics": [
+                        { "title": "Coding-Decoding", "description": "Letter, number and symbol codes" },
+                        { "title": "Blood Relations", "description": "Family trees and relation puzzles" },
+                        { "title": "Direction and Distance", "description": "Movement and direction sense" },
+                        { "title": "Analogy and Classification", "description": "Word, letter and number analogies" },
+                        { "title": "Number and Alphabet Series", "description": "Sequences and pattern spotting" }
+                    ]
+                },
+                {
+                    "title": "Analytical Reasoning",
+                    "topics": [
+                        { "title": "Seating Arrangements and Puzzles", "description": "Linear and circular arrangements" },
+                        { "title": "Syllogisms", "description": "Categorical statements and deductions" },
+                        { "title": "Venn Diagrams", "description": "Set relations and overlaps" },
+                        { "title": "Statements, Assumptions and Conclusions", "description": "Drawing valid inferences" },
+                        { "title": "Data Sufficiency in Reasoning", "description": "Deciding when data is enough" }
+                    ]
+                },
+                {
+                    "title": "Critical Reasoning",
+                    "topics": [
+                        { "title": "Arguments and Inferences", "description": "Premises, conclusions and logic" },
+                        { "title": "Strengthening and Weakening", "description": "Evaluating supporting evidence" },
+                        { "title": "Cause and Effect", "description": "Causal links among statements" }
+                    ]
+                }
+            ]
+        },
+        {
+            "subject": "Language Comprehension",
+            "chapters": [
+                {
+                    "title": "Reading Comprehension",
+                    "topics": [
+                        { "title": "Passages and Central Idea", "description": "Main theme and purpose of passages" },
+                        { "title": "Inference and Tone", "description": "Implied meaning and author tone" },
+                        { "title": "Vocabulary in Context", "description": "Word meaning from passage context" }
+                    ]
+                },
+                {
+                    "title": "Grammar and Verbal Skills",
+                    "topics": [
+                        { "title": "Spotting Errors", "description": "Subject-verb and agreement errors" },
+                        { "title": "Sentence Correction", "description": "Rewriting ungrammatical sentences" },
+                        { "title": "Para Jumbles", "description": "Ordering shuffled sentences" },
+                        { "title": "Fill in the Blanks", "description": "Contextual vocabulary and grammar" }
+                    ]
+                }
+            ]
+        },
+        {
+            "subject": "Data Interpretation",
+            "chapters": [
+                {
+                    "title": "DI Charts and Tables",
+                    "topics": [
+                        { "title": "Tables and Bar Charts", "description": "Reading tabular and bar data" },
+                        { "title": "Pie Charts and Line Graphs", "description": "Shares, angles and trends" },
+                        { "title": "Mixed Graphs and Caselets", "description": "Combined displays and text data" }
+                    ]
+                },
+                {
+                    "title": "Data Sufficiency and Logical DI",
+                    "topics": [
+                        { "title": "Data Sufficiency Concepts", "description": "Minimum data needed for answers" },
+                        { "title": "Reasoning with Data Displays", "description": "Comparative analysis of data sets" }
+                    ]
+                }
+            ]
+        },
+        {
+            "subject": "General Awareness",
+            "chapters": [
+                {
+                    "title": "Current Affairs",
+                    "topics": [
+                        { "title": "National and International Current Affairs", "description": "Recent events and developments" },
+                        { "title": "Sports and Awards", "description": "Events, winners and honours" },
+                        { "title": "Economy and Banking Awareness", "description": "Schemes, indices and institutions" }
+                    ]
+                },
+                {
+                    "title": "Static General Knowledge",
+                    "topics": [
+                        { "title": "Indian History and Polity", "description": "Freedom struggle, constitution and governance" },
+                        { "title": "Geography and Environment", "description": "Physical, economic and environmental facts" },
+                        { "title": "Science and Technology", "description": "Discoveries, terms and applications" }
+                    ]
+                }
+            ]
+        },
+        {
+            "subject": "Innovation and Entrepreneurship",
+            "chapters": [
+                {
+                    "title": "Innovation Concepts",
+                    "topics": [
+                        { "title": "Design Thinking", "description": "Empathy, ideation and prototyping" },
+                        { "title": "Innovation Models and Disruption", "description": "Sustaining, incremental and disruptive innovation" },
+                        { "title": "Intellectual Property and Patents", "description": "Patents, copyrights and trademarks" }
+                    ]
+                },
+                {
+                    "title": "Entrepreneurship",
+                    "topics": [
+                        { "title": "Business Models and Startups", "description": "Revenue models and venture lifecycle" },
+                        { "title": "Funding and Valuation", "description": "Equity, debt and startup valuation" },
+                        { "title": "Marketing and Growth Strategies", "description": "Segmentation, positioning and scaling" },
+                        { "title": "Social and Rural Entrepreneurship", "description": "Impact ventures and grassroots business" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

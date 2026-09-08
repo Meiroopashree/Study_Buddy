@@ -1,0 +1,110 @@
+{
+    "exam": "Bank PO/Clerk",
+    "subjects": [
+        {
+            "subject": "Quantitative Aptitude",
+            "chapters": [
+                {
+                    "title": "Arithmetic",
+                    "topics": [
+                        { "title": "Percentages and Profit-Loss-Discount", "description": "Percentage change, markups and discounts" },
+                        { "title": "Simple and Compound Interest", "description": "Interest and instalments" },
+                        { "title": "Ratio, Proportion and Partnership", "description": "Ratios, shares and variations" },
+                        { "title": "Averages and Mixtures", "description": "Weighted averages and alligation" },
+                        { "title": "Time and Work", "description": "Efficiency and pipes-cisterns" },
+                        { "title": "Time, Speed and Distance", "description": "Trains, boats and relative speed" }
+                    ]
+                },
+                {
+                    "title": "Number System and Algebra",
+                    "topics": [
+                        { "title": "Number Series", "description": "Missing and wrong-term series" },
+                        { "title": "Quadratic and Linear Equations", "description": "Solving and comparing roots" },
+                        { "title": "Simplification and Approximations", "description": "BODMAS and quick estimation" },
+                        { "title": "Mensuration and Geometry", "description": "Areas, volumes and figure properties" },
+                        { "title": "Probability and Permutations", "description": "Counting and chance problems" }
+                    ]
+                },
+                {
+                    "title": "Data Interpretation",
+                    "topics": [
+                        { "title": "Tables and Bar Graphs", "description": "Reading tabular and bar data" },
+                        { "title": "Pie Charts and Line Graphs", "description": "Shares, trends and angles" },
+                        { "title": "Caselets and Mixed DI", "description": "Paragraph data and combined charts" },
+                        { "title": "Missing-Data DI", "description": "Computing values from partial tables" }
+                    ]
+                }
+            ]
+        },
+        {
+            "subject": "Reasoning Ability",
+            "chapters": [
+                {
+                    "title": "Logical Reasoning",
+                    "topics": [
+                        { "title": "Number and Alphanumeric Series", "description": "Sequences and pattern spotting" },
+                        { "title": "Coding-Decoding", "description": "Letter and number substitution" },
+                        { "title": "Blood Relations and Directions", "description": "Family mapping and movement" },
+                        { "title": "Syllogisms and Coded Inequalities", "description": "Deductions and coded relations" },
+                        { "title": "Ordering and Ranking", "description": "Position and rank comparisons" },
+                        { "title": "Seating Arrangements and Puzzles", "description": "Linear, circular and box puzzles" }
+                    ]
+                },
+                {
+                    "title": "Analytical Reasoning",
+                    "topics": [
+                        { "title": "Data Sufficiency", "description": "Minimum data needed to answer" },
+                        { "title": "Decision Making and Input-Output", "description": "Rules-based and machine-output logic" },
+                        { "title": "Statement Conclusions and Assumptions", "description": "Valid inference and assumption tests" },
+                        { "title": "Critical Reasoning", "description": "Arguments, strengthen and weaken" }
+                    ]
+                }
+            ]
+        },
+        {
+            "subject": "English Language",
+            "chapters": [
+                {
+                    "title": "Reading Comprehension",
+                    "topics": [
+                        { "title": "RC Passages", "description": "Reading and answering on passages" },
+                        { "title": "Cloze Test", "description": "Filling blanks in a passage" },
+                        { "title": "Fill in the Blanks", "description": "Contextual word choice" }
+                    ]
+                },
+                {
+                    "title": "Grammar and Vocabulary",
+                    "topics": [
+                        { "title": "Error Spotting and Sentence Improvement", "description": "Detecting and fixing grammatical errors" },
+                        { "title": "Para Jumbles and Rearrangement", "description": "Ordering shuffled sentences" },
+                        { "title": "Synonyms, Antonyms and Word Usage", "description": "Word meaning and correct usage" },
+                        { "title": "Idioms and Phrases", "description": "Phrase meaning and application" }
+                    ]
+                }
+            ]
+        },
+        {
+            "subject": "General Awareness",
+            "chapters": [
+                {
+                    "title": "Banking and Financial Awareness",
+                    "topics": [
+                        { "title": "RBI and Monetary Policy", "description": "Repo, CRR, SLR and policy tools" },
+                        { "title": "Banking Products and Schemes", "description": "Deposits, loans and government schemes" },
+                        { "title": "Financial Institutions and Terms", "description": "NABARD, SEBI, IRDAI and key terms" },
+                        { "title": "Budget and Indian Economy", "description": "Fiscal concepts and economic indicators" }
+                    ]
+                },
+                {
+                    "title": "Current Affairs and Static GK",
+                    "topics": [
+                        { "title": "Current Affairs National and International", "description": "Recent events and developments" },
+                        { "title": "Sports and Awards", "description": "Events, winners and honours" },
+                        { "title": "Indian Polity, History and Geography", "description": "Governance, heritage and geography" },
+                        { "title": "Science and Technology", "description": "Discoveries, terms and applications" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

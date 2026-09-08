@@ -1,0 +1,44 @@
+{
+    "exam": "XAT",
+    "subjects": [
+        {
+            "subject": "Decision Making",
+            "chapters": [
+                {
+                    "title": "Decision Making Fundamentals",
+                    "topics": [
+                        { "title": "What is Decision Making", "description": "How XAT tests ethical and managerial judgment" },
+                        { "title": "Stakeholder Analysis", "description": "Identifying who is affected by a decision" },
+                        { "title": "Weighing Options", "description": "Comparing alternatives against goals and constraints" }
+                    ]
+                },
+                {
+                    "title": "Business and Management Dilemmas",
+                    "topics": [
+                        { "title": "Ethical Dilemmas", "description": "Right-versus-right choices in business" },
+                        { "title": "People and HR Situations", "description": "Managing employees, fairness and discipline" },
+                        { "title": "Customer and Product Decisions", "description": "Quality, service and customer priorities" },
+                        { "title": "Resource and Operational Pressures", "description": "Costs, deadlines and short-term trade-offs" },
+                        { "title": "Corporate Governance Scenarios", "description": "Compliance, whistleblowing and integrity" }
+                    ]
+                },
+                {
+                    "title": "Data and Analytical Decision Making",
+                    "topics": [
+                        { "title": "Caselet-Based Decisions", "description": "Making decisions from quantitative caselets" },
+                        { "title": "Multi-Criteria Evaluation", "description": "Ranking choices on several criteria" },
+                        { "title": "Risk and Uncertainty", "description": "Handling incomplete information in choices" }
+                    ]
+                },
+                {
+                    "title": "Exam Strategy",
+                    "topics": [
+                        { "title": "Answering Approach", "description": "Choosing the most sensible option among close ones" },
+                        { "title": "Common Traps", "description": "Avoiding extreme and rule-violating options" },
+                        { "title": "Practice Sets", "description": "Worked decision-making scenario practice" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "exam": "XAT",
+    "subjects": [
+        {
+            "subject": "Verbal & Logical Ability",
+            "chapters": [
+                {
+                    "title": "Reading Comprehension",
+                    "topics": [
+                        { "title": "Main Idea and Tone", "description": "Identifying themes and author attitude" },
+                        { "title": "Inference and Beyond the Text", "description": "Drawing implications for management thinking" },
+                        { "title": "Structure and Argument", "description": "Following the logic of argumentative passages" },
+                        { "title": "Contextual Vocabulary", "description": "Word meaning from passage context" }
+                    ]
+                },
+                {
+                    "title": "Verbal Ability",
+                    "topics": [
+                        { "title": "Para Jumbles", "description": "Ordering sentences into coherent paragraphs" },
+                        { "title": "Para Summary", "description": "Condensing into the best summary" },
+                        { "title": "Grammar and Usage", "description": "Correct usage, agreement and tense" },
+                        { "title": "Vocabulary and Analogy", "description": "Word power and logical word pairs" }
+                    ]
+                },
+                {
+                    "title": "Logical and Analytical Reasoning",
+                    "topics": [
+                        { "title": "Arrangements and Puzzles", "description": "Seating, teams and grid arrangements" },
+                        { "title": "Syllogisms and Blood Relations", "description": "Formal logic and family trees" },
+                        { "title": "Direction, Series and Coding", "description": "Patterns, movements and decoding" },
+                        { "title": "Critical Reasoning", "description": "Arguments, assumptions and flaws" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

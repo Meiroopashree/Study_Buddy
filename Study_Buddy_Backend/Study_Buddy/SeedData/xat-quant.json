@@ -1,0 +1,48 @@
+{
+    "exam": "XAT",
+    "subjects": [
+        {
+            "subject": "Quantitative Ability & Data Interpretation",
+            "chapters": [
+                {
+                    "title": "Arithmetic",
+                    "topics": [
+                        { "title": "Percentages and Ratios", "description": "Change, ratios and proportional reasoning" },
+                        { "title": "Profit, Loss and Interest", "description": "Commercial arithmetic applications" },
+                        { "title": "Averages and Mixtures", "description": "Weighted averages and alligation" },
+                        { "title": "Time and Work", "description": "Combined work-rate problems" },
+                        { "title": "Time, Speed and Distance", "description": "Motion, relative speed and trains" }
+                    ]
+                },
+                {
+                    "title": "Algebra and Modern Math",
+                    "topics": [
+                        { "title": "Equations and Inequalities", "description": "Linear and quadratic equations" },
+                        { "title": "Functions and Series", "description": "AP, GP, and function basics" },
+                        { "title": "Logarithms", "description": "Log rules and applications" },
+                        { "title": "Permutations, Combinations and Probability", "description": "Counting and chance" },
+                        { "title": "Set Theory", "description": "Venn diagrams and counting categories" }
+                    ]
+                },
+                {
+                    "title": "Geometry and Mensuration",
+                    "topics": [
+                        { "title": "Triangles and Polygons", "description": "Angle and area properties" },
+                        { "title": "Circles", "description": "Chords, tangents and arcs" },
+                        { "title": "Coordinate Geometry", "description": "Lines, distance and midpoints" },
+                        { "title": "Mensuration", "description": "2D and 3D areas and volumes" }
+                    ]
+                },
+                {
+                    "title": "Data Interpretation",
+                    "topics": [
+                        { "title": "Tables and Caselets", "description": "Tabular and text-based data" },
+                        { "title": "Bar and Line Charts", "description": "Trends and comparisons" },
+                        { "title": "Pie Charts", "description": "Proportions and angle computations" },
+                        { "title": "Data Sufficiency", "description": "Is the information sufficient" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

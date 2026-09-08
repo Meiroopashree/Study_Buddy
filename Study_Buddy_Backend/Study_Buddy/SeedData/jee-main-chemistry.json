@@ -1,0 +1,705 @@
+﻿{
+    "exam":  "JEE Main",
+    "subjects":  [
+                     {
+                         "subject":  "Chemistry",
+                         "chapters":  [
+                                          {
+                                              "title":  "Some Basic Concepts of Chemistry",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Matter and its Classification",
+                                                                 "description":  "States of matter, mixtures, compounds and elements"
+                                                             },
+                                                             {
+                                                                 "title":  "Mole Concept and Molar Mass",
+                                                                 "description":  "Avogadro\u0027s number, mole calculations and molar masses"
+                                                             },
+                                                             {
+                                                                 "title":  "Percentage Composition and Empirical Formula",
+                                                                 "description":  "Elemental analysis and deriving empirical and molecular formulae"
+                                                             },
+                                                             {
+                                                                 "title":  "Stoichiometry",
+                                                                 "description":  "Balancing reactions, limiting reagents and yield calculations"
+                                                             },
+                                                             {
+                                                                 "title":  "Laws of Chemical Combination",
+                                                                 "description":  "Law of conservation of mass and definite and multiple proportions"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Atomic Structure",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Subatomic Particles",
+                                                                 "description":  "Proton, neutron, electron and their properties"
+                                                             },
+                                                             {
+                                                                 "title":  "Atomic Models",
+                                                                 "description":  "Thomson, Rutherford and Bohr models of the atom"
+                                                             },
+                                                             {
+                                                                 "title":  "Quantum Numbers and Orbitals",
+                                                                 "description":  "Principal, azimuthal, magnetic and spin quantum numbers"
+                                                             },
+                                                             {
+                                                                 "title":  "Electronic Configuration",
+                                                                 "description":  "Aufbau principle, Pauli exclusion and Hund\u0027s rule"
+                                                             },
+                                                             {
+                                                                 "title":  "de Broglie and Heisenberg Principles",
+                                                                 "description":  "Wave-particle duality and uncertainty principle"
+                                                             },
+                                                             {
+                                                                 "title":  "Ionisation Energy and Electron Affinity",
+                                                                 "description":  "Periodic trends in ionisation energy and electron gain enthalpy"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Chemical Bonding and Molecular Structure",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Ionic and Covalent Bonds",
+                                                                 "description":  "Formation, characteristics and lattice energy of bonds"
+                                                             },
+                                                             {
+                                                                 "title":  "Fajan\u0027s Rule and Dipole Moment",
+                                                                 "description":  "Covalent character of ionic bonds and polarity of molecules"
+                                                             },
+                                                             {
+                                                                 "title":  "Lewis Structures",
+                                                                 "description":  "Drawing Lewis structures and formal charge"
+                                                             },
+                                                             {
+                                                                 "title":  "VSEPR Theory",
+                                                                 "description":  "Predicting molecular shapes from electron pairs"
+                                                             },
+                                                             {
+                                                                 "title":  "Hybridisation",
+                                                                 "description":  "sp, sp2 and sp3 hybridisation and molecular geometry"
+                                                             },
+                                                             {
+                                                                 "title":  "Molecular Orbital Theory",
+                                                                 "description":  "Bonding and antibonding orbitals and bond order"
+                                                             },
+                                                             {
+                                                                 "title":  "Hydrogen Bonding and Bond Parameters",
+                                                                 "description":  "Bond lengths, bond angles and hydrogen bonds"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Classification of Elements and Periodicity in Properties",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Need for Classification and Modern Periodic Law",
+                                                                 "description":  "History of classification and Moseley\u0027s modern periodic law"
+                                                             },
+                                                             {
+                                                                 "title":  "Modern Periodic Table",
+                                                                 "description":  "Long form of the periodic table, periods and groups"
+                                                             },
+                                                             {
+                                                                 "title":  "Electronic Configuration and Types of Elements",
+                                                                 "description":  "s, p, d and f block elements and their position in the table"
+                                                             },
+                                                             {
+                                                                 "title":  "Atomic and Ionic Radii",
+                                                                 "description":  "Periodic trends in atomic and ionic radii across periods and groups"
+                                                             },
+                                                             {
+                                                                 "title":  "Ionisation Enthalpy",
+                                                                 "description":  "Factors and periodic trends in ionisation energy"
+                                                             },
+                                                             {
+                                                                 "title":  "Electron Gain Enthalpy",
+                                                                 "description":  "Trends in electron gain enthalpy across periods and groups"
+                                                             },
+                                                             {
+                                                                 "title":  "Electronegativity",
+                                                                 "description":  "Pauling scale, factors affecting and periodic trends in electronegativity"
+                                                             },
+                                                             {
+                                                                 "title":  "Periodic Trends in Chemical Properties",
+                                                                 "description":  "Valency, metallic and non-metallic character and reactivity trends"
+                                                             },
+                                                             {
+                                                                 "title":  "Anomalous Properties and Diagonal Relationship",
+                                                                 "description":  "Anomalies of second period elements and diagonal relationships"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "States of Matter",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Gaseous State and Gas Laws",
+                                                                 "description":  "Boyle\u0027s, Charles\u0027 and Avogadro\u0027s laws for gases"
+                                                             },
+                                                             {
+                                                                 "title":  "Ideal Gas Equation",
+                                                                 "description":  "Combined gas law and ideal gas equation"
+                                                             },
+                                                             {
+                                                                 "title":  "Kinetic Theory of Gases",
+                                                                 "description":  "Molecular speeds, collisions and deviations from ideality"
+                                                             },
+                                                             {
+                                                                 "title":  "Liquid State Properties",
+                                                                 "description":  "Vapour pressure, viscosity and surface tension"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Chemical Thermodynamics",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Thermodynamic Terms",
+                                                                 "description":  "System, surroundings, state functions and processes"
+                                                             },
+                                                             {
+                                                                 "title":  "First Law of Thermodynamics",
+                                                                 "description":  "Internal energy, heat and work relationships"
+                                                             },
+                                                             {
+                                                                 "title":  "Enthalpy and Calorimetry",
+                                                                 "description":  "Enthalpy changes and heat measurement"
+                                                             },
+                                                             {
+                                                                 "title":  "Hess\u0027s Law",
+                                                                 "description":  "Enthalpy of reactions from known reactions"
+                                                             },
+                                                             {
+                                                                 "title":  "Second Law and Gibbs Free Energy",
+                                                                 "description":  "Entropy, spontaneity and free energy change"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Equilibrium",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Chemical Equilibrium",
+                                                                 "description":  "Equilibrium constants and the reaction quotient"
+                                                             },
+                                                             {
+                                                                 "title":  "Le Chatelier\u0027s Principle",
+                                                                 "description":  "Effect of concentration, pressure and temperature changes"
+                                                             },
+                                                             {
+                                                                 "title":  "Ionic Equilibrium and Acid-Base Concepts",
+                                                                 "description":  "Ionisation constants, pH and acid-base theories"
+                                                             },
+                                                             {
+                                                                 "title":  "Buffer Solutions and Solubility Product",
+                                                                 "description":  "Buffer capacity, Henderson equation and Ksp"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Redox Reactions",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Oxidation and Reduction",
+                                                                 "description":  "Oxidation states and identifying redox reactions"
+                                                             },
+                                                             {
+                                                                 "title":  "Oxidation Numbers and Balancing",
+                                                                 "description":  "Assigning oxidation numbers and balancing redox equations"
+                                                             },
+                                                             {
+                                                                 "title":  "Electrochemical Series",
+                                                                 "description":  "Standard electrode potentials and reactivity order"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Chemical Kinetics",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Rate of Reaction",
+                                                                 "description":  "Instantaneous and average rates of reactions"
+                                                             },
+                                                             {
+                                                                 "title":  "Rate Laws and Order of Reaction",
+                                                                 "description":  "Rate constants and determining reaction order"
+                                                             },
+                                                             {
+                                                                 "title":  "Collision Theory and Molecularity",
+                                                                 "description":  "Collision theory, activated complex and molecularity of reactions"
+                                                             },
+                                                             {
+                                                                 "title":  "Integrated Rate Equations",
+                                                                 "description":  "First, second and zero order kinetics"
+                                                             },
+                                                             {
+                                                                 "title":  "Half-Life and Arrhenius Equation",
+                                                                 "description":  "Half-life calculations and temperature dependence of rates"
+                                                             },
+                                                             {
+                                                                 "title":  "Catalysis",
+                                                                 "description":  "Catalysts and their effect on reaction rates"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Surface Chemistry",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Adsorption",
+                                                                 "description":  "Physisorption, chemisorption and adsorption isotherms"
+                                                             },
+                                                             {
+                                                                 "title":  "Catalysis",
+                                                                 "description":  "Homogeneous and heterogeneous catalysis"
+                                                             },
+                                                             {
+                                                                 "title":  "Colloids",
+                                                                 "description":  "Preparation, properties and types of colloids"
+                                                             },
+                                                             {
+                                                                 "title":  "Emulsions and Applications",
+                                                                 "description":  "Emulsions and uses of surface chemistry"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Solid State",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Classification of Solids",
+                                                                 "description":  "Crystalline and amorphous solids"
+                                                             },
+                                                             {
+                                                                 "title":  "Crystal Lattices and Unit Cells",
+                                                                 "description":  "Bravais lattices and types of unit cells"
+                                                             },
+                                                             {
+                                                                 "title":  "Packing and Voids",
+                                                                 "description":  "Close packing, coordination number and void structures"
+                                                             },
+                                                             {
+                                                                 "title":  "Imperfections in Solids",
+                                                                 "description":  "Point defects and their effects on properties"
+                                                             },
+                                                             {
+                                                                 "title":  "Properties of Solids",
+                                                                 "description":  "Electrical, magnetic and dielectric properties"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Solutions",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Types and Concentration of Solutions",
+                                                                 "description":  "Concentration terms and their interconversion"
+                                                             },
+                                                             {
+                                                                 "title":  "Raoult\u0027s Law",
+                                                                 "description":  "Vapour pressure lowering and ideal solutions"
+                                                             },
+                                                             {
+                                                                 "title":  "Colligative Properties",
+                                                                 "description":  "Boiling point elevation and freezing point depression"
+                                                             },
+                                                             {
+                                                                 "title":  "Osmotic Pressure",
+                                                                 "description":  "Osmosis and osmotic pressure calculations"
+                                                             },
+                                                             {
+                                                                 "title":  "van\u0027t Hoff Factor",
+                                                                 "description":  "Colligative properties for electrolytes and abnormality"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Electrochemistry",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Electrochemical Cells",
+                                                                 "description":  "Galvanic cells and their representation"
+                                                             },
+                                                             {
+                                                                 "title":  "Electrode Potential and Nernst Equation",
+                                                                 "description":  "Standard potentials and Nernst equation applications"
+                                                             },
+                                                             {
+                                                                 "title":  "Electrolysis and Faraday\u0027s Laws",
+                                                                 "description":  "Electrolysis products and quantity of charge"
+                                                             },
+                                                             {
+                                                                 "title":  "Electrolytic Conductance and Kohlrausch\u0027s Law",
+                                                                 "description":  "Conductance, molar conductivity and Kohlrausch\u0027s law"
+                                                             },
+                                                             {
+                                                                 "title":  "Batteries and Corrosion",
+                                                                 "description":  "Primary, secondary cells and corrosion prevention"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "General Principles of Isolation of Elements",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Occurrence and Concentration of Ores",
+                                                                 "description":  "Mining and concentration methods for ores"
+                                                             },
+                                                             {
+                                                                 "title":  "Extraction and Refining of Metals",
+                                                                 "description":  "Smelting, reduction and refining processes"
+                                                             },
+                                                             {
+                                                                 "title":  "Metallurgy of Specific Metals",
+                                                                 "description":  "Extraction of iron, aluminium, copper and zinc"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Hydrogen",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Position and Isotopes of Hydrogen",
+                                                                 "description":  "Occurrence, isotopes and uses of hydrogen"
+                                                             },
+                                                             {
+                                                                 "title":  "Water and Hydrogen Peroxide",
+                                                                 "description":  "Properties of water, hard water and hydrogen peroxide"
+                                                             },
+                                                             {
+                                                                 "title":  "Heavy Water",
+                                                                 "description":  "Preparation and applications of heavy water"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "s-Block Elements",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Alkali Metals (Group 1)",
+                                                                 "description":  "Properties, compounds and trends in Group 1"
+                                                             },
+                                                             {
+                                                                 "title":  "Alkaline Earth Metals (Group 2)",
+                                                                 "description":  "Properties, compounds and trends in Group 2"
+                                                             },
+                                                             {
+                                                                 "title":  "Compounds and Uses of s-Block Elements",
+                                                                 "description":  "Biological importance and applications of compounds"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "p-Block Elements",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Group 13 Elements",
+                                                                 "description":  "Boron family and its compounds"
+                                                             },
+                                                             {
+                                                                 "title":  "Group 14 Elements",
+                                                                 "description":  "Carbon family, allotropes and compounds"
+                                                             },
+                                                             {
+                                                                 "title":  "Group 15 Elements",
+                                                                 "description":  "Nitrogen family and ammonia and nitric acid"
+                                                             },
+                                                             {
+                                                                 "title":  "Group 16 Elements",
+                                                                 "description":  "Oxygen family, oxides and sulphur compounds"
+                                                             },
+                                                             {
+                                                                 "title":  "Group 17 Elements",
+                                                                 "description":  "Halogens and their compounds"
+                                                             },
+                                                             {
+                                                                 "title":  "Group 18 Elements",
+                                                                 "description":  "Noble gases and their properties"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "d- and f-Block Elements",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Transition Elements",
+                                                                 "description":  "Electronic configuration and general properties of d-block"
+                                                             },
+                                                             {
+                                                                 "title":  "Lanthanoids and Actinoids",
+                                                                 "description":  "Characteristics and uses of f-block elements"
+                                                             },
+                                                             {
+                                                                 "title":  "Important Compounds of Transition Metals",
+                                                                 "description":  "Oxides, permanganates and dichromates"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Coordination Compounds",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Werner\u0027s Theory and Basics",
+                                                                 "description":  "Primary and secondary valences"
+                                                             },
+                                                             {
+                                                                 "title":  "Ligands and Coordination Number",
+                                                                 "description":  "Types of ligands and coordination numbers"
+                                                             },
+                                                             {
+                                                                 "title":  "Nomenclature of Coordination Compounds",
+                                                                 "description":  "IUPAC naming rules for complexes"
+                                                             },
+                                                             {
+                                                                 "title":  "Isomerism in Coordination Compounds",
+                                                                 "description":  "Structural and stereoisomerism in complexes"
+                                                             },
+                                                             {
+                                                                 "title":  "Valence Bond and Crystal Field Theory",
+                                                                 "description":  "Bonding, magnetism and colour of complexes"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Environmental Chemistry",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Air Pollution",
+                                                                 "description":  "Pollutants, acid rain and the greenhouse effect"
+                                                             },
+                                                             {
+                                                                 "title":  "Water and Soil Pollution",
+                                                                 "description":  "Water contaminants and soil degradation"
+                                                             },
+                                                             {
+                                                                 "title":  "Green Chemistry",
+                                                                 "description":  "Principles and applications of green chemistry"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Purification and Characterisation of Organic Compounds",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Methods of Purification",
+                                                                 "description":  "Crystallisation, distillation, sublimation and chromatography"
+                                                             },
+                                                             {
+                                                                 "title":  "Qualitative and Quantitative Analysis",
+                                                                 "description":  "Detection and estimation of elements in organic compounds"
+                                                             },
+                                                             {
+                                                                 "title":  "Empirical and Molecular Formula",
+                                                                 "description":  "Determination of formulae from analysis data"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Some Basic Principles of Organic Chemistry",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Tetravalency and Hybridisation of Carbon",
+                                                                 "description":  "Structure and bonding of carbon compounds"
+                                                             },
+                                                             {
+                                                                 "title":  "IUPAC Nomenclature",
+                                                                 "description":  "Naming of organic compounds by IUPAC rules"
+                                                             },
+                                                             {
+                                                                 "title":  "Isomerism",
+                                                                 "description":  "Structural and stereoisomerism in organic molecules"
+                                                             },
+                                                             {
+                                                                 "title":  "Electronic Effects",
+                                                                 "description":  "Inductive, resonance, mesomeric and hyperconjugation effects"
+                                                             },
+                                                             {
+                                                                 "title":  "Reaction Intermediates",
+                                                                 "description":  "Carbocations, carbanions, free radicals and carbenes"
+                                                             },
+                                                             {
+                                                                 "title":  "Types of Organic Reactions",
+                                                                 "description":  "Substitution, addition, elimination and rearrangement"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Hydrocarbons",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Alkanes",
+                                                                 "description":  "Structure, preparation and reactions of alkanes"
+                                                             },
+                                                             {
+                                                                 "title":  "Alkenes",
+                                                                 "description":  "Structure, preparation and addition reactions of alkenes"
+                                                             },
+                                                             {
+                                                                 "title":  "Alkynes",
+                                                                 "description":  "Structure, acidity and reactions of alkynes"
+                                                             },
+                                                             {
+                                                                 "title":  "Aromatic Hydrocarbons",
+                                                                 "description":  "Benzene structure and electrophilic substitution"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Haloalkanes and Haloarenes",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Classification and Nomenclature",
+                                                                 "description":  "Types and naming of halogen compounds"
+                                                             },
+                                                             {
+                                                                 "title":  "Nucleophilic Substitution (SN1 and SN2)",
+                                                                 "description":  "Mechanisms and stereochemistry of substitution"
+                                                             },
+                                                             {
+                                                                 "title":  "Properties and Reactions",
+                                                                 "description":  "Reactions and uses of haloalkanes and haloarenes"
+                                                             },
+                                                             {
+                                                                 "title":  "Environmental Effects of Halogen Compounds",
+                                                                 "description":  "CFCs and their environmental impact"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Alcohols, Phenols and Ethers",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Nomenclature and Structure",
+                                                                 "description":  "Classification and structure of alcohols, phenols and ethers"
+                                                             },
+                                                             {
+                                                                 "title":  "Preparation of Alcohols, Phenols and Ethers",
+                                                                 "description":  "Synthetic methods for these compounds"
+                                                             },
+                                                             {
+                                                                 "title":  "Properties and Reactions",
+                                                                 "description":  "Reactivity, acidity and reactions of these functional groups"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Aldehydes, Ketones and Carboxylic Acids",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Structure and Nomenclature",
+                                                                 "description":  "Carbonyl compounds and their classification"
+                                                             },
+                                                             {
+                                                                 "title":  "Preparation of Carbonyl Compounds",
+                                                                 "description":  "Synthetic routes to aldehydes and ketones"
+                                                             },
+                                                             {
+                                                                 "title":  "Reactions of Aldehydes and Ketones",
+                                                                 "description":  "Nucleophilic addition and oxidation-reduction reactions"
+                                                             },
+                                                             {
+                                                                 "title":  "Carboxylic Acids and their Derivatives",
+                                                                 "description":  "Acidity, reactions and derivatives of carboxylic acids"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Amines",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Classification and Structure",
+                                                                 "description":  "Primary, secondary and tertiary amines"
+                                                             },
+                                                             {
+                                                                 "title":  "Basicity of Amines",
+                                                                 "description":  "Factors affecting basic strength of amines"
+                                                             },
+                                                             {
+                                                                 "title":  "Diazonium Salts and Reactions",
+                                                                 "description":  "Preparation and reactions of diazonium salts"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Biomolecules",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Carbohydrates",
+                                                                 "description":  "Monosaccharides, disaccharides and polysaccharides"
+                                                             },
+                                                             {
+                                                                 "title":  "Proteins and Amino Acids",
+                                                                 "description":  "Amino acids, peptide bonds and protein structure"
+                                                             },
+                                                             {
+                                                                 "title":  "Enzymes and Vitamins",
+                                                                 "description":  "Enzyme function and classification of vitamins"
+                                                             },
+                                                             {
+                                                                 "title":  "Nucleic Acids",
+                                                                 "description":  "DNA, RNA and nucleotides"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Polymers",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Classification of Polymers",
+                                                                 "description":  "Natural, synthetic, addition and condensation polymers"
+                                                             },
+                                                             {
+                                                                 "title":  "Addition and Condensation Polymerisation",
+                                                                 "description":  "Mechanisms and important examples"
+                                                             },
+                                                             {
+                                                                 "title":  "Biodegradable Polymers and Applications",
+                                                                 "description":  "Environment-friendly polymers and their uses"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Chemistry in Everyday Life",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Drugs and Medicines",
+                                                                 "description":  "Classification and mechanism of drug action"
+                                                             },
+                                                             {
+                                                                 "title":  "Chemicals in Food",
+                                                                 "description":  "Preservatives, sweeteners and food additives"
+                                                             },
+                                                             {
+                                                                 "title":  "Cleansing Agents",
+                                                                 "description":  "Soaps and detergents and their action"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Principles Related to Practical Chemistry",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Qualitative Analysis of Inorganic Salts",
+                                                                 "description":  "Detection of cations and anions using group reagents"
+                                                             },
+                                                             {
+                                                                 "title":  "Detection of Elements and Functional Groups",
+                                                                 "description":  "Detection of nitrogen, sulphur, halogens and organic functional groups"
+                                                             },
+                                                             {
+                                                                 "title":  "Titration and Volumetric Analysis",
+                                                                 "description":  "Acid-base, redox and complexometric titrations"
+                                                             },
+                                                             {
+                                                                 "title":  "Preparation of Compounds and Separation Techniques",
+                                                                 "description":  "Preparation of standard compounds and chromatographic separation"
+                                                             }
+                                                         ]
+                                          }
+                                      ]
+                     }
+                 ]
+}

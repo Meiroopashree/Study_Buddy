@@ -1,0 +1,39 @@
+{
+    "exam": "SNAP",
+    "subjects": [
+        {
+            "subject": "Analytical & Logical Reasoning",
+            "chapters": [
+                {
+                    "title": "Puzzles and Arrangements",
+                    "topics": [
+                        { "title": "Seating Arrangements", "description": "Linear, circular and complex seating puzzles" },
+                        { "title": "Team Formations", "description": "Grouping under constraints" },
+                        { "title": "Grid-Based Puzzles", "description": "Multi-attribute logic grids" },
+                        { "title": "Direction and Distance", "description": "Movement path problems" }
+                    ]
+                },
+                {
+                    "title": "Deductive Logic",
+                    "topics": [
+                        { "title": "Syllogisms", "description": "Formal conclusions from statements" },
+                        { "title": "Venn Diagrams", "description": "Overlapping category problems" },
+                        { "title": "Blood Relations", "description": "Family and coded relationships" },
+                        { "title": "Ordering and Ranking", "description": "Sequencing and positional logic" }
+                    ]
+                },
+                {
+                    "title": "Patterns and Critical Reasoning",
+                    "topics": [
+                        { "title": "Number and Letter Series", "description": "Continuing logical sequences" },
+                        { "title": "Coding-Decoding", "description": "Letter and symbol codes" },
+                        { "title": "Analogy Logic", "description": "Finding logical parallels" },
+                        { "title": "Assumptions and Inferences", "description": "Analyzing statements and arguments" },
+                        { "title": "Cause and Effect Reasoning", "description": "Linking events causally" },
+                        { "title": "Critical Reasoning", "description": "Strengthening, weakening and flaws" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

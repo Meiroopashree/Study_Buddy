@@ -1,0 +1,54 @@
+{
+    "exam": "CAT",
+    "subjects": [
+        {
+            "subject": "Data Interpretation & Logical Reasoning",
+            "chapters": [
+                {
+                    "title": "Data Interpretation Basics",
+                    "topics": [
+                        { "title": "Tables and Charts Decoding", "description": "Reading tables and extracting values accurately" },
+                        { "title": "Bar Charts", "description": "Simple, stacked and divided bar graph interpretation" },
+                        { "title": "Line Graphs and Trends", "description": "Trend analysis, slopes and percentage changes" },
+                        { "title": "Pie Charts", "description": "Shares, angles and percentage distribution problems" },
+                        { "title": "Caselets", "description": "Interpreting paragraph-based data sets" },
+                        { "title": "Mixing Multiple Charts", "description": "Combining data from two or more charts" }
+                    ]
+                },
+                {
+                    "title": "Advanced Data Interpretation",
+                    "topics": [
+                        { "title": "Combined Data Tables", "description": "Multi-column tables with conditions and riddles" },
+                        { "title": "Graphs and Charts Comparisons", "description": "Cross-chart comparisons and growth analysis" },
+                        { "title": "Data Sufficiency in DI", "description": "Deciding if given statements are sufficient to answer" },
+                        { "title": "Approximation and Estimation", "description": "Quick approximations for time-bound DI sets" }
+                    ]
+                },
+                {
+                    "title": "Logical Reasoning Fundamentals",
+                    "topics": [
+                        { "title": "Seating Arrangements", "description": "Linear and circular seating with directions" },
+                        { "title": "Blood Relations", "description": "Family tree relationships and coded relations" },
+                        { "title": "Direction Sense", "description": "Path finding and displacement problems" },
+                        { "title": "Venn Diagrams", "description": "Set relationships and overlapping group problems" },
+                        { "title": "Syllogisms", "description": "Statements and conclusions using formal logic" },
+                        { "title": "Series and Figure Series", "description": "Number, letter and figure pattern identification" },
+                        { "title": "Coding-Decoding", "description": "Deciphering letter and symbol codes" },
+                        { "title": "Ranking and Ordering", "description": "Ordering groups and finding positions" }
+                    ]
+                },
+                {
+                    "title": "Advanced Logical Reasoning",
+                    "topics": [
+                        { "title": "Puzzles and Grid Arrangements", "description": "Complex multi-attribute puzzle solving" },
+                        { "title": "Team Formations and Groups", "description": "Splitting candidates into teams under constraints" },
+                        { "title": "Assumptions and Conclusions", "description": "Distinguishing valid assumptions and conclusions" },
+                        { "title": "Logical Consistency and Paradoxes", "description": "Detecting contradictions and reasoning fallacies" },
+                        { "title": "Data Sufficiency in LR", "description": "Using statements to determine logical outcomes" },
+                        { "title": "Binary Logic and Truth Tellers", "description": "Solving problems with people who always or never lie" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

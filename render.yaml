@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: studybuddy-api
+    runtime: dotnet
+    plan: free
+    rootDir: Study_Buddy_Backend/Study_Buddy
+    buildCommand: dotnet publish -c Release -o out
+    startCommand: ./out/Study_Buddy
+    healthCheckPath: /api/learning/exams
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: Mistral__ApiKey
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: studybuddy-db
+          property: connectionString
+
+databases:
+  - name: studybuddy-db
+    plan: free

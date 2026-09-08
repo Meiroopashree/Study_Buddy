@@ -1,0 +1,50 @@
+{
+    "exam": "NMAT",
+    "subjects": [
+        {
+            "subject": "Quantitative Skills",
+            "chapters": [
+                {
+                    "title": "Number System and Arithmetic",
+                    "topics": [
+                        { "title": "Properties of Numbers", "description": "Factors, multiples, primes and divisibility" },
+                        { "title": "Percentages", "description": "Percentage change and successive percentages" },
+                        { "title": "Profit, Loss and Discount", "description": "Cost, profit-margin and discount computations" },
+                        { "title": "Interest and Annuities", "description": "Simple and compound interest and EMI basics" },
+                        { "title": "Ratio, Proportion and Variation", "description": "Partnerships and proportional reasoning" },
+                        { "title": "Averages and Alligation", "description": "Combined averages and mixture ratios" },
+                        { "title": "Time and Work", "description": "Work-rate and pipes-and-cisterns problems" },
+                        { "title": "Time, Speed and Distance", "description": "Relative speed, boats, trains and races" }
+                    ]
+                },
+                {
+                    "title": "Algebra",
+                    "topics": [
+                        { "title": "Linear and Quadratic Equations", "description": "Solving equations and inequalities" },
+                        { "title": "Functions and Graphs", "description": "Function values, inverses and simple graphs" },
+                        { "title": "Logarithms and Exponents", "description": "Log rules and exponential equations" },
+                        { "title": "Progressions", "description": "AP, GP and their sums" }
+                    ]
+                },
+                {
+                    "title": "Geometry and Mensuration",
+                    "topics": [
+                        { "title": "Triangles and Polygons", "description": "Angles, congruence, similarity and polygon properties" },
+                        { "title": "Circles", "description": "Chords, tangents and inscribed figures" },
+                        { "title": "Coordinate Geometry", "description": "Distance, midpoints and line equations" },
+                        { "title": "2D and 3D Mensuration", "description": "Areas and volumes of common figures" }
+                    ]
+                },
+                {
+                    "title": "Modern Math and Data Sufficiency",
+                    "topics": [
+                        { "title": "Permutations and Combinations", "description": "Arrangements and selections" },
+                        { "title": "Probability", "description": "Classical and conditional probability" },
+                        { "title": "Set Theory", "description": "Venn diagrams and counting" },
+                        { "title": "Data Sufficiency", "description": "Is the given data enough to answer" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

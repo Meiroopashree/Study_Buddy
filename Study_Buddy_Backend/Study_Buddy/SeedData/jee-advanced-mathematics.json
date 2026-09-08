@@ -1,0 +1,770 @@
+﻿{
+    "exam":  "JEE Advanced",
+    "subjects":  [
+                     {
+                         "subject":  "Mathematics",
+                         "chapters":  [
+                                          {
+                                              "title":  "Sets, Relations and Functions",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Sets and their Representation",
+                                                                 "description":  "Roster and set-builder forms, types of sets, cardinality, subsets, power set and universal set"
+                                                             },
+                                                             {
+                                                                 "title":  "Operations on Sets and Venn Diagrams",
+                                                                 "description":  "Union, intersection, difference and complement of sets with Venn diagram representation"
+                                                             },
+                                                             {
+                                                                 "title":  "Cartesian Product of Sets",
+                                                                 "description":  "Ordered pairs, Cartesian product, and relation between Cartesian product and set operations"
+                                                             },
+                                                             {
+                                                                 "title":  "Relations and their Types",
+                                                                 "description":  "Equivalence, reflexive, symmetric and transitive relations with examples and problems"
+                                                             },
+                                                             {
+                                                                 "title":  "Functions, Domain and Range",
+                                                                 "description":  "Definition of a function, domain, codomain and range, and evaluation of functions"
+                                                             },
+                                                             {
+                                                                 "title":  "Types of Functions",
+                                                                 "description":  "Injective, surjective and bijective functions and how to classify a given function"
+                                                             },
+                                                             {
+                                                                 "title":  "Composite and Inverse Functions",
+                                                                 "description":  "Composition of functions, invertibility criteria and finding inverses of standard functions"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Complex Numbers",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Definition and Algebra of Complex Numbers",
+                                                                 "description":  "Real and imaginary parts, equality, addition, subtraction, multiplication and division"
+                                                             },
+                                                             {
+                                                                 "title":  "Conjugate and Modulus",
+                                                                 "description":  "Complex conjugate, modulus, and their properties with applications"
+                                                             },
+                                                             {
+                                                                 "title":  "Argument and Polar Form",
+                                                                 "description":  "Argument of a complex number, principal value and representation in polar form"
+                                                             },
+                                                             {
+                                                                 "title":  "Euler\u0027s Formula and Exponential Form",
+                                                                 "description":  "Exponential (Euler) form of a complex number and its use in multiplication and division"
+                                                             },
+                                                             {
+                                                                 "title":  "De Moivre\u0027s Theorem",
+                                                                 "description":  "Powers and roots of complex numbers using De Moivre\u0027s theorem"
+                                                             },
+                                                             {
+                                                                 "title":  "Roots of Unity and nth Roots",
+                                                                 "description":  "nth roots of unity, cube roots of unity and their properties"
+                                                             },
+                                                             {
+                                                                 "title":  "Geometry of Complex Numbers",
+                                                                 "description":  "Locus problems, distance and section formulae, rotation and reflection in the complex plane"
+                                                             },
+                                                             {
+                                                                 "title":  "Quadratic Equations in Complex Numbers",
+                                                                 "description":  "Solving equations involving complex coefficients and applying complex roots"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Quadratic Equations",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Polynomials and Quadratic Equations",
+                                                                 "description":  "Degree of polynomials, standard form and solving quadratic equations"
+                                                             },
+                                                             {
+                                                                 "title":  "Nature of Roots and Discriminant",
+                                                                 "description":  "Discriminant analysis, real, equal and complex roots"
+                                                             },
+                                                             {
+                                                                 "title":  "Sum and Product of Roots",
+                                                                 "description":  "Relations between roots and coefficients for quadratic equations"
+                                                             },
+                                                             {
+                                                                 "title":  "Forming Quadratic Equations from Roots",
+                                                                 "description":  "Constructing equations given roots or relations between roots"
+                                                             },
+                                                             {
+                                                                 "title":  "Common Roots and Transformation of Equations",
+                                                                 "description":  "Conditions for common roots and transforming equations using root substitutions"
+                                                             },
+                                                             {
+                                                                 "title":  "Location of Roots",
+                                                                 "description":  "Position of roots of a quadratic relative to given real numbers"
+                                                             },
+                                                             {
+                                                                 "title":  "Theory of Cubic and Quartic Equations",
+                                                                 "description":  "Relations between roots and coefficients for higher-degree polynomial equations"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Matrices and Determinants",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Types of Matrices",
+                                                                 "description":  "Row, column, square, diagonal, identity, zero and symmetric matrices"
+                                                             },
+                                                             {
+                                                                 "title":  "Operations on Matrices",
+                                                                 "description":  "Addition, scalar multiplication and multiplication of matrices with properties"
+                                                             },
+                                                             {
+                                                                 "title":  "Transpose and Special Matrices",
+                                                                 "description":  "Transpose, symmetric, skew-symmetric, orthogonal and idempotent matrices"
+                                                             },
+                                                             {
+                                                                 "title":  "Determinants and their Properties",
+                                                                 "description":  "Evaluating determinants and using row-column operations to simplify them"
+                                                             },
+                                                             {
+                                                                 "title":  "Minors, Cofactors, Adjoint and Inverse",
+                                                                 "description":  "Minors and cofactors, adjoint, and finding the inverse of a matrix"
+                                                             },
+                                                             {
+                                                                 "title":  "System of Linear Equations and Cramer\u0027s Rule",
+                                                                 "description":  "Solving linear systems, consistency, and Cramer\u0027s rule"
+                                                             },
+                                                             {
+                                                                 "title":  "Eigenvalues and Eigenvectors",
+                                                                 "description":  "Characteristic equation, eigenvalues, eigenvectors and diagonalisation"
+                                                             },
+                                                             {
+                                                                 "title":  "Cayley-Hamilton Theorem",
+                                                                 "description":  "Statement and applications of the Cayley-Hamilton theorem"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Permutations and Combinations",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Fundamental Principle of Counting",
+                                                                 "description":  "Addition and multiplication principles for counting arrangements"
+                                                             },
+                                                             {
+                                                                 "title":  "Factorials and Permutations",
+                                                                 "description":  "Permutations of n distinct objects, factorial notation and arrangements"
+                                                             },
+                                                             {
+                                                                 "title":  "Combinations",
+                                                                 "description":  "Selection of objects, nCr and its properties and identities"
+                                                             },
+                                                             {
+                                                                 "title":  "Permutations with Repeated Objects",
+                                                                 "description":  "Arrangements when some objects are identical"
+                                                             },
+                                                             {
+                                                                 "title":  "Circular Permutations",
+                                                                 "description":  "Arrangements around a circle with and without fixed positions"
+                                                             },
+                                                             {
+                                                                 "title":  "Restricted Arrangements and Selections",
+                                                                 "description":  "Counting problems with conditions on positions or selections"
+                                                             },
+                                                             {
+                                                                 "title":  "Multinomial Applications and Derangements",
+                                                                 "description":  "Distribution of objects and derangements (none in correct position)"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Mathematical Induction",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Principle of Mathematical Induction",
+                                                                 "description":  "Base case, induction hypothesis and inductive step"
+                                                             },
+                                                             {
+                                                                 "title":  "Proving Identities and Inequalities",
+                                                                 "description":  "Using induction to prove algebraic identities and inequalities"
+                                                             },
+                                                             {
+                                                                 "title":  "Divisibility and Recurrence Problems",
+                                                                 "description":  "Induction proofs for divisibility and recurrence relations"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Binomial Theorem",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Binomial Theorem for Positive Integral Index",
+                                                                 "description":  "Expansion of (a+b)^n using binomial coefficients"
+                                                             },
+                                                             {
+                                                                 "title":  "General and Middle Terms",
+                                                                 "description":  "Finding the general term, specific terms and middle terms in expansions"
+                                                             },
+                                                             {
+                                                                 "title":  "Properties of Binomial Coefficients",
+                                                                 "description":  "Sums and relations among binomial coefficients"
+                                                             },
+                                                             {
+                                                                 "title":  "Applications of Binomial Expansion",
+                                                                 "description":  "Approximations, divisibility problems and greatest terms"
+                                                             },
+                                                             {
+                                                                 "title":  "Binomial Theorem for Fractional and Negative Index",
+                                                                 "description":  "Infinite series expansion and conditions of convergence"
+                                                             },
+                                                             {
+                                                                 "title":  "Multinomial Coefficients",
+                                                                 "description":  "Expansions of (a+b+c+...)^n and coefficient problems"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Sequences and Series",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Arithmetic Progression",
+                                                                 "description":  "General term, sum of n terms and properties of APs"
+                                                             },
+                                                             {
+                                                                 "title":  "Geometric Progression",
+                                                                 "description":  "General term, sum of n terms, infinite GP and geometric mean"
+                                                             },
+                                                             {
+                                                                 "title":  "Harmonic Progression",
+                                                                 "description":  "Definition, harmonic mean and relation with AP and GP"
+                                                             },
+                                                             {
+                                                                 "title":  "Arithmetic-Geometric Series",
+                                                                 "description":  "Sum of AGP series and their infinite forms"
+                                                             },
+                                                             {
+                                                                 "title":  "Sum of Special Series",
+                                                                 "description":  "Sums of squares, cubes and related series"
+                                                             },
+                                                             {
+                                                                 "title":  "Relations Among AM, GM and HM",
+                                                                 "description":  "Ordering of means and their applications"
+                                                             },
+                                                             {
+                                                                 "title":  "Method of Differences and Mixed Problems",
+                                                                 "description":  "Summation using differences and solving mixed sequence problems"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Limits",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Concept of Limit",
+                                                                 "description":  "Intuitive idea of limits, left-hand and right-hand limits"
+                                                             },
+                                                             {
+                                                                 "title":  "Algebra of Limits",
+                                                                 "description":  "Rules for limits of sums, products, quotients and composites"
+                                                             },
+                                                             {
+                                                                 "title":  "Standard Limits",
+                                                                 "description":  "Standard limit results and direct evaluation techniques"
+                                                             },
+                                                             {
+                                                                 "title":  "Limits of Trigonometric Functions",
+                                                                 "description":  "Limits involving sin(x)/x and related trigonometric limits"
+                                                             },
+                                                             {
+                                                                 "title":  "Limits of Exponential and Logarithmic Functions",
+                                                                 "description":  "Limits involving e^x, log(1+x) and related standard forms"
+                                                             },
+                                                             {
+                                                                 "title":  "L\u0027Hopital\u0027s Rule",
+                                                                 "description":  "Evaluating indeterminate forms using differentiation"
+                                                             },
+                                                             {
+                                                                 "title":  "Limits at Infinity and Evaluation Techniques",
+                                                                 "description":  "Infinite limits, rationalisation and rationalisation-based evaluation"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Continuity and Differentiability",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Continuity of a Function",
+                                                                 "description":  "Definition of continuity at a point and on an interval"
+                                                             },
+                                                             {
+                                                                 "title":  "Types of Discontinuities",
+                                                                 "description":  "Removable, jump and infinite discontinuities"
+                                                             },
+                                                             {
+                                                                 "title":  "Differentiability of a Function",
+                                                                 "description":  "Derivative at a point and the differentiability criterion"
+                                                             },
+                                                             {
+                                                                 "title":  "Relation Between Continuity and Differentiability",
+                                                                 "description":  "Differentiability implies continuity and counterexamples"
+                                                             },
+                                                             {
+                                                                 "title":  "Chain Rule and Standard Derivatives",
+                                                                 "description":  "Differentiation of composite functions and standard results"
+                                                             },
+                                                             {
+                                                                 "title":  "Implicit and Logarithmic Differentiation",
+                                                                 "description":  "Differentiating implicit functions and log-differentiation"
+                                                             },
+                                                             {
+                                                                 "title":  "Parametric Differentiation",
+                                                                 "description":  "Derivatives of functions defined parametrically"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Applications of Derivatives",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Rate of Change",
+                                                                 "description":  "Derivatives as rates of change and related applications"
+                                                             },
+                                                             {
+                                                                 "title":  "Tangents and Normals",
+                                                                 "description":  "Equations of tangents and normals to curves"
+                                                             },
+                                                             {
+                                                                 "title":  "Increasing and Decreasing Functions",
+                                                                 "description":  "Monotonicity using the sign of the derivative"
+                                                             },
+                                                             {
+                                                                 "title":  "Maxima and Minima",
+                                                                 "description":  "Local and global extrema using first and second derivative tests"
+                                                             },
+                                                             {
+                                                                 "title":  "Approximation and Errors",
+                                                                 "description":  "Linear approximation and estimation of errors"
+                                                             },
+                                                             {
+                                                                 "title":  "Rolle\u0027s Theorem and Mean Value Theorem",
+                                                                 "description":  "Statements and applications of Rolle and Lagrange MVT"
+                                                             },
+                                                             {
+                                                                 "title":  "Optimisation Word Problems",
+                                                                 "description":  "Applying derivatives to maximise and minimise real-world quantities"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Indefinite Integrals",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Antiderivatives and Basic Rules",
+                                                                 "description":  "Reverse differentiation, power rule and standard integrals"
+                                                             },
+                                                             {
+                                                                 "title":  "Integration by Substitution",
+                                                                 "description":  "Substitution methods for common integral forms"
+                                                             },
+                                                             {
+                                                                 "title":  "Integration by Parts",
+                                                                 "description":  "Product rule in reverse, including LIATE order"
+                                                             },
+                                                             {
+                                                                 "title":  "Integration of Rational Functions",
+                                                                 "description":  "Partial fraction decomposition and integration"
+                                                             },
+                                                             {
+                                                                 "title":  "Integration of Trigonometric Functions",
+                                                                 "description":  "Standard trigonometric integrals and reduction techniques"
+                                                             },
+                                                             {
+                                                                 "title":  "Integrals of Special Forms",
+                                                                 "description":  "Forms involving sqrt(a^2-x^2) and similar standard integrals"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Definite Integrals",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Fundamental Theorem of Calculus",
+                                                                 "description":  "Evaluation of definite integrals using antiderivatives"
+                                                             },
+                                                             {
+                                                                 "title":  "Properties of Definite Integrals",
+                                                                 "description":  "Key properties including even-odd and reversal properties"
+                                                             },
+                                                             {
+                                                                 "title":  "Definite Integrals as Limit of Sums",
+                                                                 "description":  "Riemann sums and evaluation of integrals as limits"
+                                                             },
+                                                             {
+                                                                 "title":  "Reduction Formulae",
+                                                                 "description":  "Recurrence relations for integrals of powers of functions"
+                                                             },
+                                                             {
+                                                                 "title":  "Inequalities and Estimation in Integrals",
+                                                                 "description":  "Bounding integrals and comparison of integrals"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Area under Curves",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Area Between a Curve and the x-axis",
+                                                                 "description":  "Signed areas and area under curves using definite integrals"
+                                                             },
+                                                             {
+                                                                 "title":  "Area Between Two Curves",
+                                                                 "description":  "Finding the area enclosed between intersecting curves"
+                                                             },
+                                                             {
+                                                                 "title":  "Area in Parametric and Polar Form",
+                                                                 "description":  "Areas computed from parametric equations and polar coordinates"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Differential Equations",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Order and Degree",
+                                                                 "description":  "Classifying differential equations by order and degree"
+                                                             },
+                                                             {
+                                                                 "title":  "Formation of Differential Equations",
+                                                                 "description":  "Forming DEs from general solutions and families of curves"
+                                                             },
+                                                             {
+                                                                 "title":  "Variable Separable Method",
+                                                                 "description":  "Solving first-order equations by separation of variables"
+                                                             },
+                                                             {
+                                                                 "title":  "Homogeneous Differential Equations",
+                                                                 "description":  "Substitution y=vx to solve homogeneous DEs"
+                                                             },
+                                                             {
+                                                                 "title":  "Linear Differential Equations",
+                                                                 "description":  "Integrating factor method for first-order linear DEs"
+                                                             },
+                                                             {
+                                                                 "title":  "Exact Differential Equations",
+                                                                 "description":  "Conditions for exactness and solving exact equations"
+                                                             },
+                                                             {
+                                                                 "title":  "Applications of Differential Equations",
+                                                                 "description":  "Growth and decay, cooling and motion problems"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Trigonometric Functions and Identities",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Angles and Radian Measure",
+                                                                 "description":  "Degrees and radians, arc length and sector area"
+                                                             },
+                                                             {
+                                                                 "title":  "Trigonometric Ratios and Basic Identities",
+                                                                 "description":  "Fundamental ratios, signs in quadrants and standard values"
+                                                             },
+                                                             {
+                                                                 "title":  "Compound Angle Formulae",
+                                                                 "description":  "Sin(A+B), cos(A+B), tan(A+B) and related identities"
+                                                             },
+                                                             {
+                                                                 "title":  "Multiple and Sub-multiple Angles",
+                                                                 "description":  "Double, triple and half-angle formulae"
+                                                             },
+                                                             {
+                                                                 "title":  "Sum-to-Product and Product-to-Sum Transformations",
+                                                                 "description":  "Converting sums to products and vice versa"
+                                                             },
+                                                             {
+                                                                 "title":  "Graphs of Trigonometric Functions",
+                                                                 "description":  "Periods, amplitudes and graphs of standard trigonometric functions"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Trigonometric Equations",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Principal and General Solutions",
+                                                                 "description":  "Solving basic trigonometric equations and general solution formulae"
+                                                             },
+                                                             {
+                                                                 "title":  "Equations with Multiple Angles",
+                                                                 "description":  "Solving equations involving compound and multiple angles"
+                                                             },
+                                                             {
+                                                                 "title":  "Equations Involving Identities",
+                                                                 "description":  "Using identities to reduce and solve trigonometric equations"
+                                                             },
+                                                             {
+                                                                 "title":  "Simultaneous Trigonometric Equations",
+                                                                 "description":  "Systems of trigonometric equations with range constraints"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Inverse Trigonometric Functions",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Definition and Domain-Range",
+                                                                 "description":  "Principal values and domains of inverse trigonometric functions"
+                                                             },
+                                                             {
+                                                                 "title":  "Properties and Identities",
+                                                                 "description":  "Key identities relating inverse trigonometric functions"
+                                                             },
+                                                             {
+                                                                 "title":  "Equations Involving Inverse Functions",
+                                                                 "description":  "Solving equations and evaluating expressions"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Properties of Triangles and Heights and Distances",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Sine Rule and Cosine Rule",
+                                                                 "description":  "Relation between sides and angles of a triangle"
+                                                             },
+                                                             {
+                                                                 "title":  "Area and Solution of Triangles",
+                                                                 "description":  "Area formulae and solving triangles from given data"
+                                                             },
+                                                             {
+                                                                 "title":  "Heights and Distances",
+                                                                 "description":  "Applying trigonometry to measure heights and distances"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Straight Lines",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Distance and Section Formulae",
+                                                                 "description":  "Distance between points, section and mid-point formulae"
+                                                             },
+                                                             {
+                                                                 "title":  "Slope and Equations of a Line",
+                                                                 "description":  "Slope, intercept, point-slope and general forms of a line"
+                                                             },
+                                                             {
+                                                                 "title":  "Angle Between Lines and Parallelism",
+                                                                 "description":  "Angle between two lines and conditions for parallel or perpendicular lines"
+                                                             },
+                                                             {
+                                                                 "title":  "Distance of a Point from a Line",
+                                                                 "description":  "Perpendicular distance and foot of perpendicular"
+                                                             },
+                                                             {
+                                                                 "title":  "Pair of Straight Lines",
+                                                                 "description":  "Combined equation of a pair of lines and their properties"
+                                                             },
+                                                             {
+                                                                 "title":  "Locus Problems",
+                                                                 "description":  "Finding the locus of points satisfying given conditions"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Circles",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Standard and General Equation of a Circle",
+                                                                 "description":  "Centre-radius form, general form and diameter form"
+                                                             },
+                                                             {
+                                                                 "title":  "Position of a Point and a Line",
+                                                                 "description":  "Relative position of points and lines with respect to a circle"
+                                                             },
+                                                             {
+                                                                 "title":  "Tangent and Normal to a Circle",
+                                                                 "description":  "Equations of tangents, normals and length of tangent"
+                                                             },
+                                                             {
+                                                                 "title":  "Chord of Contact and Power of a Point",
+                                                                 "description":  "Polar and chord of contact, power of a point"
+                                                             },
+                                                             {
+                                                                 "title":  "Family of Circles",
+                                                                 "description":  "Families through intersection points and orthogonal circles"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Parabola",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Standard Equation of a Parabola",
+                                                                 "description":  "Standard forms, focus, directrix and latus rectum"
+                                                             },
+                                                             {
+                                                                 "title":  "Parametric Form",
+                                                                 "description":  "Parametric coordinates and the point parametrisation"
+                                                             },
+                                                             {
+                                                                 "title":  "Tangent and Normal to a Parabola",
+                                                                 "description":  "Equations of tangents and normals at a point"
+                                                             },
+                                                             {
+                                                                 "title":  "Chord Properties",
+                                                                 "description":  "Focal chords and properties of chords of a parabola"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Ellipse",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Standard Equation and Eccentricity",
+                                                                 "description":  "Standard forms, foci, directrices and eccentricity"
+                                                             },
+                                                             {
+                                                                 "title":  "Parametric Form and Auxiliary Circle",
+                                                                 "description":  "Parametric coordinates, auxiliary and director circles"
+                                                             },
+                                                             {
+                                                                 "title":  "Tangent and Normal to an Ellipse",
+                                                                 "description":  "Equations of tangents and normals and chord properties"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Hyperbola",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Standard Equation and Eccentricity",
+                                                                 "description":  "Standard forms, foci, directrices and transverse axis"
+                                                             },
+                                                             {
+                                                                 "title":  "Asymptotes of a Hyperbola",
+                                                                 "description":  "Equations of asymptotes and their properties"
+                                                             },
+                                                             {
+                                                                 "title":  "Rectangular Hyperbola",
+                                                                 "description":  "Special form xy=c^2 and its properties"
+                                                             },
+                                                             {
+                                                                 "title":  "Tangent and Normal to a Hyperbola",
+                                                                 "description":  "Equations of tangents, normals and chord properties"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Vectors",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Basics and Types of Vectors",
+                                                                 "description":  "Magnitude, direction, equal, parallel and unit vectors"
+                                                             },
+                                                             {
+                                                                 "title":  "Addition and Scalar Multiplication",
+                                                                 "description":  "Triangle and parallelogram laws, linear combination"
+                                                             },
+                                                             {
+                                                                 "title":  "Dot Product",
+                                                                 "description":  "Scalar product, projection and angle between vectors"
+                                                             },
+                                                             {
+                                                                 "title":  "Cross Product",
+                                                                 "description":  "Vector product, area of parallelograms and triple products"
+                                                             },
+                                                             {
+                                                                 "title":  "Scalar and Vector Triple Products",
+                                                                 "description":  "Box product, coplanarity and mixed product identities"
+                                                             },
+                                                             {
+                                                                 "title":  "Vector Equations of Lines and Planes",
+                                                                 "description":  "Position vectors and vector forms of lines and planes"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Three-Dimensional Geometry",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Direction Cosines and Direction Ratios",
+                                                                 "description":  "Direction cosines, ratios and their properties"
+                                                             },
+                                                             {
+                                                                 "title":  "Equation of a Line in 3D",
+                                                                 "description":  "Symmetric and parametric equations of lines"
+                                                             },
+                                                             {
+                                                                 "title":  "Angle Between Lines and Planes",
+                                                                 "description":  "Angles between lines, line-plane and plane-plane"
+                                                             },
+                                                             {
+                                                                 "title":  "Equation of a Plane",
+                                                                 "description":  "General, intercept and normal forms of a plane"
+                                                             },
+                                                             {
+                                                                 "title":  "Distance from a Point to a Plane",
+                                                                 "description":  "Perpendicular distance and image of a point"
+                                                             },
+                                                             {
+                                                                 "title":  "Skew Lines and Shortest Distance",
+                                                                 "description":  "Coplanarity, skew lines and shortest distance between them"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Probability",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Random Experiments and Events",
+                                                                 "description":  "Sample space, events and algebra of events"
+                                                             },
+                                                             {
+                                                                 "title":  "Classical Probability",
+                                                                 "description":  "Equally likely outcomes and basic probability problems"
+                                                             },
+                                                             {
+                                                                 "title":  "Conditional Probability",
+                                                                 "description":  "Conditional probability and multiplication theorem"
+                                                             },
+                                                             {
+                                                                 "title":  "Independent Events",
+                                                                 "description":  "Independence of events and related computations"
+                                                             },
+                                                             {
+                                                                 "title":  "Bayes\u0027 Theorem",
+                                                                 "description":  "Application of Bayes\u0027 theorem to posterior probabilities"
+                                                             },
+                                                             {
+                                                                 "title":  "Random Variables and Distributions",
+                                                                 "description":  "Probability distributions, mean and variance"
+                                                             },
+                                                             {
+                                                                 "title":  "Binomial Distribution",
+                                                                 "description":  "Bernoulli trials and binomial probability distribution"
+                                                             }
+                                                         ]
+                                          },
+                                          {
+                                              "title":  "Logarithms",
+                                              "topics":  [
+                                                             {
+                                                                 "title":  "Definition and Laws of Logarithms",
+                                                                 "description":  "Logarithmic functions, laws and change of base"
+                                                             },
+                                                             {
+                                                                 "title":  "Logarithmic Equations",
+                                                                 "description":  "Solving logarithmic and exponential equations"
+                                                             },
+                                                             {
+                                                                 "title":  "Logarithmic Inequalities",
+                                                                 "description":  "Solving inequalities involving logarithms"
+                                                             }
+                                                         ]
+                                          }
+                                      ]
+                     }
+                 ]
+}

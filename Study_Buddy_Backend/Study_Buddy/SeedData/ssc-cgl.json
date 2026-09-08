@@ -1,0 +1,122 @@
+{
+    "exam": "SSC CGL",
+    "subjects": [
+        {
+            "subject": "Quantitative Aptitude",
+            "chapters": [
+                {
+                    "title": "Arithmetic",
+                    "topics": [
+                        { "title": "Percentages", "description": "Percentage change and applications" },
+                        { "title": "Profit and Loss", "description": "Markups, discounts and margins" },
+                        { "title": "Simple and Compound Interest", "description": "Interest and accumulation computations" },
+                        { "title": "Ratio, Proportion and Partnership", "description": "Sharing, ratios and variations" },
+                        { "title": "Averages and Mixtures", "description": "Weighted averages and alligation" },
+                        { "title": "Time and Work", "description": "Efficiency and work-sharing problems" },
+                        { "title": "Time, Speed and Distance", "description": "Trains, boats and relative speed" }
+                    ]
+                },
+                {
+                    "title": "Number System and Algebra",
+                    "topics": [
+                        { "title": "Divisibility and LCM-HCF", "description": "Test rules, factors and multiples" },
+                        { "title": "Simplification and Approximation", "description": "BODMAS and quick estimation" },
+                        { "title": "Surds, Indices and Powers", "description": "Roots, powers and exponent rules" },
+                        { "title": "Linear and Quadratic Equations", "description": "Equation solving and word problems" },
+                        { "title": "Polynomials", "description": "Factors, identities and remainders" }
+                    ]
+                },
+                {
+                    "title": "Geometry, Mensuration and Statistics",
+                    "topics": [
+                        { "title": "Triangles and Polygons", "description": "Angle and side properties" },
+                        { "title": "Circles and Tangents", "description": "Arc, chord and tangent properties" },
+                        { "title": "Coordinate Geometry", "description": "Distance and straight line equations" },
+                        { "title": "Mensuration", "description": "Areas, volumes and surface areas" },
+                        { "title": "Trigonometry Basics", "description": "Ratios, identities and heights-distances" },
+                        { "title": "Statistics and Data Interpretation", "description": "Mean-median-mode, tables and charts" }
+                    ]
+                }
+            ]
+        },
+        {
+            "subject": "General Intelligence and Reasoning",
+            "chapters": [
+                {
+                    "title": "Verbal Reasoning",
+                    "topics": [
+                        { "title": "Series and Analogies", "description": "Number, letter and word sequences" },
+                        { "title": "Coding-Decoding", "description": "Letter and number substitution codes" },
+                        { "title": "Blood Relations", "description": "Family trees and relation mapping" },
+                        { "title": "Direction and Distance", "description": "Movement and direction sense" },
+                        { "title": "Classification", "description": "Odd-one-out and grouping" },
+                        { "title": "Seating Arrangement and Puzzles", "description": "Ordering and arrangement problems" }
+                    ]
+                },
+                {
+                    "title": "Non-Verbal Reasoning",
+                    "topics": [
+                        { "title": "Figure Series and Analogy", "description": "Visual sequence and pair analogies" },
+                        { "title": "Mirror and Water Images", "description": "Reflection symmetry problems" },
+                        { "title": "Paper Folding and Cutting", "description": "Folding and punch-hole patterns" },
+                        { "title": "Embedded Figures", "description": "Hidden figure identification" }
+                    ]
+                },
+                {
+                    "title": "Analytical Reasoning",
+                    "topics": [
+                        { "title": "Syllogisms", "description": "Categorical logic and deductions" },
+                        { "title": "Venn Diagrams", "description": "Class relationships and overlaps" },
+                        { "title": "Statement and Conclusion", "description": "Valid inference drawing" },
+                        { "title": "Mathematical Operations", "description": "Symbol substitution and simplification" }
+                    ]
+                }
+            ]
+        },
+        {
+            "subject": "English Comprehension",
+            "chapters": [
+                {
+                    "title": "Reading Comprehension",
+                    "topics": [
+                        { "title": "Passage Comprehension", "description": "Reading and answering on passages" },
+                        { "title": "Cloze Test", "description": "Filling blanks in a passage" },
+                        { "title": "Vocabulary in Context", "description": "Word meaning from passage context" }
+                    ]
+                },
+                {
+                    "title": "Grammar and Vocabulary",
+                    "topics": [
+                        { "title": "Error Spotting", "description": "Identifying grammatical errors" },
+                        { "title": "Sentence Improvement", "description": "Selecting the best-grammar version" },
+                        { "title": "Fill in the Blanks", "description": "Contextual word choice" },
+                        { "title": "Para Jumble", "description": "Rearranging sentences logically" },
+                        { "title": "One-word Substitution and Idioms", "description": "Phrases, idioms and single words" }
+                    ]
+                }
+            ]
+        },
+        {
+            "subject": "General Awareness",
+            "chapters": [
+                {
+                    "title": "Current Affairs",
+                    "topics": [
+                        { "title": "National and International Events", "description": "Recent developments and summits" },
+                        { "title": "Sports, Awards and Honours", "description": "Tournaments, winners and awards" },
+                        { "title": "Economy and Banking", "description": "Schemes, indices and institutions" }
+                    ]
+                },
+                {
+                    "title": "Static GK",
+                    "topics": [
+                        { "title": "Indian History and Culture", "description": "Ancient, medieval, modern and culture" },
+                        { "title": "Indian Polity and Constitution", "description": "Articles, organs and governance" },
+                        { "title": "Indian and World Geography", "description": "Physical, economic and world facts" },
+                        { "title": "General Science", "description": "Physics, chemistry and biology basics" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "exam": "SNAP",
+    "subjects": [
+        {
+            "subject": "General English",
+            "chapters": [
+                {
+                    "title": "Reading Comprehension",
+                    "topics": [
+                        { "title": "Main Idea and Tone", "description": "Identifying central ideas and author attitude" },
+                        { "title": "Inference Questions", "description": "Drawing implied meanings from passages" },
+                        { "title": "Factual Detail Questions", "description": "Locating explicit answers in the text" }
+                    ]
+                },
+                {
+                    "title": "Verbal Ability",
+                    "topics": [
+                        { "title": "Synonyms and Antonyms", "description": "Word meanings and opposite meanings" },
+                        { "title": "Idioms and Phrases", "description": "Common idioms and phrasal expressions" },
+                        { "title": "Spellings", "description": "Correctly spelled words and common errors" },
+                        { "title": "Fill in the Blanks", "description": "Contextually correct word selection" },
+                        { "title": "Para Jumbles", "description": "Reordering sentences into paragraphs" }
+                    ]
+                },
+                {
+                    "title": "Grammar and Sentence Skills",
+                    "topics": [
+                        { "title": "Sentence Correction", "description": "Fixing grammatical and structural errors" },
+                        { "title": "Tenses and Agreement", "description": "Verb tense and subject-verb agreement" },
+                        { "title": "Prepositions and Connectives", "description": "Correct prepositions and connectors" },
+                        { "title": "Analogy and Relationships", "description": "Matching word-pair relationships" }
+                    ]
+                }
+            ]
+        }
+    ]
+}

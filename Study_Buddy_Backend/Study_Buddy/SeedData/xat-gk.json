@@ -1,0 +1,44 @@
+{
+    "exam": "XAT",
+    "subjects": [
+        {
+            "subject": "General Knowledge",
+            "chapters": [
+                {
+                    "title": "Business and Economy",
+                    "topics": [
+                        { "title": "Indian Economy-Key Indicators", "description": "GDP, inflation, RBI policy and fiscal terms" },
+                        { "title": "Banking and Finance", "description": "Monetary policy, interest rates and financial system" },
+                        { "title": "Government Schemes and Budget", "description": "Union budget highlights and welfare schemes" },
+                        { "title": "Global Economy and Trade", "description": "WTO, trade deals and global indices" }
+                    ]
+                },
+                {
+                    "title": "Current Affairs",
+                    "topics": [
+                        { "title": "National Events", "description": "Recent country-wide developments and policies" },
+                        { "title": "International Affairs", "description": "Global summits, treaties and organizations" },
+                        { "title": "Awards and Honors", "description": "Recent awards, prizes and their winners" }
+                    ]
+                },
+                {
+                    "title": "Science and Technology",
+                    "topics": [
+                        { "title": "Space and Defense", "description": "Recent missions, launches and defense deals" },
+                        { "title": "Health and Medicine", "description": "Vaccines, diseases and health initiatives" },
+                        { "title": "IT and Digital India", "description": "Digital payments, startups and AI trends" }
+                    ]
+                },
+                {
+                    "title": "Static GK",
+                    "topics": [
+                        { "title": "Indian Constitution and Polity", "description": "Fundamentals, amendments and institutions" },
+                        { "title": "Sports", "description": "Major tournaments, records and personalities" },
+                        { "title": "Art, Culture and History", "description": "Heritage, festivals and historical events" },
+                        { "title": "Geography", "description": "Rivers, mountains and world geography" }
+                    ]
+                }
+            ]
+        }
+    ]
+}
