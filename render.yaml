@@ -1,11 +1,12 @@
 services:
   - type: web
     name: studybuddy-api
-    runtime: dotnet
+    runtime: docker
     plan: free
+    region: virginia
     rootDir: Study_Buddy_Backend/Study_Buddy
-    buildCommand: dotnet publish -c Release -o out
-    startCommand: ./out/Study_Buddy
+    dockerfilePath: Study_Buddy_Backend/Study_Buddy/Dockerfile
+    dockerContext: Study_Buddy_Backend/Study_Buddy
     healthCheckPath: /api/learning/exams
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
@@ -20,3 +21,4 @@ services:
 databases:
   - name: studybuddy-db
     plan: free
+    region: virginia
