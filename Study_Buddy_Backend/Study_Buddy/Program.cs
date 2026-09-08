@@ -34,20 +34,21 @@ builder.Services.AddHttpClient();
 // CORS for React (Vercel origin in production, localhost:3000 in dev)
 // =============================
 var corsOrigin = builder.Configuration["CORS_ORIGIN"];
-var frontendOrigin = !string.IsNullOrWhiteSpace(corsOrigin)
-    ? corsOrigin.Trim().TrimEnd('/')
+var frontendOrigins = !string.IsNullOrWhiteSpace(corsOrigin)
+    ? corsOrigin.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+        .Select(origin => origin.Trim().TrimEnd('/')).ToArray()
     : !builder.Environment.IsProduction()
-        ? (builder.Configuration["FrontendUrl"] ?? "").Trim().TrimEnd('/')
-        : "";
+        ? new[] { (builder.Configuration["FrontendUrl"] ?? "").Trim().TrimEnd('/') }
+        : Array.Empty<string>();
 
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        if (string.IsNullOrWhiteSpace(frontendOrigin))
+        if (frontendOrigins.Length == 0)
             policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
         else
-            policy.WithOrigins(frontendOrigin).AllowAnyHeader().AllowAnyMethod();
+            policy.WithOrigins(frontendOrigins).AllowAnyHeader().AllowAnyMethod();
     });
 });
 
