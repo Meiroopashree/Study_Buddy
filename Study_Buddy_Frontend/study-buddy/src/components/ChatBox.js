@@ -7,7 +7,7 @@ import Message from "./Message";
 import QuizQuestionBlock, { isQuizAnswerCorrect, formatQuizAnswer } from "./QuizQuestionBlock";
 import LoadingSpinner from "./LoadingSpinner";
 import S from "./icons";
-import { askAI, askAIStream, generateQuiz, saveQuizResult, getQuizHistory, getQuizDetail, uploadImage, getDocuments, uploadDocument, deleteDocument, createNote, ocrDocument, getLearningTree } from "../services/api";
+import { askAI, askAIStream, generateQuiz, saveQuizResult, getQuizHistory, getQuizDetail, uploadImage, getDocuments, uploadDocument, deleteDocument, createNote, ocrDocument } from "../services/api";
 import formatAIText from "../utils/formatAIText";
 import { useExam } from "../contexts/ExamContext";
 import "../styles/ChatBox.css";
@@ -30,8 +30,6 @@ function ChatBox() {
   const [quiz, setQuiz] = useState(null);
   const [difficulty, setDifficulty] = useState("medium");
   const [questionCount, setQuestionCount] = useState(5);
-  const [quizExam, setQuizExam] = useState("JEE Advanced");
-  const [examOptions, setExamOptions] = useState(["JEE Advanced", "JEE Main"]);
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -78,24 +76,6 @@ function ChatBox() {
       recognitionRef.current?.stop();
     };
   }, []);
-
-  useEffect(() => {
-    getLearningTree()
-      .then((tree) => {
-        if (Array.isArray(tree) && tree.length > 0) {
-          const names = tree.map((g) => g.exam).filter(Boolean);
-          setExamOptions([...new Set(names)]);
-          setQuizExam((prev) => (names.includes(prev) ? prev : names[0]));
-        }
-      })
-      .catch(() => {});
-  }, []);
-
-  useEffect(() => {
-    if (currentExam && examOptions.includes(currentExam)) {
-      setQuizExam(currentExam);
-    }
-  }, [currentExam, examOptions]);
 
   const addMessage = (text, type) => {
     setMessages((prev) => [...prev, { text, type }]);
@@ -186,7 +166,7 @@ function ChatBox() {
     }
     setLoading(true);
     try {
-      const quizData = await generateQuiz(quizTopic, difficulty, questionCount, quizExam);
+      const quizData = await generateQuiz(quizTopic, difficulty, questionCount, currentExam || "JEE Advanced");
       if (quizData && quizData.questions?.length > 0) {
         setQuiz(quizData);
         setAnswers({});
@@ -638,11 +618,6 @@ function ChatBox() {
             <div className="quiz-row">
               <input type="text" value={quizTopic} onChange={(e) => setQuizTopic(e.target.value)}
                 placeholder="Enter topic for quiz..." />
-              <select value={quizExam} onChange={(e) => setQuizExam(e.target.value)} className="difficulty-dropdown">
-                {examOptions.map((ex) => (
-                  <option key={ex} value={ex}>{ex} pattern</option>
-                ))}
-              </select>
               <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="difficulty-dropdown">
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
@@ -650,6 +625,8 @@ function ChatBox() {
               <select value={questionCount} onChange={(e) => setQuestionCount(Number(e.target.value))} className="difficulty-dropdown">
                 <option value={5}>5 questions</option>
                 <option value={10}>10 questions</option>
+                <option value={15}>15 questions</option>
+                <option value={20}>20 questions</option>
               </select>
               <button className="btn btn-sm btn-success" onClick={handleGenerateQuiz} disabled={loading || !quizTopic.trim()}>
                 <S.clipboard size={14} />Generate
