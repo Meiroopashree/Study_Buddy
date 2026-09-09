@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { googleAuthUrl } from "../services/api";
+import S from "../components/icons";
 
 function AuthPage() {
   const { login, signup } = useAuth();
@@ -27,6 +28,10 @@ function AuthPage() {
   return (
     <div className="auth-container">
       <div className="auth-card">
+        <div className="auth-brand">
+          <span className="auth-brand-mark"><S.book size={24} /></span>
+          <span className="auth-brand-name">StudyBuddy</span>
+        </div>
         <h2>{isLogin ? "Login" : "Sign Up"}</h2>
         <form onSubmit={handleSubmit}>
           {!isLogin && (
@@ -41,7 +46,7 @@ function AuthPage() {
           <button type="submit" className="auth-btn">{isLogin ? "Login" : "Sign Up"}</button>
         </form>
         <div className="auth-divider">or</div>
-        <a className="google-btn" href={googleAuthUrl}>Continue with Google</a>
+        <a className="google-btn" href={googleAuthUrl}><S.google size={18} />Continue with Google</a>
         <p className="auth-toggle" onClick={() => setIsLogin(!isLogin)}>
           {isLogin ? "Don't have an account? Sign up" : "Already have an account? Login"}
         </p>

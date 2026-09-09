@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
@@ -7,6 +7,7 @@ import "katex/dist/katex.min.css";
 import { useAuth } from "../contexts/AuthContext";
 import { useExam } from "../contexts/ExamContext";
 import { getDashboardStats, createNote, updateNote, deleteNote, getExamStats, getDueReviews } from "../services/api";
+import S from "../components/icons";
 import "../styles/Dashboard.css";
 
 function formatDuration(sec) {
@@ -26,12 +27,36 @@ function greeting() {
   return "Good evening";
 }
 
-function StatCard({ icon, value, label, hint, accent }) {
+function useCountUp(value, duration = 700, enabled = true) {
+  const [display, setDisplay] = useState(value);
+  const prev = useRef(value);
+  useEffect(() => {
+    if (!enabled) { setDisplay(value); prev.current = value; return; }
+    const from = prev.current;
+    const to = value;
+    prev.current = value;
+    if (from === to) { setDisplay(to); return; }
+    const start = performance.now();
+    let raf;
+    const step = (t) => {
+      const p = Math.min(1, (t - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setDisplay(Math.round(from + (to - from) * eased));
+      if (p < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [value, duration, enabled]);
+  return enabled ? display : value;
+}
+
+function StatCard({ icon, value, label, hint, tone, animate }) {
+  const shown = useCountUp(value, 700, animate);
   return (
-    <div className="stat-card" style={{ "--accent": accent }}>
-      <span className="stat-icon" aria-hidden="true">{icon}</span>
+    <div className="stat-card fade-rise" style={{ "--tone": tone }}>
+      <span className="stat-icon">{icon}</span>
       <div className="stat-body">
-        <span className="stat-value">{value}</span>
+        <span className="stat-value">{shown}</span>
         <span className="stat-label">{label}</span>
         {hint && <span className="stat-hint">{hint}</span>}
       </div>
@@ -42,11 +67,85 @@ function StatCard({ icon, value, label, hint, accent }) {
 function EmptyState({ icon, text, action, to }) {
   return (
     <div className="empty-state">
-      <span className="empty-icon" aria-hidden="true">{icon}</span>
+      <span className="empty-icon">{icon}</span>
       <p className="muted">{text}</p>
       {action && (
         <Link to={to} className="btn btn-ghost btn-sm">{action}</Link>
       )}
+    </div>
+  );
+}
+
+function Sk({ w = "100%", h = 14, r = 8, className = "", style }) {
+  return (
+    <div
+      className={`sk ${className}`}
+      style={{ width: w, height: h, borderRadius: r, ...style }}
+    />
+  );
+}
+
+function DashboardSkeleton() {
+  const stats = [0, 1, 2, 3, 4, 5];
+  return (
+    <div className="dashboard-container" aria-busy="true" aria-label="Loading your dashboard">
+      <div className="dash-hero">
+        <div className="dash-hero-info">
+          <Sk w="38%" h={30} r={10} />
+          <Sk w="60%" h={14} r={8} style={{ marginTop: 12 }} />
+        </div>
+        <div className="hero-actions">
+          <Sk w={96} h={38} r={10} />
+          <Sk w={84} h={38} r={10} />
+        </div>
+      </div>
+
+      <div className="stat-cards" style={{ marginTop: 0 }}>
+        {stats.map((i) => (
+          <div className="stat-card stat-card-sk" key={i} style={{ animationDelay: `${i * 40}ms` }}>
+            <Sk w={40} h={40} r={12} className="stat-icon-sk" />
+            <div className="stat-body">
+              <Sk w={`${48 + (i % 4) * 10}%`} h={22} r={6} />
+              <Sk w="82%" h={11} r={6} style={{ marginTop: 8 }} />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="dashboard-grid" style={{ marginTop: 0 }}>
+        <div className="dashboard-panel" style={{ animationDelay: "120ms" }}>
+          <Sk w="38%" h={18} r={6} />
+          <div className="dash-list" style={{ marginTop: 16 }}>
+            {[0, 1, 2].map((i) => (
+              <div className="list-row-sk" key={i}>
+                <div>
+                  <Sk w={`${64 + i * 9}%`} h={13} r={6} />
+                  <Sk w="40%" h={10} r={6} style={{ marginTop: 8 }} />
+                </div>
+                <div className="list-row-sk-right">
+                  <Sk w={56} h={16} r={999} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="dashboard-panel" style={{ animationDelay: "180ms" }}>
+          <Sk w="38%" h={18} r={6} />
+          <div className="dash-list" style={{ marginTop: 16 }}>
+            {[0, 1, 2].map((i) => (
+              <div className="list-row-sk" key={i}>
+                <div>
+                  <Sk w={`${58 + i * 10}%`} h={13} r={6} />
+                  <Sk w="36%" h={10} r={6} style={{ marginTop: 8 }} />
+                </div>
+                <div className="list-row-sk-right">
+                  <Sk w={68} h={16} r={999} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -142,16 +241,7 @@ function Dashboard() {
   };
 
   if (loading) {
-    return (
-      <div className="dashboard-container">
-        <div className="skeleton shimmer" style={{ width: "40%", height: 28 }} />
-        <div className="stat-cards">
-          {[0, 1, 2, 3, 4, 5].map((i) => (
-            <div key={i} className="stat-card skeleton shimmer" />
-          ))}
-        </div>
-      </div>
-    );
+    return <DashboardSkeleton />;
   }
 
   const a = data?.analytics || {};
@@ -164,11 +254,17 @@ function Dashboard() {
   const accuracy = a.accuracy ?? 0;
   const strength = accuracy >= 80 ? "outstanding" : accuracy >= 60 ? "solid" : accuracy > 0 ? "growing" : "";
 
+  const tones = {
+    indigo: "#4f46e5", violet: "#7c3aed", amber: "#f59e0b",
+    emerald: "#10b981", sky: "#0ea5e9", rose: "#f43f5e",
+  };
+
   return (
     <div className="dashboard-container">
-      <header className="dash-hero">
+      <header className="dash-hero fade-rise">
         <div>
-          <h1 className="dashboard-title">{greeting()}, {userName} 👋</h1>
+          <span className="kicker">Your study overview</span>
+          <h1 className="dashboard-title">{greeting()}, {userName}</h1>
           <p className="hero-sub">
             {currentExam
               ? `Focusing on ${currentExam}. `
@@ -179,34 +275,34 @@ function Dashboard() {
           </p>
         </div>
         <div className="hero-actions">
-          <Link to="/" className="btn btn-primary">Ask AI</Link>
-          <Link to="/learn" className="btn btn-ghost">Learn</Link>
+          <Link to="/" className="btn btn-primary"><S.sparkle size={16} />Ask AI</Link>
+          <Link to="/learn" className="btn btn-ghost"><S.book size={16} />Learn</Link>
         </div>
       </header>
 
       {error && <p className="auth-error dash-error">{error}</p>}
 
       <div className="stat-cards">
-        <StatCard icon="🎯" value={`${accuracy}%`} label="Quiz Accuracy" accent="#0a3339"
-          hint={accuracy > 0 ? `Best: ${a.bestScore ?? 0}` : null} />
-        <StatCard icon="📝" value={a.quizzesTaken ?? 0} label="Quizzes Taken" accent="#e16526"
-          hint={a.avgScore != null ? `Avg score: ${a.avgScore}` : null} />
-        <StatCard icon="⏱️" value={formatDuration(a.studyTimeTodaySec)} label="Study Time Today" accent="#16a34a"
+        <StatCard icon={<S.target size={20} />} value={accuracy} label="Quiz Accuracy" tone={tones.indigo}
+          hint={accuracy > 0 ? `Best: ${a.bestScore ?? 0}` : null} animate />
+        <StatCard icon={<S.clipboard size={20} />} value={a.quizzesTaken ?? 0} label="Quizzes Taken" tone={tones.violet}
+          hint={a.avgScore != null ? `Avg score: ${a.avgScore}` : null} animate />
+        <StatCard icon={<S.clock size={20} />} value={formatDuration(a.studyTimeTodaySec)} label="Study Time Today" tone={tones.emerald}
           hint={a.avgQuizTimeSec != null ? `Avg quiz: ${formatDuration(a.avgQuizTimeSec)}` : null} />
-        <StatCard icon="🗓️" value={formatDuration(a.totalStudyTimeSec)} label="Total Study Time" accent="#d97706" />
-        <StatCard icon="📓" value={c.notes ?? 0} label="Notes" accent="#0891b2" />
-        <StatCard icon="📄" value={c.documents ?? 0} label="Documents" accent="#dc2626" />
+        <StatCard icon={<S.calendar size={20} />} value={formatDuration(a.totalStudyTimeSec)} label="Total Study Time" tone={tones.amber} />
+        <StatCard icon={<S.notes size={20} />} value={c.notes ?? 0} label="Notes" tone={tones.sky} animate />
+        <StatCard icon={<S.doc size={20} />} value={c.documents ?? 0} label="Documents" tone={tones.rose} animate />
       </div>
 
       {examStats.length > 0 && (
-        <div className="dashboard-panel exam-stats-panel">
+        <div className="dashboard-panel exam-stats-panel fade-rise">
           <div className="panel-header">
             <h3>Exam Progress</h3>
-            <Link to="/learn" className="panel-more">Open Learn</Link>
+            <Link to="/learn" className="panel-more">Open Learn →</Link>
           </div>
           <div className="exam-stats-grid">
-            {examStats.map((es) => (
-              <div className="exam-stat-card" key={es.exam}>
+            {examStats.map((es, i) => (
+              <div className="exam-stat-card fade-rise" key={es.exam} style={{ animationDelay: `${i * 60}ms` }}>
                 <div className="exam-stat-head">
                   <span className="exam-stat-name">{es.exam}</span>
                   <span className="exam-stat-pct">{es.pct}%</span>
@@ -227,7 +323,7 @@ function Dashboard() {
       )}
 
       {dueReviews.length > 0 && (
-        <div className="dashboard-panel due-reviews-panel">
+        <div className="dashboard-panel due-reviews-panel fade-rise">
           <div className="panel-header">
             <h3>Due for Review</h3>
             <span className="due-count">{dueReviews.length} topic{dueReviews.length === 1 ? "" : "s"}</span>
@@ -249,26 +345,26 @@ function Dashboard() {
         </div>
       )}
 
-      <div className="quick-actions">
+      <div className="quick-actions fade-rise">
         <p className="quick-title">Quick Actions</p>
         <div className="quick-grid">
           <Link to="/learn" className="quick-card">
-            <span className="quick-icon">🧠</span>
+            <span className="quick-icon"><S.brain size={22} /></span>
             <span>Learn &amp; Practice</span>
             <span className="quick-hint">Syllabus, quizzes &amp; flashcards</span>
           </Link>
           <Link to="/papers" className="quick-card">
-            <span className="quick-icon">📄</span>
+            <span className="quick-icon"><S.paper size={22} /></span>
             <span>Question Papers</span>
             <span className="quick-hint">Upload &amp; practice real papers</span>
           </Link>
           <Link to="/adaptive" className="quick-card">
-            <span className="quick-icon">📈</span>
+            <span className="quick-icon"><S.trending size={22} /></span>
             <span>Adaptive Learning</span>
             <span className="quick-hint">Personalized daily plan</span>
           </Link>
           <Link to="/profile" className="quick-card">
-            <span className="quick-icon">👤</span>
+            <span className="quick-icon"><S.user size={22} /></span>
             <span>Profile</span>
             <span className="quick-hint">View your stats</span>
           </Link>
@@ -276,13 +372,13 @@ function Dashboard() {
       </div>
 
       <div className="dashboard-grid">
-        <div className="dashboard-panel">
+        <div className="dashboard-panel fade-rise">
           <div className="panel-header">
             <h3>Recent Quizzes</h3>
-            {quizzes.length > 0 && <Link to="/learn" className="panel-more">View all</Link>}
+            {quizzes.length > 0 && <Link to="/learn" className="panel-more">View all →</Link>}
           </div>
           {quizzes.length === 0 ? (
-            <EmptyState icon="📝" text="No quizzes yet." action="Take a quiz" to="/learn" />
+            <EmptyState icon={<S.clipboard size={28} />} text="No quizzes yet." action="Take a quiz" to="/learn" />
           ) : (
             <ul className="dash-list">
               {quizzes.map((q) => (
@@ -307,18 +403,18 @@ function Dashboard() {
           )}
         </div>
 
-        <div className="dashboard-panel">
+        <div className="dashboard-panel fade-rise">
           <div className="panel-header">
             <h3>Recent Uploads</h3>
-            {uploads.length > 0 && <Link to="/papers" className="panel-more">View all</Link>}
+            {uploads.length > 0 && <Link to="/papers" className="panel-more">View all →</Link>}
           </div>
           {uploads.length === 0 ? (
-            <EmptyState icon="📄" text="No uploads yet." action="Upload a paper" to="/papers" />
+            <EmptyState icon={<S.paper size={28} />} text="No uploads yet." action="Upload a paper" to="/papers" />
           ) : (
             <ul className="dash-list">
               {uploads.map((u) => (
                 <li key={u.id} className="doc-row">
-                  <span className="doc-icon">🗂️</span>
+                  <span className="doc-icon"><S.doc size={18} /></span>
                   <span className="doc-title">{u.title}</span>
                   <span className="muted">{new Date(u.uploadedAt).toLocaleDateString()}</span>
                 </li>
@@ -328,10 +424,10 @@ function Dashboard() {
         </div>
       </div>
 
-      <div className="dashboard-panel notes-panel">
+      <div className="dashboard-panel notes-panel fade-rise">
         <div className="panel-header">
-          <h3>📓 My Notes</h3>
-          {notes.length > 0 && <Link to="/learn" className="panel-more">All notes</Link>}
+          <h3><S.notes size={18} /> My Notes</h3>
+          {notes.length > 0 && <Link to="/learn" className="panel-more">All notes →</Link>}
         </div>
         <form className="note-form" onSubmit={handleCreateNote}>
           <input type="text" placeholder="Title (optional)" value={noteTitle}
@@ -347,7 +443,7 @@ function Dashboard() {
         </form>
 
         {notes.length === 0 ? (
-          <EmptyState icon="📓" text="No notes yet. Capture your first idea above!" />
+          <EmptyState icon={<S.notes size={28} />} text="No notes yet. Capture your first idea above!" />
         ) : (
           <ul className="dash-list">
             {notes.map((n) => (
@@ -376,10 +472,10 @@ function Dashboard() {
                       <button className="btn btn-primary btn-sm" onClick={() => setViewingNote(n)}>View</button>
                       <button className="btn btn-ghost btn-sm"
                         onClick={() => { setEditingId(n.id); setEditTitle(n.title); setEditContent(n.content); }}>
-                        Edit
+                        <S.edit size={14} />Edit
                       </button>
                       <button className="btn btn-secondary btn-sm" onClick={() => handleDownloadNote(n.title, n.content)}>
-                        Download
+                        <S.download size={14} />Download
                       </button>
                       {deleteConfirmId === n.id ? (
                         <span className="del-confirm">
@@ -388,7 +484,9 @@ function Dashboard() {
                           <button className="btn btn-ghost btn-sm" onClick={() => setDeleteConfirmId(null)}>No</button>
                         </span>
                       ) : (
-                        <button className="btn btn-danger btn-sm" onClick={() => setDeleteConfirmId(n.id)}>Delete</button>
+                        <button className="btn btn-danger btn-sm" onClick={() => setDeleteConfirmId(n.id)}>
+                          <S.trash size={14} />Delete
+                        </button>
                       )}
                     </div>
                   </>
@@ -404,7 +502,9 @@ function Dashboard() {
           <div className="note-modal" onClick={(e) => e.stopPropagation()}>
             <div className="note-modal-header">
               <h4>{viewingNote.title}</h4>
-              <button className="close-btn" onClick={() => setViewingNote(null)} aria-label="Close">×</button>
+              <button className="close-btn" onClick={() => setViewingNote(null)} aria-label="Close">
+                <S.x size={18} />
+              </button>
             </div>
             <div className="note-modal-body">
               <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
@@ -414,7 +514,7 @@ function Dashboard() {
             <div className="note-modal-footer">
               <button className="btn btn-secondary btn-sm"
                 onClick={() => handleDownloadNote(viewingNote.title, viewingNote.content)}>
-                Download .txt
+                <S.download size={14} />Download .txt
               </button>
               <button className="btn btn-ghost btn-sm" onClick={() => setViewingNote(null)}>Close</button>
             </div>

@@ -11,6 +11,7 @@ import {
 } from "../services/api";
 import formatAIText from "../utils/formatAIText";
 import { isQuizAnswerCorrect, formatQuizAnswer } from "../components/QuizQuestionBlock";
+import S from "../components/icons";
 import "../styles/Learn.css";
 import "../styles/Adaptive.css";
 
@@ -39,6 +40,11 @@ function classificationLabel(classification) {
   if (classification === "needs-work") return "Needs work";
   return "Strong";
 }
+
+const SUMMARY_TONES = {
+  quizzes: "#4f46e5", accuracy: "#10b981", time: "#0ea5e9",
+  mistakes: "#f43f5e", weak: "#f59e0b", strong: "#7c3aed",
+};
 
 function formatDay(dateValue) {
   if (!dateValue) return "";
@@ -365,7 +371,7 @@ function Adaptive() {
             return (
               <div className="adaptive-mistake-day" key={day.key}>
                 <button className="adaptive-mistake-day-head" onClick={() => toggleDay(day.key)}>
-                  <span className="adaptive-chevron">{dayOpen ? "▾" : "▸"}</span>
+                  <span className={`adaptive-chevron ${dayOpen ? "is-open" : ""}`}><S.chevron size={14} /></span>
                   <span className="adaptive-mistake-day-label">{day.label}</span>
                   <span className="muted">
                     {day.subjects.length} subject{day.subjects.length === 1 ? "" : "s"} · {dayTotal} mistake{dayTotal === 1 ? "" : "s"}
@@ -380,7 +386,7 @@ function Adaptive() {
                       return (
                         <div className="adaptive-mistake-subject" key={sKey}>
                           <button className="adaptive-mistake-subject-head" onClick={() => toggleSubject(sKey)}>
-                            <span className="adaptive-chevron">{sOpen ? "▾" : "▸"}</span>
+                            <span className={`adaptive-chevron ${sOpen ? "is-open" : ""}`}><S.chevron size={14} /></span>
                             <span className={`badge badge-subject`}>{subj.subject}</span>
                             <span className="muted">{sTotal} mistake{sTotal === 1 ? "" : "s"}</span>
                           </button>
@@ -392,7 +398,7 @@ function Adaptive() {
                                 return (
                                   <div className="adaptive-mistake-topic" key={tKey}>
                                     <button className="adaptive-mistake-topic-head" onClick={() => toggleTopic(tKey)}>
-                                      <span className="adaptive-chevron">{tOpen ? "▾" : "▸"}</span>
+                                      <span className={`adaptive-chevron ${tOpen ? "is-open" : ""}`}><S.chevron size={14} /></span>
                                       <span className="review-topic-tag">{t.topic}</span>
                                       <span className="muted">
                                         {t.items.length} mistake{t.items.length === 1 ? "" : "s"}
@@ -471,27 +477,33 @@ function Adaptive() {
       ) : insights && insights.hasData ? (
         <>
           <section className="adaptive-summary">
-            <div className="adaptive-card">
+            <div className="adaptive-card" style={{ "--tone": SUMMARY_TONES.quizzes }}>
+              <span className="adaptive-card-icon"><S.clipboard size={20} /></span>
               <span className="adaptive-card-value">{summary.quizzesTaken}</span>
               <span className="adaptive-card-label">Quizzes taken</span>
             </div>
-            <div className="adaptive-card">
+            <div className="adaptive-card" style={{ "--tone": SUMMARY_TONES.accuracy }}>
+              <span className="adaptive-card-icon"><S.target size={20} /></span>
               <span className="adaptive-card-value">{summary.accuracy}%</span>
               <span className="adaptive-card-label">Accuracy</span>
             </div>
-            <div className="adaptive-card">
+            <div className="adaptive-card" style={{ "--tone": SUMMARY_TONES.time }}>
+              <span className="adaptive-card-icon"><S.clock size={20} /></span>
               <span className="adaptive-card-value">{summary.avgTimePerQuestion}s</span>
               <span className="adaptive-card-label">Avg time / question</span>
             </div>
-            <div className="adaptive-card">
+            <div className="adaptive-card" style={{ "--tone": SUMMARY_TONES.mistakes }}>
+              <span className="adaptive-card-icon"><S.alert size={20} /></span>
               <span className="adaptive-card-value">{summary.mistakes}</span>
               <span className="adaptive-card-label">Mistakes</span>
             </div>
-            <div className="adaptive-card">
+            <div className="adaptive-card" style={{ "--tone": SUMMARY_TONES.weak }}>
+              <span className="adaptive-card-icon"><S.trending size={20} /></span>
               <span className="adaptive-card-value">{summary.weakTopics}</span>
               <span className="adaptive-card-label">Weak topics</span>
             </div>
-            <div className="adaptive-card">
+            <div className="adaptive-card" style={{ "--tone": SUMMARY_TONES.strong }}>
+              <span className="adaptive-card-icon"><S.sparkle size={20} /></span>
               <span className="adaptive-card-value">{summary.strongTopics}</span>
               <span className="adaptive-card-label">Strong topics</span>
             </div>
@@ -521,7 +533,7 @@ function Adaptive() {
           <div className="modal-card papers-quiz-card" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Adaptive Quiz: {quizTopic}</h3>
-              <button className="close-btn" onClick={closeQuiz} aria-label="Close">×</button>
+              <button className="close-btn" onClick={closeQuiz} aria-label="Close"><S.x size={16} /></button>
             </div>
 
             {quizError && <p className="auth-error quiz-config-error">{quizError}</p>}

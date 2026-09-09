@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { getProfile, updateProfile } from "../services/api";
+import S from "../components/icons";
 import "../styles/Dashboard.css";
 
 function formatDuration(sec) {
@@ -10,6 +11,10 @@ function formatDuration(sec) {
   if (h > 0) return `${h}h ${m}m`;
   if (m > 0) return `${m}m`;
   return `${sec}s`;
+}
+
+function initials(name) {
+  return (name || "?").trim().split(/\s+/).slice(0, 2).map((p) => p[0]?.toUpperCase() || "").join("");
 }
 
 function Profile() {
@@ -51,20 +56,38 @@ function Profile() {
       {saved && <p className="save-ok">Profile updated.</p>}
 
       <div className="profile-card">
-        <h3>{profile?.username || user.username}</h3>
-        <p className="muted">{profile?.email || user.email}</p>
-        <p className="muted">
-          Account: {(profile?.provider || user.provider || "email")}
-          {" · "}Joined: {profile?.createdAt ? new Date(profile.createdAt).toLocaleDateString() : "-"}
-        </p>
+        <div className="profile-avatar">{initials(profile?.username || user.username)}</div>
+        <div className="profile-info">
+          <h3>{profile?.username || user.username}</h3>
+          <p className="muted">{profile?.email || user.email}</p>
+          <p className="muted">
+            Account: {(profile?.provider || user.provider || "email")}
+            {" · "}Joined: {profile?.createdAt ? new Date(profile.createdAt).toLocaleDateString() : "-"}
+          </p>
+        </div>
       </div>
 
       <div className="stat-cards">
-        <div className="stat-card"><div className="stat-body"><span className="stat-value">{stats?.accuracy ?? 0}%</span><span className="stat-label">Accuracy</span></div></div>
-        <div className="stat-card"><div className="stat-body"><span className="stat-value">{stats?.quizzesTaken ?? 0}</span><span className="stat-label">Quizzes Taken</span></div></div>
-        <div className="stat-card"><div className="stat-body"><span className="stat-value">{stats?.documents ?? 0}</span><span className="stat-label">Documents</span></div></div>
-        <div className="stat-card"><div className="stat-body"><span className="stat-value">{stats?.notes ?? 0}</span><span className="stat-label">Notes</span></div></div>
-        <div className="stat-card"><div className="stat-body"><span className="stat-value">{formatDuration(stats?.totalQuizTimeSec)}</span><span className="stat-label">Quiz Time</span></div></div>
+        <div className="stat-card" style={{ "--tone": "#4f46e5" }}>
+          <span className="stat-icon"><S.target size={18} /></span>
+          <div className="stat-body"><span className="stat-value">{stats?.accuracy ?? 0}%</span><span className="stat-label">Accuracy</span></div>
+        </div>
+        <div className="stat-card" style={{ "--tone": "#10b981" }}>
+          <span className="stat-icon"><S.clipboard size={18} /></span>
+          <div className="stat-body"><span className="stat-value">{stats?.quizzesTaken ?? 0}</span><span className="stat-label">Quizzes Taken</span></div>
+        </div>
+        <div className="stat-card" style={{ "--tone": "#0ea5e9" }}>
+          <span className="stat-icon"><S.doc size={18} /></span>
+          <div className="stat-body"><span className="stat-value">{stats?.documents ?? 0}</span><span className="stat-label">Documents</span></div>
+        </div>
+        <div className="stat-card" style={{ "--tone": "#f59e0b" }}>
+          <span className="stat-icon"><S.book size={18} /></span>
+          <div className="stat-body"><span className="stat-value">{stats?.notes ?? 0}</span><span className="stat-label">Notes</span></div>
+        </div>
+        <div className="stat-card" style={{ "--tone": "#7c3aed" }}>
+          <span className="stat-icon"><S.clock size={18} /></span>
+          <div className="stat-body"><span className="stat-value">{formatDuration(stats?.totalQuizTimeSec)}</span><span className="stat-label">Quiz Time</span></div>
+        </div>
       </div>
 
       <div className="dashboard-panel" style={{ maxWidth: 480 }}>

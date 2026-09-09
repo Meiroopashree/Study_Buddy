@@ -12,6 +12,7 @@ import {
 import formatAIText from "../utils/formatAIText";
 import { downloadAsPdf, downloadTextFile } from "../utils/exportContent";
 import QuizQuestionBlock, { isQuizAnswerCorrect, formatQuizAnswer } from "../components/QuizQuestionBlock";
+import S from "../components/icons";
 import "../styles/Learn.css";
 import "../styles/Papers.css";
 
@@ -296,7 +297,7 @@ function Papers() {
 
       <div className="papers-toolbar">
         <button className="btn btn-ghost" onClick={toggleBrowse}>
-          {showBrowse ? "Back to My Papers" : "Browse Shared Papers"}
+          {showBrowse ? (<><S.paper size={15} />Back to My Papers</>) : (<><S.search size={15} />Browse Shared Papers</>)}
         </button>
       </div>
 
@@ -315,6 +316,7 @@ function Papers() {
               />
             ) : (
               <>
+                <span className="papers-dropzone-icon"><S.upload size={26} /></span>
                 <span className="papers-dropzone-title">Choose a question paper</span>
                 <span className="muted">Supports .pdf, .docx, .txt and images (.png, .jpg)</span>
                 <span className="muted">Extraction may take a minute for large papers</span>
@@ -379,7 +381,7 @@ function Papers() {
               </select>
             </label>
             <button className="btn btn-primary" onClick={loadShared} disabled={browseLoading}>
-              {browseLoading ? "Loading..." : "Apply Filters"}
+              {browseLoading ? "Loading..." : (<><S.search size={14} />Apply Filters</>)}
             </button>
           </div>
           {browseLoading ? (
@@ -402,7 +404,7 @@ function Papers() {
                 </div>
                 <div className="paper-card-actions">
                   <button className="btn btn-primary" onClick={() => openSharedQuiz(p.id)}>
-                    Take Quiz
+                    <S.clipboard size={14} />Take Quiz
                   </button>
                 </div>
               </div>
@@ -432,7 +434,7 @@ function Papers() {
                 <div className="paper-card-actions">
                   {p.status === "ready" && (
                     <button className="btn btn-primary" onClick={() => openQuiz(p)}>
-                      Take Quiz
+                      <S.clipboard size={14} />Take Quiz
                     </button>
                   )}
                   {(p.status === "ready" || p.status === "failed") && (
@@ -442,11 +444,11 @@ function Papers() {
                       disabled={browseBusy}
                       title={p.isPublic ? "Stop sharing this paper with others" : "Share this paper with everyone (public bank)"}
                     >
-                      {p.isPublic ? "Unshare" : "Share"}
+                      {p.isPublic ? (<><S.lock size={14} />Unshare</>) : (<><S.share size={14} />Share</>)}
                     </button>
                   )}
                   <button className="btn btn-danger-sm" onClick={() => handleDelete(p.id)}>
-                    Delete
+                    <S.trash size={14} />Delete
                   </button>
                 </div>
               </div>
@@ -460,7 +462,7 @@ function Papers() {
           <div className="modal-card papers-quiz-card" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Quiz: {quizPaper.title}</h3>
-              <button className="close-btn" onClick={closeQuiz} aria-label="Close">×</button>
+              <button className="close-btn" onClick={closeQuiz} aria-label="Close"><S.x size={18} /></button>
             </div>
 
             {quizLoading && !quiz ? (
@@ -502,10 +504,10 @@ function Papers() {
                     Accuracy: {Math.round((quizScore / quiz.questions.length) * 100)}%
                   </p>
                   <div className="quiz-result-actions">
-                    <button className="btn" onClick={newQuiz}>New Quiz</button>
-                    <button className="btn btn-primary" onClick={retakeQuiz}>Retake</button>
-                    <button className="btn" onClick={exportPaperQuizPdf} title="Save this quiz as a PDF">PDF</button>
-                    <button className="btn" onClick={exportPaperQuizMd} title="Download this quiz as a Markdown file">.md</button>
+                    <button className="btn" onClick={newQuiz}><S.plus size={14} />New Quiz</button>
+                    <button className="btn btn-primary" onClick={retakeQuiz}><S.rotate size={14} />Retake</button>
+                    <button className="btn" onClick={exportPaperQuizPdf} title="Save this quiz as a PDF"><S.download size={14} />PDF</button>
+                    <button className="btn" onClick={exportPaperQuizMd} title="Download this quiz as a Markdown file"><S.doc size={14} />.md</button>
                   </div>
                 </div>
                 <div className="quiz-body">

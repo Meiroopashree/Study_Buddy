@@ -6,6 +6,7 @@ import "katex/dist/katex.min.css";
 import Message from "./Message";
 import QuizQuestionBlock, { isQuizAnswerCorrect, formatQuizAnswer } from "./QuizQuestionBlock";
 import LoadingSpinner from "./LoadingSpinner";
+import S from "./icons";
 import { askAI, askAIStream, generateQuiz, saveQuizResult, getQuizHistory, getQuizDetail, uploadImage, getDocuments, uploadDocument, deleteDocument, createNote, ocrDocument, getLearningTree } from "../services/api";
 import formatAIText from "../utils/formatAIText";
 import { useExam } from "../contexts/ExamContext";
@@ -118,8 +119,8 @@ function ChatBox() {
       ? input
       : "What can you tell me about this image?";
     const displayText = input.trim()
-      ? input + (imageUrl ? "\n\n📷 *Image attached*" : "")
-      : "📷 *(Image uploaded)*";
+      ? input + (imageUrl ? "\n\n*[Image attached]*" : "")
+      : "*[Image uploaded]*";
     addMessage(displayText, "user");
     setInput("");
     setUploadedImage(null);
@@ -309,10 +310,10 @@ function ChatBox() {
       : "Saved note";
     try {
       await createNote(title || "Saved note", aiMsg.text);
-      showToast("✅ Saved to your notes!", "success");
-      addMessage("📌 Saved to your notes (see Dashboard → Notes).", "ai");
+      showToast("Saved to your notes!", "success");
+      addMessage("Saved to your notes (see Dashboard → Notes).", "ai");
     } catch {
-      showToast("❌ Failed to save note.", "error");
+      showToast("Failed to save note.", "error");
       addMessage("Failed to save note.", "ai");
     }
   };
@@ -340,17 +341,17 @@ function ChatBox() {
   const saveQuizToNotes = async (topic, questions, answersByIndex, successMsg) => {
     try {
       await createNote(`Quiz: ${topic || "Untitled"}`, buildQuizNote(topic, questions, answersByIndex));
-      showToast("✅ Quiz saved to your notes!", "success");
-      addMessage(successMsg || "📌 Quiz saved to your notes (see Dashboard → Notes).", "ai");
+      showToast("Quiz saved to your notes!", "success");
+      addMessage(successMsg || "Quiz saved to your notes (see Dashboard → Notes).", "ai");
     } catch {
-      showToast("❌ Failed to save quiz to notes.", "error");
+      showToast("Failed to save quiz to notes.", "error");
       addMessage("Failed to save quiz to notes.", "ai");
     }
   };
 
   const saveLiveQuizToNotes = () => {
     if (!quiz || quiz.questions.length === 0) return;
-    saveQuizToNotes(quizTopic, quiz.questions, submitted ? answers : null, "📌 Quiz saved to your notes.");
+    saveQuizToNotes(quizTopic, quiz.questions, submitted ? answers : null, "Quiz saved to your notes.");
   };
 
   const saveHistoryQuizToNotes = async () => {
@@ -360,7 +361,7 @@ function ChatBox() {
     if (Array.isArray(hq.answers)) {
       hq.answers.forEach((a, i) => { answersByIndex[i] = a.yourAnswer || ""; });
     }
-    await saveQuizToNotes(hq.topic, hq.questions, answersByIndex, "📌 Quiz saved to your notes.");
+    await saveQuizToNotes(hq.topic, hq.questions, answersByIndex, "Quiz saved to your notes.");
   };
 
   const handleOcrUpload = async (e) => {
@@ -369,7 +370,7 @@ function ChatBox() {
     setUploadingDoc(true);
     try {
       const res = await ocrDocument(file);
-      addMessage(`📄 OCR complete — saved as document "${res.title}".`, "ai");
+      addMessage(`OCR complete — saved as document "${res.title}".`, "ai");
       await loadDocuments();
     } catch (err) {
       addMessage(`OCR failed: ${err.message}`, "ai");
@@ -482,10 +483,10 @@ function ChatBox() {
           {!submitted && (
             <div className="flashcard-actions">
               <button onClick={() => { setAnswers({ ...answers, [currentCard]: "known" }); if (currentCard < quiz.questions.length - 1) setCurrentCard(c => c + 1); }}>
-                I Know
+                <S.check size={15} />I Know
               </button>
               <button onClick={() => { if (currentCard < quiz.questions.length - 1) setCurrentCard(c => c + 1); }}>
-                I Don't Know
+                <S.x size={15} />I Don't Know
               </button>
             </div>
           )}
@@ -519,7 +520,7 @@ function ChatBox() {
         </button>
       )}
       <button className="toggle-mode-btn" onClick={saveLiveQuizToNotes}>
-        📌 Save Quiz to Notes
+        <S.bookmark size={15} />Save Quiz to Notes
       </button>
     </div>
   );
@@ -536,12 +537,12 @@ function ChatBox() {
           <p><strong>Completed:</strong> {new Date(selectedHistoryQuiz.completedAt).toLocaleString()}</p>
           <button className="btn btn-success" onClick={saveHistoryQuizToNotes}
             disabled={!selectedHistoryQuiz.questions || selectedHistoryQuiz.questions.length === 0}>
-            📌 Save to Notes
+            <S.bookmark size={15} />Save to Notes
           </button>
           {selectedHistoryQuiz.answers?.map((a, i) => (
             <div key={i} className={`history-answer ${a.isCorrect ? "correct" : "wrong"}`}>
               <p><strong>{i + 1}.</strong> {a.question}</p>
-              <p>Your answer: {a.yourAnswer || "(none)"} {a.isCorrect ? "✓" : "✗"}</p>
+              <p>Your answer: {a.yourAnswer || "(none)"} {a.isCorrect ? <S.check size={14} /> : <S.x size={14} />}</p>
               {!a.isCorrect && <p>Correct answer: {a.correctAnswer}</p>}
             </div>
           ))}
@@ -593,15 +594,15 @@ function ChatBox() {
             className="input-box"
             onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && (e.preventDefault(), handleAsk())} />
           <button className={`voice-btn ${listening ? "listening" : ""}`} onClick={handleVoice} title="Voice input">
-            {listening ? "🔴" : "🎤"}
+            <S.mic size={18} />
           </button>
           <input type="file" accept="image/*" ref={fileInputRef} style={{ display: "none" }}
             onChange={handleImageUpload} />
           <button className="upload-btn" onClick={() => fileInputRef.current?.click()} disabled={uploading} title="Upload image">
-            {uploading ? "⏳" : "🖼️"}
+            {uploading ? <S.upload size={18} /> : <S.image size={18} />}
           </button>
           <button className="btn btn-primary" onClick={handleAsk}>
-            Ask
+            <S.send size={15} />Ask
           </button>
         </div>
 
@@ -609,7 +610,7 @@ function ChatBox() {
           <div className="image-preview">
             <img src={uploadedImage} alt="Uploaded preview" />
             <span>Image ready — will be sent with your question</span>
-            <button className="btn btn-ghost" onClick={() => setUploadedImage(null)}>Remove</button>
+            <button className="btn btn-ghost" onClick={() => setUploadedImage(null)}><S.x size={14} />Remove</button>
           </div>
         )}
 
@@ -646,20 +647,20 @@ function ChatBox() {
             <option value={10}>10 questions</option>
           </select>
           <button className="btn btn-success" onClick={handleGenerateQuiz} disabled={loading || !quizTopic.trim()}>
-            Generate Quiz
+            <S.clipboard size={15} />Generate Quiz
           </button>
         </div>
 
         <div className="toolbar-row">
-          <button className="btn btn-secondary" onClick={loadHistory}>History</button>
+          <button className="btn btn-secondary" onClick={loadHistory}><S.clock size={15} />History</button>
           <button className="btn btn-purple" onClick={() => { loadDocuments(); setShowDocManager(!showDocManager); }}>
-            {showDocManager ? "Docs" : `Docs${selectedDocIds.length ? ` (${selectedDocIds.length})` : ""}`}
+            <S.doc size={15} />{showDocManager ? "Docs" : `Docs${selectedDocIds.length ? ` (${selectedDocIds.length})` : ""}`}
           </button>
           {messages.length > 0 && (
-            <button className="btn btn-danger" onClick={() => window.print()}>PDF</button>
+            <button className="btn btn-danger" onClick={() => window.print()}><S.download size={15} />PDF</button>
           )}
           {(messages.length > 0 || conversationHistory.length > 0) && (
-            <button className="btn btn-ghost" onClick={() => { setConversationHistory([]); setMessages([]); }}>Clear Context</button>
+            <button className="btn btn-ghost" onClick={() => { setConversationHistory([]); setMessages([]); }}><S.trash size={15} />Clear Context</button>
           )}
         </div>
       </div>
@@ -670,12 +671,12 @@ function ChatBox() {
             My Documents
             <button className="btn btn-success" style={{ padding: "4px 12px", fontSize: "0.8rem" }}
               onClick={() => docFileInputRef.current?.click()} disabled={uploadingDoc}>
-              {uploadingDoc ? "..." : "+ Upload"}
+              {uploadingDoc ? <S.upload size={14} /> : <S.plus size={14} />} Upload
             </button>
             <button className="btn btn-purple" style={{ padding: "4px 12px", fontSize: "0.8rem", marginLeft: 6 }}
               onClick={() => ocrFileInputRef.current?.click()} disabled={uploadingDoc}
               title="Extract text from an image (OCR)">
-              {uploadingDoc ? "..." : "OCR Image"}
+              {uploadingDoc ? <S.upload size={14} /> : <S.image size={14} />} OCR Image
             </button>
           </h4>
           <input type="file" accept=".txt,.md,.pdf,.docx" ref={docFileInputRef} style={{ display: "none" }}
@@ -690,7 +691,7 @@ function ChatBox() {
                     onChange={() => toggleDoc(doc.id)} />
                   <span>{doc.title}</span>
                 </label>
-                <button className="doc-delete" onClick={() => handleDeleteDoc(doc.id)}>✕</button>
+                <button className="doc-delete" onClick={() => handleDeleteDoc(doc.id)} aria-label="Delete document"><S.x size={14} /></button>
               </div>
             ))
           }

@@ -120,13 +120,13 @@
 }
 
 /* ── dark mode tweaks ──────────────────────────────── */
-.dark .ls-page {
+.dark-mode .ls-page {
   fill: #1e293b;
   stroke: #334155;
 }
-.dark .ls-dot {
+.dark-mode .ls-dot {
   background: #818cf8;
 }
-.dark .ls-message {
+.dark-mode .ls-message {
   color: #94a3b8;
 }

@@ -7,6 +7,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "katex/dist/katex.min.css";
 import formatAIText from "../utils/formatAIText";
+import S from "./icons";
 import "../styles/Message.css";
 
 function CodeBlock({ className, children }) {
@@ -36,7 +37,9 @@ function Message({ text, type, streaming, onSaveNote }) {
         </ReactMarkdown>
         {streaming && <span className="streaming-cursor">▍</span>}
         {onSaveNote && !streaming && (
-          <button className="save-note-btn" onClick={onSaveNote} title="Save to notes">📌 Save</button>
+          <button className="save-note-btn" onClick={onSaveNote} title="Save to notes">
+            <S.bookmark size={14} />Save
+          </button>
         )}
       </div>
     );

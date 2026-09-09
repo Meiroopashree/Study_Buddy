@@ -19,6 +19,7 @@ import formatAIText from "../utils/formatAIText";
 import { downloadAsPdf, downloadAsMarkdown, downloadTextFile } from "../utils/exportContent";
 import { useExam } from "../contexts/ExamContext";
 import QuizQuestionBlock, { isQuizAnswerCorrect, formatQuizAnswer } from "../components/QuizQuestionBlock";
+import S from "../components/icons";
 import "../styles/Learn.css";
 
 const TABS = [
@@ -715,15 +716,15 @@ ${body}
               onClick={() => (collapsed.size > 0 ? expandAll : collapseAll)()}
               title="Expand or collapse the entire syllabus"
             >
-              {collapsed.size > 0 ? "⊞ Expand" : "⊟ Collapse"}
+              {collapsed.size > 0 ? (<><S.expand size={14} />Expand</>) : (<><S.collapse size={14} />Collapse</>)}
             </button>
           )}
           <button className="btn btn-sm btn-primary" onClick={() => setExamModal(true)}>
-            + Create Exam
+            <S.plus size={14} />Create Exam
           </button>
           {examNames.length >= 2 && (
             <button className="btn btn-sm btn-ghost" onClick={() => setCompareModal(true)}>
-              Compare
+              <S.compare size={14} />Compare
             </button>
           )}
         </div>
@@ -736,7 +737,9 @@ ${body}
             placeholder="Search exam, subject, chapter or topic…"
           />
           {searchTerm && (
-            <button className="learn-search-clear" onClick={() => setSearchTerm("")} title="Clear search">✕</button>
+            <button className="learn-search-clear" onClick={() => setSearchTerm("")} title="Clear search">
+              <S.x size={13} />
+            </button>
           )}
         </div>
 
@@ -754,7 +757,7 @@ ${body}
             <div className="learn-tree-empty">
               <p className="muted">No syllabus yet.</p>
               <button className="btn btn-sm btn-primary" onClick={() => setExamModal(true)}>
-                + Create an exam to get started
+                <S.plus size={14} />Create an exam to get started
               </button>
             </div>
           ) : filteredTree.length === 0 ? (
@@ -777,7 +780,7 @@ ${body}
                       className="learn-exam-name learn-toggle"
                       onClick={() => toggleCollapse(examKey)}
                     >
-                      <span className="learn-chevron">{examOpen ? "▾" : "▸"}</span>
+                      <span className={`learn-chevron ${examOpen ? "is-open" : ""}`}><S.chevron size={14} /></span>
                       {examGroup.exam}
                     </div>
                     <button
@@ -789,7 +792,7 @@ ${body}
                         handleDeleteExam(examGroup.exam);
                       }}
                     >
-                      {deletingExam === examGroup.exam ? "Delete…" : "✕ Delete"}
+                      {deletingExam === examGroup.exam ? "Deleting…" : (<><S.trash size={12} />Delete</>)}
                     </button>
                   </div>
                   {(() => {
@@ -815,7 +818,7 @@ ${body}
                             className="learn-subject-name learn-toggle"
                             onClick={() => toggleCollapse(subjectKey)}
                           >
-                            <span className="learn-chevron">{subjectOpen ? "▾" : "▸"}</span>
+                            <span className={`learn-chevron ${subjectOpen ? "is-open" : ""}`}><S.chevron size={14} /></span>
                             {subject.name}
                           </div>
                           {subjectOpen &&
@@ -829,7 +832,7 @@ ${body}
                                       className="learn-chapter-name learn-toggle"
                                       onClick={() => toggleCollapse(chapterKey)}
                                     >
-                                      <span className="learn-chevron">{chapterOpen ? "▾" : "▸"}</span>
+                                      <span className={`learn-chevron ${chapterOpen ? "is-open" : ""}`}><S.chevron size={14} /></span>
                                       <span className="learn-chapter-title">{chapter.title}</span>
                                     </div>
                                     <div className="learn-chapter-actions">
@@ -841,7 +844,7 @@ ${body}
                                           openQuizModal({ type: "chapter", id: chapter.id, title: chapter.title });
                                         }}
                                       >
-                                        Quiz
+                                        <S.clipboard size={11} />Quiz
                                       </button>
                                       <button
                                         className="learn-mini-btn"
@@ -851,7 +854,7 @@ ${body}
                                           handleReview({ type: "chapter", id: chapter.id, title: chapter.title });
                                         }}
                                       >
-                                        Review
+                                        <S.brain size={11} />Review
                                       </button>
                                     </div>
                                   </div>
@@ -879,7 +882,7 @@ ${body}
                                           title={(STATUS_LABELS[topic.status] || "Not Started") + " — click topic to change"} />
                                         <span className="learn-topic-title">{topic.title}</span>
                                         {bookmarkedIds.has(topic.id) && (
-                                          <span className="learn-bookmark-dot">★</span>
+                                          <span className="learn-bookmark-dot"><S.bookmarkFill size={11} /></span>
                                         )}
                                       </div>
                                     ))}
@@ -930,14 +933,14 @@ ${body}
                   onClick={() => handleToggleBookmark(topic.id)}
                   title="Bookmark topic"
                 >
-                  {bookmarkedIds.has(topic.id) ? "★ Bookmarked" : "☆ Bookmark"}
+                  {bookmarkedIds.has(topic.id) ? (<><S.bookmarkFill size={15} />Bookmarked</>) : (<><S.bookmark size={15} />Bookmark</>)}
                 </button>
                 <button className="btn btn-primary" onClick={handleGenerateContent} disabled={generating}>
-                  {generating ? "Generating..." : hasTopicContent ? "Regenerate" : "Generate Content"}
+                  {generating ? "Generating..." : (<><S.sparkle size={15} />{hasTopicContent ? "Regenerate" : "Generate Content"}</>)}
                 </button>
-                <button className="btn" onClick={() => openQuizModal()}>Take Quiz</button>
-                <button className="btn" onClick={() => handleReview()}>Review</button>
-                <button className="btn" onClick={handleFlashcards}>Flashcards</button>
+                <button className="btn" onClick={() => openQuizModal()}><S.clipboard size={15} />Take Quiz</button>
+                <button className="btn" onClick={() => handleReview()}><S.brain size={15} />Review</button>
+                <button className="btn" onClick={handleFlashcards}><S.book size={15} />Flashcards</button>
               </div>
             </div>
 
@@ -973,7 +976,7 @@ ${body}
                 </div>
               ) : video?.searchUrl ? (
                 <div className="watch-card">
-                  <div className="watch-card-play">▶</div>
+                  <div className="watch-card-play"><S.play size={22} /></div>
                   <div className="watch-card-body">
                     <h4>Start with a video for “{video.title || topic?.title}”</h4>
                     <p>
@@ -1020,7 +1023,7 @@ ${body}
                       onClick={handleDownloadFormulaSheet}
                       title="Opens a print dialog to save the formula sheet as a PDF"
                     >
-                      Download PDF
+                      <S.download size={14} />Download PDF
                     </button>
                   )}
                   {activeTab !== "formulaSheet" && topic?.[activeTab] && String(topic[activeTab]).trim() && (
@@ -1030,14 +1033,14 @@ ${body}
                         onClick={handleDownloadActiveTab}
                         title="Opens a print dialog to save this section as a PDF"
                       >
-                        Download PDF
+                        <S.download size={14} />Download PDF
                       </button>
                       <button
                         className="btn btn-sm learn-tab-download"
                         onClick={handleDownloadActiveTabMd}
                         title="Download this section as a Markdown file"
                       >
-                        .md
+                        <S.doc size={14} />.md
                       </button>
                     </>
                   )}
@@ -1068,7 +1071,7 @@ ${body}
           <div className="modal-card learn-quiz-card" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Quiz: {quizScope?.title || topic?.title}</h3>
-              <button className="close-btn" onClick={() => setQuizModal(false)} aria-label="Close">×</button>
+              <button className="close-btn" onClick={() => setQuizModal(false)} aria-label="Close"><S.x size={18} /></button>
             </div>
 
             {quizLoading && !quiz ? (
@@ -1163,10 +1166,10 @@ ${body}
                     Accuracy: {Math.round((quizScore / quiz.questions.length) * 100)}%
                   </p>
                   <div className="quiz-result-actions">
-                    <button className="btn" onClick={handleNewQuiz}>New Quiz</button>
-                    <button className="btn btn-primary" onClick={handleRetake}>Retake</button>
-                    <button className="btn" onClick={handleExportQuizPdf} title="Save this quiz as a PDF">PDF</button>
-                    <button className="btn" onClick={handleExportQuizMd} title="Download this quiz as a Markdown file">.md</button>
+                    <button className="btn" onClick={handleNewQuiz}><S.plus size={14} />New Quiz</button>
+                    <button className="btn btn-primary" onClick={handleRetake}><S.rotate size={14} />Retake</button>
+                    <button className="btn" onClick={handleExportQuizPdf} title="Save this quiz as a PDF"><S.download size={14} />PDF</button>
+                    <button className="btn" onClick={handleExportQuizMd} title="Download this quiz as a Markdown file"><S.doc size={14} />.md</button>
                   </div>
                 </div>
                 <div className="quiz-body">
@@ -1217,10 +1220,10 @@ ${body}
                     className={`btn btn-sm ${inReviewSchedule.has(selectedTopicId) ? "btn-ghost" : "btn-primary"}`}
                     onClick={() => handleToggleReviewSchedule(selectedTopicId)}
                   >
-                    {inReviewSchedule.has(selectedTopicId) ? "Scheduled ✓" : "+ Schedule Review"}
+                    {inReviewSchedule.has(selectedTopicId) ? (<><S.check size={14} />Scheduled</>) : (<><S.plus size={14} />Schedule Review</>)}
                   </button>
                 )}
-                <button className="close-btn" onClick={() => setFlashModal(false)} aria-label="Close">×</button>
+                <button className="close-btn" onClick={() => setFlashModal(false)} aria-label="Close"><S.x size={18} /></button>
               </div>
             </div>
             <div className="flash-body">
@@ -1278,7 +1281,7 @@ ${body}
           <div className="modal-card learn-exam-card" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Create Exam</h3>
-              <button className="close-btn" onClick={() => setExamModal(false)} aria-label="Close">×</button>
+              <button className="close-btn" onClick={() => setExamModal(false)} aria-label="Close"><S.x size={18} /></button>
             </div>
             <form className="exam-form" onSubmit={handleCreateExam}>
               <label>
@@ -1323,7 +1326,7 @@ ${body}
           <div className="modal-card learn-compare-card" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Compare Exams</h3>
-              <button className="close-btn" onClick={() => setCompareModal(false)} aria-label="Close">×</button>
+              <button className="close-btn" onClick={() => setCompareModal(false)} aria-label="Close"><S.x size={18} /></button>
             </div>
             <div className="compare-selectors">
               <label>
@@ -1397,7 +1400,7 @@ ${body}
           <div className="modal-card learn-review-card" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Review: {reviewTitle}</h3>
-              <button className="close-btn" onClick={() => setReviewModal(false)} aria-label="Close">×</button>
+              <button className="close-btn" onClick={() => setReviewModal(false)} aria-label="Close"><S.x size={18} /></button>
             </div>
             <div className="review-body">
               {reviewLoading ? (

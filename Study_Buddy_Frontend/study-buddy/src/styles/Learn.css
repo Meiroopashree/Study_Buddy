@@ -199,9 +199,12 @@
   font-size: 0.72rem;
   font-weight: 700;
   line-height: 1;
-  padding: 5px 8px;
+  padding: 5px 9px;
   border-radius: 6px;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
@@ -224,8 +227,14 @@
   flex: 0 0 16px;
   color: var(--text);
   opacity: 0.55;
-  font-size: 0.75em;
   line-height: 1;
+}
+.learn-chevron svg {
+  transform: rotate(-90deg);
+  transition: transform 0.18s var(--ease);
+}
+.learn-chevron.is-open svg {
+  transform: rotate(0deg);
 }
 
 .learn-subject {
@@ -334,7 +343,11 @@
 }
 
 .learn-bookmark-dot {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
   color: #f59e0b;
+  margin-top: 2px;
 }
 
 .learn-status-dot {
@@ -949,13 +962,16 @@
 .learn-mini-btn {
   font-size: 0.7rem;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 3px 9px;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: transparent;
   color: var(--text);
   cursor: pointer;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   transition: background 0.15s, color 0.15s;
 }
 

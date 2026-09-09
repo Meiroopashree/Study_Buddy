@@ -24,11 +24,11 @@
 }
 
 .toast.success {
-  background: #16a34a;
+  background: var(--success);
 }
 
 .toast.error {
-  background: #dc2626;
+  background: var(--danger);
 }
 
 @keyframes toast-in {
@@ -105,7 +105,7 @@
 .input-row textarea.input-box:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(10, 51, 57, 0.15);
+  box-shadow: var(--ring);
 }
 
 .toolbar-row {
@@ -159,7 +159,7 @@
   background: var(--primary);
   border-color: var(--primary);
   color: #fff;
-  box-shadow: 0 2px 8px rgba(10, 51, 57, 0.3);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
 }
 
 .quiz-row {
@@ -183,7 +183,7 @@
 .quiz-row input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(10, 51, 57, 0.15);
+  box-shadow: var(--ring);
 }
 
 .difficulty-dropdown {
@@ -196,74 +196,13 @@
   cursor: pointer;
 }
 
-.btn {
-  padding: 9px 16px;
-  border: none;
-  border-radius: 10px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  white-space: nowrap;
-}
-
-.btn:active {
-  transform: scale(0.96);
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: #fff;
-}
-.btn-primary:hover {
-  background: var(--primary-2);
-  box-shadow: 0 2px 8px rgba(10, 51, 57, 0.3);
-}
-
-.btn-success {
-  background: #16a34a;
-  color: #fff;
-}
-.btn-success:hover {
-  background: #15803d;
-  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
-}
-
-.btn-secondary {
-  background: #6b7280;
-  color: #fff;
-}
-.btn-secondary:hover {
-  background: #4b5563;
-}
-
-.btn-danger {
-  background: #ef4444;
-  color: #fff;
-}
-.btn-danger:hover {
-  background: #dc2626;
-}
-
 .btn-purple {
   background: var(--accent);
   color: #fff;
 }
 .btn-purple:hover {
   background: var(--accent-2);
-  box-shadow: 0 2px 8px rgba(225, 101, 38, 0.3);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--text);
-  border: 2px solid var(--border);
-}
-.btn-ghost:hover {
-  background: var(--secondary-bg);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
 }
 
 .btn-icon {
@@ -278,17 +217,21 @@
   border-radius: 10px;
   cursor: pointer;
   background: var(--bg);
-  font-size: 1.1rem;
   line-height: 1;
   transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
 }
 .voice-btn:hover {
   border-color: var(--primary);
   background: var(--secondary-bg);
 }
 .voice-btn.listening {
-  background: #fecaca;
-  border-color: #ef4444;
+  background: var(--danger-soft);
+  border-color: var(--danger);
+  color: var(--danger);
   animation: pulse 1s infinite;
 }
 
@@ -298,9 +241,12 @@
   border-radius: 10px;
   cursor: pointer;
   background: var(--bg);
-  font-size: 1.1rem;
   line-height: 1;
   transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
 }
 .upload-btn:hover {
   border-color: var(--primary);
@@ -366,8 +312,8 @@
   color: var(--primary-2);
 }
 .timer-warning {
-  background: #fecaca;
-  color: #dc2626;
+  background: var(--danger-soft);
+  color: var(--danger);
 }
 
 .question-block {
@@ -406,14 +352,14 @@
   background: var(--primary-soft);
 }
 .option-btn.correct {
-  border-color: #16a34a;
-  background: #bbf7d0;
-  color: #166534;
+  border-color: var(--success);
+  background: color-mix(in srgb, var(--success) 14%, transparent);
+  color: color-mix(in srgb, var(--success) 82%, var(--text));
 }
 .option-btn.wrong {
-  border-color: #ef4444;
-  background: #fecaca;
-  color: #991b1b;
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 14%, transparent);
+  color: color-mix(in srgb, var(--danger) 82%, var(--text));
 }
 
 .short-input {
@@ -462,7 +408,10 @@
 }
 
 .toggle-mode-btn {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   width: 100%;
   padding: 10px;
   margin-top: 8px;
@@ -474,6 +423,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  font-family: inherit;
 }
 .toggle-mode-btn:hover {
   background: var(--accent);
@@ -549,6 +499,10 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: inherit;
 }
 .flashcard-actions button:first-child {
   background: #16a34a;
@@ -644,12 +598,12 @@
   font-size: 0.9rem;
 }
 .history-answer.correct {
-  background: #bbf7d0;
-  color: #166534;
+  background: color-mix(in srgb, var(--success) 14%, transparent);
+  color: color-mix(in srgb, var(--success) 82%, var(--text));
 }
 .history-answer.wrong {
-  background: #fecaca;
-  color: #991b1b;
+  background: color-mix(in srgb, var(--danger) 14%, transparent);
+  color: color-mix(in srgb, var(--danger) 82%, var(--text));
 }
 
 .doc-manager {
@@ -704,14 +658,17 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #ef4444;
-  font-size: 1rem;
+  color: var(--danger);
+  line-height: 1;
   padding: 4px 8px;
   border-radius: 4px;
   transition: background 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .doc-delete:hover {
-  background: #fecaca;
+  background: var(--danger-soft);
 }
 
 @keyframes pulse {
