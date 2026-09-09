@@ -165,7 +165,7 @@
 .qq-matching-head {
   font-weight: 700;
   font-size: 0.8rem;
-  color: #64748b;
+  color: var(--text-2);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -181,7 +181,7 @@
 .qq-matching-letter {
   font-weight: 700;
   min-width: 16px;
-  color: #475569;
+  color: var(--text-2);
 }
 
 .qq-matching-item {

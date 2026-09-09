@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate, NavLink } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, NavLink, useLocation } from "react-router-dom";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { ExamProvider, useExam } from "./contexts/ExamContext";
 import { getLearningTree } from "./services/api";
@@ -12,11 +12,6 @@ import Learn from "./pages/Learn";
 import Papers from "./pages/Papers";
 import Adaptive from "./pages/Adaptive";
 import "./index.css";
-
-function ProtectedRoute({ children }) {
-  const { user } = useAuth();
-  return user ? children : <Navigate to="/auth" />;
-}
 
 function initials(name) {
   return String(name || "S").trim().split(/\s+/).slice(0, 2)
@@ -40,8 +35,9 @@ function ExamSwitcher() {
 
   return (
     <div className="exam-switcher">
-      <label className="exam-switcher-label">Exam</label>
+      <label className="exam-switcher-label" htmlFor="exam-switcher">Exam</label>
       <select
+        id="exam-switcher"
         value={currentExam || ""}
         onChange={(e) => setCurrentExam(e.target.value)}
         className="exam-switcher-select"
@@ -73,63 +69,181 @@ function ThemeToggle({ className }) {
   );
 }
 
-function NavBar() {
-  const { user, logout } = useAuth();
-  if (!user) return null;
+const NAV_SECTIONS = [
+  {
+    title: "Study",
+    items: [
+      { to: "/", end: true, icon: S.chat, label: "Chat" },
+      { to: "/dashboard", icon: S.dashboard, label: "Dashboard" },
+      { to: "/learn", icon: S.book, label: "Learn" },
+      { to: "/papers", icon: S.paper, label: "Papers" },
+      { to: "/adaptive", icon: S.chart, label: "Adaptive" },
+    ],
+  },
+  {
+    title: "Account",
+    items: [
+      { to: "/profile", icon: S.user, label: "Profile" },
+    ],
+  },
+];
+
+function SidebarNav({ onNavigate }) {
   return (
-    <nav className="app-nav">
-      <NavLink to="/" className="nav-brand" end title="StudyBuddy">
-        <span className="nav-brand-mark"><S.book size={16} /></span>
-        <span className="nav-brand-name">StudyBuddy</span>
+    <>
+      <NavLink to="/" end className="sidebar-brand" onClick={onNavigate} title="StudyBuddy">
+        <span className="sidebar-brand-mark"><S.book size={20} /></span>
+        <span className="sidebar-brand-name">StudyBuddy</span>
       </NavLink>
-      <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} end>
-        <S.chat size={16} /><span className="nav-link-label">Chat</span>
-      </NavLink>
-      <NavLink to="/dashboard" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-        <S.dashboard size={16} /><span className="nav-link-label">Dashboard</span>
-      </NavLink>
-      <NavLink to="/learn" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-        <S.book size={16} /><span className="nav-link-label">Learn</span>
-      </NavLink>
-      <NavLink to="/papers" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-        <S.paper size={16} /><span className="nav-link-label">Papers</span>
-      </NavLink>
-      <NavLink to="/adaptive" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-        <S.chart size={16} /><span className="nav-link-label">Adaptive</span>
-      </NavLink>
-      <NavLink to="/profile" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-        <S.user size={16} /><span className="nav-link-label">Profile</span>
-      </NavLink>
-      <div className="nav-spacer" />
+      {NAV_SECTIONS.map((section) => (
+        <div className="sidebar-section" key={section.title}>
+          <span className="sidebar-section-title">{section.title}</span>
+          <nav className="sidebar-nav">
+            {section.items.map((item) => (
+              <NavLink
+                key={item.label}
+                to={item.to}
+                end={item.end}
+                onClick={onNavigate}
+                className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}
+              >
+                <item.icon size={18} />
+                <span>{item.label}</span>
+              </NavLink>
+            ))}
+          </nav>
+        </div>
+      ))}
+    </>
+  );
+}
+
+function SidebarFooter() {
+  const { user, logout } = useAuth();
+  return (
+    <div className="sidebar-footer">
       <ExamSwitcher />
-      <span className="nav-user">
-        <span className="nav-avatar">{initials(user.username)}</span>
-        {user.username}
-      </span>
-      <ThemeToggle className="nav-theme-toggle" />
-      <button onClick={logout} className="logout-btn">
-        <S.logout size={16} />Logout
-      </button>
-    </nav>
+      {user && (
+        <div className="user-chip">
+          <span className="user-chip-avatar">{initials(user.username)}</span>
+          <span className="user-chip-info">
+            <span className="user-chip-name">{user.username}</span>
+            <span className="user-chip-role">StudyBuddy member</span>
+          </span>
+        </div>
+      )}
+      <div className="sidebar-tools">
+        <ThemeToggle />
+        <button onClick={logout} className="logout-btn">
+          <S.logout size={16} />Logout
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function SidebarContent({ onNavigate }) {
+  return (
+    <>
+      <SidebarNav onNavigate={onNavigate} />
+      <SidebarFooter />
+    </>
+  );
+}
+
+function MobileDrawer({ open, onClose }) {
+  return (
+    <>
+      <div className={`drawer-scrim ${open ? "open" : ""}`} onClick={onClose} aria-hidden="true" />
+      <div className={`drawer ${open ? "open" : ""}`} role="dialog" aria-modal="true">
+        <div className="drawer-inner">
+          <button className="close-btn drawer-close" onClick={onClose} aria-label="Close menu">
+            <S.x size={18} />
+          </button>
+          <SidebarContent onNavigate={onClose} />
+        </div>
+      </div>
+    </>
+  );
+}
+
+function TopBar({ onOpenDrawer }) {
+  return (
+    <header className="app-topbar">
+      <NavLink to="/" end className="topbar-brand" title="StudyBuddy">
+        <span className="topbar-brand-mark"><S.book size={16} /></span>
+        <span className="topbar-brand-name">StudyBuddy</span>
+      </NavLink>
+      <div className="topbar-spacer" />
+      <div className="topbar-tools">
+        <ThemeToggle />
+        <button
+          className="sidebar-toggle"
+          onClick={onOpenDrawer}
+          aria-label="Open menu"
+          title="Menu"
+        >
+          <S.menu size={20} />
+        </button>
+      </div>
+    </header>
   );
 }
 
 function AppContent() {
   const { user } = useAuth();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setDrawerOpen(false);
+  }, [location]);
+
+  useEffect(() => {
+    if (!drawerOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setDrawerOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [drawerOpen]);
+
+  if (!user) {
+    return (
+      <>
+        <ThemeToggle className="dark-toggle" />
+        <Routes>
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="*" element={<Navigate to="/auth" />} />
+        </Routes>
+      </>
+    );
+  }
+
   return (
-    <>
-      {!user && <ThemeToggle className="dark-toggle" />}
-      <NavBar />
-      <Routes>
-        <Route path="/auth" element={user ? <Navigate to="/" /> : <AuthPage />} />
-        <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        <Route path="/learn" element={<ProtectedRoute><Learn /></ProtectedRoute>} />
-        <Route path="/papers" element={<ProtectedRoute><Papers /></ProtectedRoute>} />
-        <Route path="/adaptive" element={<ProtectedRoute><Adaptive /></ProtectedRoute>} />
-        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-      </Routes>
-    </>
+    <div className="app-shell">
+      <aside className="app-sidebar">
+        <div className="sidebar-inner">
+          <SidebarContent />
+        </div>
+      </aside>
+
+      <MobileDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
+
+      <div className="app-main">
+        <TopBar onOpenDrawer={() => setDrawerOpen(true)} />
+        <Routes>
+          <Route path="/auth" element={<Navigate to="/" />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/learn" element={<Learn />} />
+          <Route path="/papers" element={<Papers />} />
+          <Route path="/adaptive" element={<Adaptive />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
+    </div>
   );
 }
 

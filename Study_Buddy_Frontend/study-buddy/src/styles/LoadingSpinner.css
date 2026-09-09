@@ -82,7 +82,7 @@
   margin-top: 22px;
   font-size: .92rem;
   font-weight: 500;
-  color: var(--text-muted, #94a3b8);
+  color: var(--text-3);
   text-align: center;
   animation: ls-fade-msg 2.4s ease-in-out infinite;
   min-height: 1.4em;
@@ -120,13 +120,6 @@
 }
 
 /* ── dark mode tweaks ──────────────────────────────── */
-.dark-mode .ls-page {
-  fill: #1e293b;
-  stroke: #334155;
-}
 .dark-mode .ls-dot {
-  background: #818cf8;
-}
-.dark-mode .ls-message {
-  color: #94a3b8;
+  background: color-mix(in srgb, var(--accent) 55%, #fff);
 }

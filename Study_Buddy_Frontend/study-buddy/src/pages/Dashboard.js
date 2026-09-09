@@ -382,7 +382,11 @@ function Dashboard() {
           ) : (
             <ul className="dash-list">
               {quizzes.map((q) => (
-                <li key={q.id} className="quiz-row">
+                <li
+                  key={q.id}
+                  className="quiz-row"
+                  data-acc={q.accuracy >= 75 ? "high" : q.accuracy >= 50 ? "mid" : "low"}
+                >
                   <div className="quiz-main">
                     <div className="quiz-title">{q.topic}</div>
                     <div className="quiz-meta">

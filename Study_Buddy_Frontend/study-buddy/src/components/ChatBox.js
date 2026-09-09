@@ -14,6 +14,13 @@ import "../styles/ChatBox.css";
 
 const TIMER_MINUTES = 10;
 
+const SUGGESTIONS = [
+  "Explain Newton's three laws of motion",
+  "Quiz me on calculus derivatives",
+  "What's the difference between arteries and veins?",
+  "Summarize the process of photosynthesis",
+];
+
 const TUTOR_MODES = [
   { key: "Beginner", label: "Beginner", hint: "Teach from the basics" },
   { key: "NCERT", label: "NCERT", hint: "Board-level, standard definitions" },
@@ -112,18 +119,19 @@ function ChatBox() {
     toastTimerRef.current = setTimeout(() => setToast(null), 3500);
   };
 
-  const handleAsk = async () => {
-    if (!input.trim() && !uploadedImage) return;
+  const handleAsk = async (promptOverride) => {
+    const typed = typeof promptOverride === "string" ? promptOverride : input;
+    if (!typed.trim() && !uploadedImage) return;
     const imageUrl = uploadedImage;
-    const userMessage = input.trim()
-      ? input
+    const userMessage = typed.trim()
+      ? typed
       : "What can you tell me about this image?";
-    const displayText = input.trim()
-      ? input + (imageUrl ? "\n\n*[Image attached]*" : "")
+    const displayText = typed.trim()
+      ? typed + (imageUrl ? "\n\n*[Image attached]*" : "")
       : "*[Image uploaded]*";
     addMessage(displayText, "user");
     setInput("");
-    setUploadedImage(null);
+    if (promptOverride) setUploadedImage(null);
 
     setMessages(prev => [...prev, { text: "", type: "ai", streaming: true }]);
 
@@ -562,9 +570,27 @@ function ChatBox() {
 
   return (
     <div className="chat-container">
-      <h1 className="chat-header">AI Study Buddy <span className="chat-header-mode">· {tutorMode}</span></h1>
+      <header className="chat-header">
+        <span className="chat-header-mark"><S.sparkle size={16} /></span>
+        <h1>AI Study Buddy</h1>
+        <span className="chat-header-mode">· {tutorMode}</span>
+        <div className="chat-header-spacer" />
+        <span className="chat-header-tip">Ask anything · solved step by step</span>
+      </header>
 
       <div className="messages">
+        {messages.length === 0 && !quiz && !showHistory && !input.trim() && !uploadedImage && (
+          <div className="chat-suggestions fade-rise">
+            <p className="chat-suggestion-hint">Try asking…</p>
+            <div className="chat-suggestion-chips">
+              {SUGGESTIONS.map((s) => (
+                <button key={s} className="suggestion-chip" onClick={() => handleAsk(s)}>
+                  <S.sparkle size={14} />{s}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
         {messages.map((msg, i) => (
           <Message key={i} type={msg.type} text={msg.text} streaming={msg.streaming}
             onSaveNote={msg.type === "ai" && msg.text ? () => handleSaveNote(i) : null} />
@@ -588,22 +614,27 @@ function ChatBox() {
       </div>
 
       <div className="input-section">
-        <div className="input-row">
+        <div className="input-dock">
           <textarea value={input} onChange={(e) => setInput(e.target.value)}
-            placeholder="Type your question... (Shift+Enter for new line)"
+            placeholder="Type your question… (Shift+Enter for a new line)"
             className="input-box"
             onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && (e.preventDefault(), handleAsk())} />
-          <button className={`voice-btn ${listening ? "listening" : ""}`} onClick={handleVoice} title="Voice input">
-            <S.mic size={18} />
-          </button>
-          <input type="file" accept="image/*" ref={fileInputRef} style={{ display: "none" }}
-            onChange={handleImageUpload} />
-          <button className="upload-btn" onClick={() => fileInputRef.current?.click()} disabled={uploading} title="Upload image">
-            {uploading ? <S.upload size={18} /> : <S.image size={18} />}
-          </button>
-          <button className="btn btn-primary" onClick={handleAsk}>
-            <S.send size={15} />Ask
-          </button>
+          <div className="input-dock-row">
+            <div className="dock-tools">
+              <button className={`dock-icon-btn ${listening ? "listening" : ""}`} onClick={handleVoice} title="Voice input">
+                <S.mic size={18} />
+              </button>
+              <input type="file" accept="image/*" ref={fileInputRef} style={{ display: "none" }}
+                onChange={handleImageUpload} />
+              <button className="dock-icon-btn" onClick={() => fileInputRef.current?.click()} disabled={uploading} title="Upload image">
+                {uploading ? <S.upload size={18} /> : <S.image size={18} />}
+              </button>
+              <button className="btn btn-primary btn-send" onClick={handleAsk}>
+                {uploading ? "…" : "Ask"}<S.send size={15} />
+              </button>
+            </div>
+            <span className="dock-hint">Enter to send · Shift+Enter newline</span>
+          </div>
         </div>
 
         {uploadedImage && (
@@ -630,25 +661,28 @@ function ChatBox() {
           </div>
         </div>
 
-        <div className="quiz-row">
-          <input type="text" value={quizTopic} onChange={(e) => setQuizTopic(e.target.value)}
-            placeholder="Enter topic for quiz..." />
-          <select value={quizExam} onChange={(e) => setQuizExam(e.target.value)} className="difficulty-dropdown">
-            {examOptions.map((ex) => (
-              <option key={ex} value={ex}>{ex} pattern</option>
-            ))}
-          </select>
-          <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="difficulty-dropdown">
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
-          <select value={questionCount} onChange={(e) => setQuestionCount(Number(e.target.value))} className="difficulty-dropdown">
-            <option value={5}>5 questions</option>
-            <option value={10}>10 questions</option>
-          </select>
-          <button className="btn btn-success" onClick={handleGenerateQuiz} disabled={loading || !quizTopic.trim()}>
-            <S.clipboard size={15} />Generate Quiz
-          </button>
+        <div className="quiz-dock">
+          <span className="quiz-dock-label"><S.clipboard size={14} />Quick quiz</span>
+          <div className="quiz-row">
+            <input type="text" value={quizTopic} onChange={(e) => setQuizTopic(e.target.value)}
+              placeholder="Enter topic for quiz..." />
+            <select value={quizExam} onChange={(e) => setQuizExam(e.target.value)} className="difficulty-dropdown">
+              {examOptions.map((ex) => (
+                <option key={ex} value={ex}>{ex} pattern</option>
+              ))}
+            </select>
+            <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="difficulty-dropdown">
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+            <select value={questionCount} onChange={(e) => setQuestionCount(Number(e.target.value))} className="difficulty-dropdown">
+              <option value={5}>5 questions</option>
+              <option value={10}>10 questions</option>
+            </select>
+            <button className="btn btn-sm btn-success" onClick={handleGenerateQuiz} disabled={loading || !quizTopic.trim()}>
+              <S.clipboard size={14} />Generate
+            </button>
+          </div>
         </div>
 
         <div className="toolbar-row">
