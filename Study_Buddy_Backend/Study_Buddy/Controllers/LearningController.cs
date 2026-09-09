@@ -15,11 +15,15 @@ namespace StudyBuddy.Controllers
     {
         private readonly StudyBuddyContext _db;
         private readonly IMistralService _aiService;
+        private readonly IConfiguration _config;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public LearningController(StudyBuddyContext db, IMistralService aiService)
+        public LearningController(StudyBuddyContext db, IMistralService aiService, IConfiguration config, IHttpClientFactory httpClientFactory)
         {
             _db = db;
             _aiService = aiService;
+            _config = config;
+            _httpClientFactory = httpClientFactory;
         }
 
         private int? GetUserId()
@@ -176,9 +180,67 @@ namespace StudyBuddy.Controllers
                 RevisionContent = !string.IsNullOrWhiteSpace(content?.RevisionContent) ? content.RevisionContent : topic.RevisionContent,
                 FormulaSheet = !string.IsNullOrWhiteSpace(content?.FormulaSheet) ? content.FormulaSheet : topic.FormulaSheet,
                 ConceptMap = !string.IsNullOrWhiteSpace(content?.ConceptMap) ? content.ConceptMap : topic.ConceptMap,
+                VideoId = topic.VideoId,
                 UpdatedAt = content?.UpdatedAt ?? topic.UpdatedAt,
                 Chapter = new { topic.Chapter.Id, topic.Chapter.Title, Summary = summary }
             });
+        }
+
+        [HttpGet("topics/{id}/video")]
+        public async Task<IActionResult> GetTopicVideo(int id)
+        {
+            var topic = await _db.Topics
+                .Include(t => t.Chapter)
+                .ThenInclude(c => c.Subject)
+                .FirstOrDefaultAsync(t => t.Id == id);
+            if (topic == null) return NotFound();
+
+            string searchQuery = $"{topic.Title} {topic.Chapter?.Subject?.Name}".Trim();
+            string searchUrl = "https://www.youtube.com/results?search_query=" +
+                Uri.EscapeDataString(searchQuery);
+
+            if (!string.IsNullOrWhiteSpace(topic.VideoId))
+                return Ok(new { topic.Title, videoId = topic.VideoId, embedUrl = VideoEmbedUrl(topic.VideoId), searchUrl, source = "cached" });
+
+            var apiKey = _config["YouTube:ApiKey"];
+            if (!string.IsNullOrWhiteSpace(apiKey))
+            {
+                var videoId = await SearchYouTubeVideoAsync(apiKey, searchQuery);
+                if (!string.IsNullOrWhiteSpace(videoId))
+                {
+                    topic.VideoId = videoId;
+                    topic.UpdatedAt = DateTime.UtcNow;
+                    await _db.SaveChangesAsync();
+                    return Ok(new { topic.Title, videoId, embedUrl = VideoEmbedUrl(videoId), searchUrl, source = "youtube" });
+                }
+            }
+
+            return Ok(new { topic.Title, videoId = (string?)null, embedUrl = (string?)null, searchUrl, hasKey = !string.IsNullOrWhiteSpace(apiKey) });
+        }
+
+        private static string VideoEmbedUrl(string videoId) => $"https://www.youtube-nocookie.com/embed/{videoId}";
+
+        private async Task<string?> SearchYouTubeVideoAsync(string apiKey, string query)
+        {
+            try
+            {
+                var client = _httpClientFactory.CreateClient();
+                var url = "https://www.googleapis.com/youtube/v3/search"
+                    + $"?part=snippet&type=video&maxResults=1&safeSearch=none"
+                    + $"&q={Uri.EscapeDataString(query)}&key={Uri.EscapeDataString(apiKey)}";
+                using var res = await client.GetAsync(url);
+                if (!res.IsSuccessStatusCode) return null;
+
+                using var json = JsonDocument.Parse(await res.Content.ReadAsStringAsync());
+                if (json.RootElement.TryGetProperty("items", out var items) && items.GetArrayLength() > 0
+                    && items[0].TryGetProperty("id", out var idEl)
+                    && idEl.TryGetProperty("videoId", out var videoIdEl))
+                {
+                    return videoIdEl.GetString();
+                }
+            }
+            catch { /* fall through to search link */ }
+            return null;
         }
 
         [HttpPost("topics/{id}/generate-content")]

@@ -431,6 +431,12 @@ export const getTopic = async (id) => {
   return res.json();
 };
 
+export const getTopicVideo = async (id) => {
+  const res = await fetch(`${LEARNING_URL}/topics/${id}/video`, { headers: getAuthHeaders() });
+  if (!res.ok) throw new Error("Failed to load topic video");
+  return res.json();
+};
+
 export const generateTopicContent = async (id) => {
   const res = await fetch(`${LEARNING_URL}/topics/${id}/generate-content`, {
     method: "POST",

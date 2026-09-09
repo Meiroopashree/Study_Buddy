@@ -8,6 +8,7 @@ import "katex/dist/katex.min.css";
 import LoadingSpinner from "../components/LoadingSpinner";
 import {
   getLearningTreeWithProgress, getTopic, generateTopicContent,
+  getTopicVideo,
   getTopicQuiz, getTopicFlashcards, getTopicReview, getChapterQuiz, getChapterReview,
   addBookmark, removeBookmark, getBookmarks, saveQuizResult,
   createExam, deleteExamByName, setTopicProgress,
@@ -66,6 +67,8 @@ function Learn() {
 
   const [selectedTopicId, setSelectedTopicId] = useState(null);
   const [topic, setTopic] = useState(null);
+  const [video, setVideo] = useState(null);
+  const [videoLoading, setVideoLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("lessonContent");
   const [generating, setGenerating] = useState(false);
   const [bookmarkedIds, setBookmarkedIds] = useState(new Set());
@@ -261,11 +264,25 @@ function Learn() {
     setActiveTab("lessonContent");
     setQuizAnswers({});
     setQuizSubmitted(false);
+    setVideo(null);
     try {
       const t = await getTopic(id);
       setTopic(t);
+      loadVideo(id);
     } catch (e) {
       setError(e.message);
+    }
+  };
+
+  const loadVideo = async (id) => {
+    setVideoLoading(true);
+    try {
+      const v = await getTopicVideo(id);
+      setVideo(v);
+    } catch {
+      setVideo(null);
+    } finally {
+      setVideoLoading(false);
     }
   };
 
@@ -922,6 +939,58 @@ ${body}
                 <button className="btn" onClick={() => handleReview()}>Review</button>
                 <button className="btn" onClick={handleFlashcards}>Flashcards</button>
               </div>
+            </div>
+
+            <div className="learn-video">
+              {videoLoading ? (
+                <LoadingSpinner
+                  size="inline"
+                  messages={[
+                    "Finding a YouTube video for this topic…",
+                    "A great lecture is on the way…",
+                    "Watching beats reading for first contact…",
+                  ]}
+                />
+              ) : video?.videoId ? (
+                <div className="youtube-embed">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${video.videoId}`}
+                    title={`Video for ${video.title || topic?.title}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                  <div className="youtube-meta">
+                    <span>Watch the video, then read the lesson below and take the quiz.</span>
+                    <a
+                      href={`https://www.youtube.com/watch?v=${video.videoId}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Open on YouTube ↗
+                    </a>
+                  </div>
+                </div>
+              ) : video?.searchUrl ? (
+                <div className="watch-card">
+                  <div className="watch-card-play">▶</div>
+                  <div className="watch-card-body">
+                    <h4>Start with a video for “{video.title || topic?.title}”</h4>
+                    <p>
+                      Watching a short lecture first makes the lesson and quiz below much easier to
+                      follow. Find a video for this topic on YouTube — then come back and study here.
+                    </p>
+                    <a
+                      className="btn btn-primary"
+                      href={video.searchUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Find video on YouTube
+                    </a>
+                  </div>
+                </div>
+              ) : null}
             </div>
 
             {error && <p className="auth-error">{error}</p>}

@@ -12,6 +12,7 @@ namespace StudyBuddy.Models
         public string RevisionContent { get; set; } = "";
         public string FormulaSheet { get; set; } = "";
         public string ConceptMap { get; set; } = "";
+        public string? VideoId { get; set; }
         public DateTime UpdatedAt { get; set; }
     }
 }

@@ -466,6 +466,88 @@
   flex-wrap: wrap;
 }
 
+.learn-video {
+  margin-bottom: 18px;
+  max-width: 860px;
+  min-width: 0;
+}
+
+.youtube-embed iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #000;
+  display: block;
+}
+
+.youtube-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  color: var(--text);
+  opacity: 0.75;
+  font-size: 0.85rem;
+}
+
+.youtube-meta a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 1;
+}
+
+.watch-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card-bg);
+}
+
+.watch-card-play {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1rem;
+  padding-left: 3px;
+}
+
+.watch-card-body h4 {
+  margin: 0 0 4px;
+  color: var(--text);
+}
+
+.watch-card-body p {
+  margin: 0 0 10px;
+  color: var(--text);
+  opacity: 0.75;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 640px) {
+  .watch-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .watch-card-play {
+    width: 40px;
+    height: 40px;
+    align-self: center;
+  }
+}
+
 .learn-tabs {
   display: flex;
   gap: 6px;
