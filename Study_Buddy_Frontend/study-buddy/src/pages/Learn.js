@@ -71,6 +71,7 @@ function Learn() {
   const [video, setVideo] = useState(null);
   const [videoLoading, setVideoLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("lessonContent");
+  const [readerOpen, setReaderOpen] = useState(false);
   const [generating, setGenerating] = useState(false);
   const [bookmarkedIds, setBookmarkedIds] = useState(new Set());
   const [collapsed, setCollapsed] = useState(() => new Set());
@@ -258,6 +259,15 @@ function Learn() {
       .then((b) => setBookmarkedIds(new Set((b || []).map((x) => x.topicId))))
       .catch(() => {});
   }, []);
+
+  useEffect(() => {
+    if (!readerOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setReaderOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [readerOpen]);
 
   const loadTopic = async (id) => {
     setSelectedTopicId(id);
@@ -564,6 +574,12 @@ function Learn() {
     if (!topic) return false;
     return TABS.some((t) => (topic[t.key] || "").trim().length > 0);
   }, [topic]);
+
+  const activeContent = useMemo(() => {
+    if (!topic) return null;
+    const raw = topic[activeTab];
+    return raw && String(raw).trim() ? String(raw) : null;
+  }, [topic, activeTab]);
 
   const filteredTree = useMemo(() => {
     let source = tree || [];
@@ -1044,6 +1060,15 @@ ${body}
                       </button>
                     </>
                   )}
+                  {activeContent && (
+                    <button
+                      className="btn btn-sm learn-tab-download"
+                      onClick={() => setReaderOpen(true)}
+                      title={`View ${TABS.find((t) => t.key === activeTab)?.label || "content"} in full screen`}
+                    >
+                      <S.fullscreen size={14} />View
+                    </button>
+                  )}
                 </div>
                 <div className="learn-content">
                   {generating && activeTab === "lessonContent" && !topic[activeTab] ? (
@@ -1432,6 +1457,38 @@ ${body}
                   </div>
                 </>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {readerOpen && activeContent && (
+        <div className="learn-reader-overlay" onClick={() => setReaderOpen(false)}>
+          <div className="learn-reader" onClick={(e) => e.stopPropagation()}>
+            <div className="learn-reader-bar">
+              <div className="learn-reader-title">
+                <h2>{topic?.title || "Study Material"}</h2>
+                <span className="learn-reader-tab">
+                  {TABS.find((t) => t.key === activeTab)?.label || "Content"}
+                </span>
+              </div>
+              <div className="learn-reader-bar-actions">
+                <button
+                  className="btn btn-sm learn-tab-download"
+                  onClick={activeTab === "formulaSheet" ? handleDownloadFormulaSheet : handleDownloadActiveTab}
+                  title="Save this section as a PDF"
+                >
+                  <S.download size={14} />PDF
+                </button>
+                <button className="close-btn" onClick={() => setReaderOpen(false)} aria-label="Close full-screen view">
+                  <S.x size={20} />
+                </button>
+              </div>
+            </div>
+            <div className="learn-reader-body">
+              <div className="learn-reader-content">
+                <Markdown content={activeContent} />
+              </div>
             </div>
           </div>
         </div>

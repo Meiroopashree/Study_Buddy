@@ -691,6 +691,93 @@
   padding: 0;
 }
 
+/* ---------- Full-screen reader ---------- */
+
+.learn-reader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  animation: fade-in 0.18s ease both;
+}
+
+.learn-reader {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.learn-reader-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-1);
+  flex-shrink: 0;
+}
+
+.learn-reader-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.learn-reader-bar-actions .learn-tab-download {
+  margin-left: 0;
+}
+
+.learn-reader-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.learn-reader-title h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.learn-reader-tab {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-radius: 999px;
+  padding: 3px 12px;
+}
+
+.learn-reader-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 24px 60px;
+}
+
+.learn-reader-content {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 36px 44px;
+  box-shadow: var(--shadow-card);
+}
+
+.learn-reader-content .markdown-body {
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
 /* ---------- Quiz modal internals ---------- */
 
 .learn-quiz-card {
