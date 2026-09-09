@@ -232,16 +232,18 @@ function AppContent() {
 
       <div className="app-main">
         <TopBar onOpenDrawer={() => setDrawerOpen(true)} />
-        <Routes>
-          <Route path="/auth" element={<Navigate to="/" />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/learn" element={<Learn />} />
-          <Route path="/papers" element={<Papers />} />
-          <Route path="/adaptive" element={<Adaptive />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+        <div className="page-enter" key={location.pathname}>
+          <Routes>
+            <Route path="/auth" element={<Navigate to="/" />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/learn" element={<Learn />} />
+            <Route path="/papers" element={<Papers />} />
+            <Route path="/adaptive" element={<Adaptive />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );

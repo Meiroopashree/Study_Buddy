@@ -327,7 +327,7 @@
   cursor: pointer;
   font-size: 0.85rem;
   color: var(--text);
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, transform 0.15s var(--ease);
   min-width: 0;
   border: 1px solid transparent;
 }
@@ -338,6 +338,7 @@
 
 .learn-topic:hover {
   background: var(--primary-soft);
+  transform: translateX(3px);
 }
 
 .learn-topic-title {
@@ -1355,4 +1356,67 @@
   .flash-card {
     height: 240px;
   }
+}
+
+/* ---------- Motion ---------- */
+
+.learn-sidebar {
+  animation: fade-in 0.35s ease both;
+}
+
+.learn-main {
+  animation: fade-rise 0.4s var(--ease) both;
+}
+
+.learn-exam {
+  animation: rise-up 0.34s var(--ease) both;
+}
+.learn-exam:nth-of-type(1) { animation-delay: 0.03s; }
+.learn-exam:nth-of-type(2) { animation-delay: 0.09s; }
+.learn-exam:nth-of-type(3) { animation-delay: 0.15s; }
+.learn-exam:nth-of-type(4) { animation-delay: 0.21s; }
+.learn-exam:nth-of-type(5) { animation-delay: 0.27s; }
+.learn-exam:nth-of-type(6) { animation-delay: 0.33s; }
+
+.learn-topic-header {
+  animation: fade-rise 0.4s var(--ease) both;
+}
+
+.learn-video .youtube-embed,
+.learn-video .watch-card {
+  animation: fade-rise 0.4s var(--ease) both;
+}
+
+.learn-tabs {
+  animation: fade-rise 0.4s var(--ease) both;
+}
+
+.learn-tab {
+  animation: pop 0.3s var(--ease) both;
+}
+.learn-tab:nth-child(1) { animation-delay: 0.03s; }
+.learn-tab:nth-child(2) { animation-delay: 0.07s; }
+.learn-tab:nth-child(3) { animation-delay: 0.11s; }
+.learn-tab:nth-child(4) { animation-delay: 0.15s; }
+.learn-tab:nth-child(5) { animation-delay: 0.19s; }
+
+.learn-content {
+  animation: fade-rise 0.34s var(--ease) both;
+}
+
+.learn-exam {
+  transition: border-color 0.18s var(--ease), transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
+}
+.learn-exam:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.learn-mini-btn svg,
+.learn-tab-download svg {
+  transition: transform 0.18s var(--ease);
+}
+.learn-mini-btn:hover svg,
+.learn-tab-download:hover svg {
+  transform: scale(1.18);
 }

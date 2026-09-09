@@ -306,3 +306,34 @@
     padding: 12px;
   }
 }
+
+/* ---------- Motion ---------- */
+
+.papers-header {
+  animation: fade-rise 0.4s var(--ease) both;
+}
+
+.papers-dropzone {
+  animation: fade-rise 0.42s var(--ease) 0.06s both;
+}
+
+.paper-card {
+  animation: rise-up 0.34s var(--ease) both;
+  transition: border-color 0.18s var(--ease), transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
+}
+.paper-card:nth-child(1) { animation-delay: 0.03s; }
+.paper-card:nth-child(2) { animation-delay: 0.07s; }
+.paper-card:nth-child(3) { animation-delay: 0.11s; }
+.paper-card:nth-child(4) { animation-delay: 0.15s; }
+.paper-card:nth-child(5) { animation-delay: 0.19s; }
+
+.paper-card:hover {
+  transform: translateY(-2px);
+}
+
+.paper-card-actions .btn svg {
+  transition: transform 0.18s var(--ease);
+}
+.paper-card-actions .btn:hover svg {
+  transform: scale(1.15);
+}

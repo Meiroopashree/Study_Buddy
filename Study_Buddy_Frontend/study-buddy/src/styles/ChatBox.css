@@ -828,3 +828,72 @@
     break-inside: avoid;
   }
 }
+
+@media print {
+  .chat-header, .input-dock, .toolbar-row, .suggestion-chip, .message,
+  .quiz-dock, .doc-manager, .image-preview {
+    animation: none !important;
+  }
+}
+
+/* ---------- Motion ---------- */
+
+.chat-header {
+  animation: slide-down 0.32s var(--ease) both;
+}
+
+.input-dock {
+  animation: rise-up 0.4s var(--ease) 0.06s both;
+}
+
+.chat-suggestions {
+  animation: fade-rise 0.4s var(--ease) both;
+}
+
+.suggestion-chip {
+  animation: pop 0.32s var(--ease) both;
+}
+.suggestion-chip:nth-child(1) { animation-delay: 0.05s; }
+.suggestion-chip:nth-child(2) { animation-delay: 0.12s; }
+.suggestion-chip:nth-child(3) { animation-delay: 0.19s; }
+.suggestion-chip:nth-child(4) { animation-delay: 0.26s; }
+
+.suggestion-chip:hover svg {
+  transform: rotate(12deg) scale(1.15);
+  transition: transform 0.2s var(--ease);
+}
+
+.toolbar-row .btn {
+  animation: pop 0.28s var(--ease) both;
+}
+.toolbar-row .btn:nth-child(1) { animation-delay: 0.08s; }
+.toolbar-row .btn:nth-child(2) { animation-delay: 0.14s; }
+.toolbar-row .btn:nth-child(3) { animation-delay: 0.2s; }
+.toolbar-row .btn:nth-child(4) { animation-delay: 0.26s; }
+.toolbar-row .btn:nth-child(5) { animation-delay: 0.32s; }
+
+.quiz-dock {
+  animation: rise-up 0.3s var(--ease) both;
+}
+
+.doc-manager {
+  animation: rise-up 0.3s var(--ease) both;
+}
+
+.image-preview {
+  animation: rise-up 0.28s var(--ease) both;
+}
+
+.dock-icon-btn svg {
+  transition: transform 0.18s var(--ease);
+}
+.dock-icon-btn:hover svg {
+  transform: scale(1.15);
+}
+.dock-icon-btn.listening svg {
+  animation: float-y 1.2s ease-in-out infinite;
+}
+
+.toast {
+  animation: rise-up 0.3s var(--ease) both;
+}

@@ -1247,8 +1247,204 @@ p {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+@keyframes rise-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(16px, -12px) scale(1.08); }
+  66% { transform: translate(-12px, 10px) scale(0.94); }
+}
+
+@keyframes gradient-slide {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes sheen {
+  0% { left: -130%; }
+  100% { left: 140%; }
+}
+
+@keyframes typing-dot {
+  0%, 80%, 100% { opacity: 0.25; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-3px); }
+}
+
 .fade-rise {
   animation: fade-rise 0.35s var(--ease) both;
+}
+
+/* ---------- 11. Entrance & micro-motion ---------- */
+
+.page-enter {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  animation: fade-rise 0.34s var(--ease) both;
+}
+
+.app-shell {
+  animation: fade-in 0.3s ease both;
+}
+
+.app-topbar {
+  animation: slide-down 0.3s var(--ease) both;
+}
+
+.sidebar-inner {
+  animation: fade-in 0.4s ease both;
+}
+
+.sidebar-brand {
+  animation: fade-rise 0.4s var(--ease) both;
+}
+
+.sidebar-link {
+  animation: rise-up 0.32s var(--ease) both;
+  transition: background 0.16s var(--ease), color 0.16s var(--ease), transform 0.16s var(--ease);
+}
+.sidebar-link:nth-of-type(1) { animation-delay: 0.03s; }
+.sidebar-link:nth-of-type(2) { animation-delay: 0.06s; }
+.sidebar-link:nth-of-type(3) { animation-delay: 0.09s; }
+.sidebar-link:nth-of-type(4) { animation-delay: 0.12s; }
+.sidebar-link:nth-of-type(5) { animation-delay: 0.15s; }
+
+.sidebar-link:hover {
+  transform: translateX(3px);
+}
+
+.sidebar-link svg {
+  transition: transform 0.18s var(--ease);
+}
+.sidebar-link:hover svg {
+  transform: scale(1.15);
+}
+
+.sidebar-brand-mark,
+.topbar-brand-mark,
+.auth-brand-mark {
+  background-size: 180% 180%;
+  animation: gradient-slide 8s ease-in-out infinite;
+}
+
+.auth-hero::before,
+.auth-hero::after {
+  animation: drift 16s ease-in-out infinite;
+}
+.auth-hero::after {
+  animation-delay: -8s;
+}
+
+.auth-card {
+  animation: rise-up 0.45s var(--ease) both;
+}
+
+.btn {
+  position: relative;
+}
+
+.btn-primary {
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -130%;
+  width: 55%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+
+.btn-primary:hover::after {
+  animation: sheen 0.75s var(--ease) forwards;
+}
+
+.btn-primary:hover:not(:disabled) svg {
+  transition: transform 0.18s var(--ease);
+}
+
+@keyframes btn-send-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(2px); }
+}
+.btn-send:hover svg {
+  animation: btn-send-nudge 0.6s ease-in-out infinite;
+}
+
+.stat-cards .stat-card,
+.quick-card,
+.adaptive-card,
+.exam-stat-card {
+  animation: rise-up 0.38s var(--ease) both;
+}
+.stat-cards .stat-card:nth-child(1),
+.quick-card:nth-child(1) { animation-delay: 0.04s; }
+.stat-cards .stat-card:nth-child(2),
+.quick-card:nth-child(2) { animation-delay: 0.08s; }
+.stat-cards .stat-card:nth-child(3),
+.quick-card:nth-child(3) { animation-delay: 0.12s; }
+.stat-cards .stat-card:nth-child(4),
+.quick-card:nth-child(4) { animation-delay: 0.16s; }
+.stat-cards .stat-card:nth-child(5) { animation-delay: 0.2s; }
+
+.dash-list li,
+.quiz-row,
+.doc-row,
+.due-review-row {
+  animation: rise-up 0.32s var(--ease) both;
+}
+.dash-list li:nth-child(1),
+.quiz-row:nth-child(1),
+.doc-row:nth-child(1) { animation-delay: 0.03s; }
+.dash-list li:nth-child(2),
+.quiz-row:nth-child(2),
+.doc-row:nth-child(2) { animation-delay: 0.06s; }
+.dash-list li:nth-child(3),
+.quiz-row:nth-child(3),
+.doc-row:nth-child(3) { animation-delay: 0.09s; }
+.dash-list li:nth-child(4),
+.quiz-row:nth-child(4),
+.doc-row:nth-child(4) { animation-delay: 0.12s; }
+.dash-list li:nth-child(5),
+.quiz-row:nth-child(5),
+.doc-row:nth-child(5) { animation-delay: 0.15s; }
+.dash-list li:nth-child(6),
+.quiz-row:nth-child(6),
+.doc-row:nth-child(6) { animation-delay: 0.18s; }
+
+.dash-hero::after {
+  animation: drift 12s ease-in-out infinite;
+}
+
+.quick-card .quick-icon {
+  transition: transform 0.22s var(--ease);
+}
+.quick-card:hover .quick-icon {
+  transform: scale(1.18) rotate(-5deg);
 }
 
 @media (prefers-reduced-motion: reduce) {

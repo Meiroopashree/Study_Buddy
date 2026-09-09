@@ -124,6 +124,10 @@
   color: var(--primary);
 }
 
+.message {
+  animation: fade-rise 0.3s var(--ease) both;
+}
+
 @keyframes blink {
   50% { opacity: 0; }
 }
