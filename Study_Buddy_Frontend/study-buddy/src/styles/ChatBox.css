@@ -38,25 +38,19 @@
   color: var(--text);
 }
 
-.chat-header-mode {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--accent);
-  background: var(--accent-soft);
-  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
-  padding: 3px 9px;
-  border-radius: 999px;
-  white-space: nowrap;
+.chat-header-text {
+  min-width: 0;
 }
 
-.chat-header-spacer {
-  flex: 1;
+.chat-header-text h1 {
+  margin: 0;
+  line-height: 1.2;
 }
 
-.chat-header-tip {
+.chat-header-sub {
+  margin: 2px 0 0;
   font-size: 0.78rem;
   color: var(--text-3);
-  white-space: nowrap;
 }
 
 /* ---------- Messages ---------- */
@@ -257,55 +251,6 @@
   white-space: nowrap;
 }
 
-/* ---------- Tutor mode ---------- */
-
-.tutor-mode-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.tutor-mode-label {
-  font-family: "Sora", sans-serif;
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-3);
-  white-space: nowrap;
-}
-
-.tutor-mode-chips {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.tutor-mode-chip {
-  padding: 5px 12px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  background: var(--card-bg);
-  color: var(--text-2);
-  cursor: pointer;
-  transition: all 0.16s var(--ease);
-}
-
-.tutor-mode-chip:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-.tutor-mode-chip.active {
-  background: var(--grad);
-  border-color: transparent;
-  color: #fff;
-  box-shadow: 0 2px 10px rgba(79, 70, 229, 0.35);
-}
-
 /* ---------- Quick quiz dock ---------- */
 
 .quiz-dock {
@@ -382,15 +327,6 @@
   gap: 6px;
   flex-wrap: wrap;
   align-items: center;
-}
-
-.btn-purple {
-  background: var(--primary-2);
-  color: #fff;
-}
-.btn-purple:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--primary-2) 85%, #000);
-  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.32);
 }
 
 /* ---------- Toast ---------- */
@@ -741,9 +677,7 @@
 /* ---------- Document manager ---------- */
 
 .doc-manager {
-  margin-top: 4px;
-  margin-left: 24px !important;
-  margin-right: 24px !important;
+  margin: 4px 24px 12px;
   padding: 12px 16px;
   background: var(--surface-2);
   border: 1px solid var(--border);
@@ -839,9 +773,6 @@
   .chat-header {
     padding: 12px 16px 8px;
   }
-  .chat-header-tip {
-    display: none;
-  }
   .messages {
     padding: 8px 14px 14px;
   }
@@ -858,8 +789,7 @@
     flex: 1 1 auto;
     min-width: 0;
   }
-  .toolbar-row,
-  .tutor-mode-row {
+  .toolbar-row {
     flex-wrap: wrap;
   }
   .chat-suggestions {

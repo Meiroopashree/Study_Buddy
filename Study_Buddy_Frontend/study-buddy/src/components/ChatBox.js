@@ -21,14 +21,6 @@ const SUGGESTIONS = [
   "Summarize the process of photosynthesis",
 ];
 
-const TUTOR_MODES = [
-  { key: "Beginner", label: "Beginner", hint: "Teach from the basics" },
-  { key: "NCERT", label: "NCERT", hint: "Board-level, standard definitions" },
-  { key: "JEE Advanced", label: "JEE Advanced", hint: "Depth, derivations, traps" },
-  { key: "NEET", label: "NEET", hint: "Facts, memory points, elimination" },
-  { key: "Revision", label: "Revision", hint: "Quick, concise review" },
-];
-
 function ChatBox() {
   const { currentExam } = useExam();
   const [input, setInput] = useState("");
@@ -54,9 +46,9 @@ function ChatBox() {
   const [listening, setListening] = useState(false);
   const [documents, setDocuments] = useState([]);
   const [selectedDocIds, setSelectedDocIds] = useState([]);
+  const [showQuizDock, setShowQuizDock] = useState(false);
   const [showDocManager, setShowDocManager] = useState(false);
   const [uploadingDoc, setUploadingDoc] = useState(false);
-  const [tutorMode, setTutorMode] = useState(() => localStorage.getItem("sb-tutor-mode") || "NCERT");
   const [toast, setToast] = useState(null);
   const toastTimerRef = useRef(null);
   const fileInputRef = useRef(null);
@@ -86,10 +78,6 @@ function ChatBox() {
       recognitionRef.current?.stop();
     };
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem("sb-tutor-mode", tutorMode);
-  }, [tutorMode]);
 
   useEffect(() => {
     getLearningTree()
@@ -161,8 +149,7 @@ function ChatBox() {
           ]);
         },
         docIds,
-        imageUrl,
-        tutorMode
+        imageUrl
       );
     };
 
@@ -170,7 +157,7 @@ function ChatBox() {
       await tryStream();
     } catch (err) {
       try {
-        const res = await askAI(userMessage, conversationHistory, docIds, imageUrl, tutorMode);
+        const res = await askAI(userMessage, conversationHistory, docIds, imageUrl);
         fullAnswer = res.answer || "No response.";
         setMessages(prev => {
           const copy = [...prev];
@@ -572,10 +559,10 @@ function ChatBox() {
     <div className="chat-container">
       <header className="chat-header">
         <span className="chat-header-mark"><S.sparkle size={16} /></span>
-        <h1>AI Study Buddy</h1>
-        <span className="chat-header-mode">· {tutorMode}</span>
-        <div className="chat-header-spacer" />
-        <span className="chat-header-tip">Ask anything · solved step by step</span>
+        <div className="chat-header-text">
+          <h1>AI Study Buddy</h1>
+          <p className="chat-header-sub">Your study partner — ask anything</p>
+        </div>
       </header>
 
       <div className="messages">
@@ -645,69 +632,62 @@ function ChatBox() {
           </div>
         )}
 
-        <div className="tutor-mode-row">
-          <span className="tutor-mode-label">Tutor mode</span>
-          <div className="tutor-mode-chips">
-            {TUTOR_MODES.map((m) => (
-              <button
-                key={m.key}
-                className={`tutor-mode-chip ${tutorMode === m.key ? "active" : ""}`}
-                onClick={() => setTutorMode(m.key)}
-                title={m.hint}
-              >
-                {m.label}
+        {showQuizDock && (
+          <div className="quiz-dock">
+            <span className="quiz-dock-label"><S.clipboard size={14} />Quick quiz</span>
+            <div className="quiz-row">
+              <input type="text" value={quizTopic} onChange={(e) => setQuizTopic(e.target.value)}
+                placeholder="Enter topic for quiz..." />
+              <select value={quizExam} onChange={(e) => setQuizExam(e.target.value)} className="difficulty-dropdown">
+                {examOptions.map((ex) => (
+                  <option key={ex} value={ex}>{ex} pattern</option>
+                ))}
+              </select>
+              <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="difficulty-dropdown">
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+              <select value={questionCount} onChange={(e) => setQuestionCount(Number(e.target.value))} className="difficulty-dropdown">
+                <option value={5}>5 questions</option>
+                <option value={10}>10 questions</option>
+              </select>
+              <button className="btn btn-sm btn-success" onClick={handleGenerateQuiz} disabled={loading || !quizTopic.trim()}>
+                <S.clipboard size={14} />Generate
               </button>
-            ))}
+            </div>
           </div>
-        </div>
-
-        <div className="quiz-dock">
-          <span className="quiz-dock-label"><S.clipboard size={14} />Quick quiz</span>
-          <div className="quiz-row">
-            <input type="text" value={quizTopic} onChange={(e) => setQuizTopic(e.target.value)}
-              placeholder="Enter topic for quiz..." />
-            <select value={quizExam} onChange={(e) => setQuizExam(e.target.value)} className="difficulty-dropdown">
-              {examOptions.map((ex) => (
-                <option key={ex} value={ex}>{ex} pattern</option>
-              ))}
-            </select>
-            <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="difficulty-dropdown">
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-            </select>
-            <select value={questionCount} onChange={(e) => setQuestionCount(Number(e.target.value))} className="difficulty-dropdown">
-              <option value={5}>5 questions</option>
-              <option value={10}>10 questions</option>
-            </select>
-            <button className="btn btn-sm btn-success" onClick={handleGenerateQuiz} disabled={loading || !quizTopic.trim()}>
-              <S.clipboard size={14} />Generate
-            </button>
-          </div>
-        </div>
+        )}
 
         <div className="toolbar-row">
+          <button
+            className={`btn ${showQuizDock ? "btn-primary" : "btn-secondary"}`}
+            onClick={() => setShowQuizDock((v) => !v)}
+          >
+            <S.clipboard size={15} />Quiz
+          </button>
           <button className="btn btn-secondary" onClick={loadHistory}><S.clock size={15} />History</button>
-          <button className="btn btn-purple" onClick={() => { loadDocuments(); setShowDocManager(!showDocManager); }}>
+          <button className={`btn ${showDocManager ? "btn-primary" : "btn-secondary"}`}
+            onClick={() => { loadDocuments(); setShowDocManager(!showDocManager); }}>
             <S.doc size={15} />{showDocManager ? "Docs" : `Docs${selectedDocIds.length ? ` (${selectedDocIds.length})` : ""}`}
           </button>
           {messages.length > 0 && (
-            <button className="btn btn-danger" onClick={() => window.print()}><S.download size={15} />PDF</button>
+            <button className="btn btn-secondary" onClick={() => window.print()}><S.download size={15} />PDF</button>
           )}
           {(messages.length > 0 || conversationHistory.length > 0) && (
-            <button className="btn btn-ghost" onClick={() => { setConversationHistory([]); setMessages([]); }}><S.trash size={15} />Clear Context</button>
+            <button className="btn btn-ghost" onClick={() => { setConversationHistory([]); setMessages([]); }}><S.trash size={15} />Clear</button>
           )}
         </div>
       </div>
 
       {showDocManager && (
-        <div className="doc-manager" style={{ margin: "0 20px 12px" }}>
+        <div className="doc-manager">
           <h4>
             My Documents
             <button className="btn btn-success" style={{ padding: "4px 12px", fontSize: "0.8rem" }}
               onClick={() => docFileInputRef.current?.click()} disabled={uploadingDoc}>
               {uploadingDoc ? <S.upload size={14} /> : <S.plus size={14} />} Upload
             </button>
-            <button className="btn btn-purple" style={{ padding: "4px 12px", fontSize: "0.8rem", marginLeft: 6 }}
+            <button className="btn btn-secondary" style={{ padding: "4px 12px", fontSize: "0.8rem", marginLeft: 6 }}
               onClick={() => ocrFileInputRef.current?.click()} disabled={uploadingDoc}
               title="Extract text from an image (OCR)">
               {uploadingDoc ? <S.upload size={14} /> : <S.image size={14} />} OCR Image
